@@ -1655,7 +1655,7 @@ pre .javascript .function {
 }
 #rewardButton span {
   display: inline-block;
-  width: 80px;
+  width: 60px;
   height: 35px;
   border-radius: 5px;
   color: #fff;
@@ -2000,7 +2000,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #877f20;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
