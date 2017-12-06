@@ -774,7 +774,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  392 字
+                  391 字
                 </span>
               
 
@@ -814,7 +814,6 @@
         
           <p><img src="http://oxgw3nd2b.bkt.clouddn.com/Array-in-Java-methods-initialization-with-example.jpg" alt="Array-in-Java-methods-initialization-with-example"></p>
 <h3 id="为什么要使用惰性初始化："><a href="#为什么要使用惰性初始化：" class="headerlink" title="为什么要使用惰性初始化："></a>为什么要使用惰性初始化：</h3><p>因为类中为基本类型时，能够自动被初始化为0，但是对象引用会被初始化为null。编译器不是简单的为每一个引用创建对象创建默认对象，这一点是很有用的，因为真要那样的话，会在很多情况下增加很多开销。那么如果想初始化这些引用，就可以在代码中的很多位置进行，其中“惰性初始化”是其中的一种方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> </span>&#123;</div><div class="line">    String s;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Simple</span><span class="params">(String si)</span> </span>&#123;</div><div class="line">        s = si;</div><div class="line">    &#125;<span class="comment">//构造函数,内部为构造变量赋值</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125; <span class="comment">//复写</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setString</span><span class="params">(String sstr)</span> </span>&#123;</div><div class="line">        s = sstr;</div><div class="line">    &#125;<span class="comment">//普通函数</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/14/Lazy-Instantiation-of-Java/#more" rel="contents">

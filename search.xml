@@ -22,14 +22,14 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>中国</tag>
         <tag>游记</tag>
+        <tag>中国</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[JAVA惰性初始化]]></title>
     <url>%2F2017%2F11%2F14%2FLazy-Instantiation-of-Java%2F</url>
-    <content type="text"><![CDATA[为什么要使用惰性初始化：因为类中为基本类型时，能够自动被初始化为0，但是对象引用会被初始化为null。编译器不是简单的为每一个引用创建对象创建默认对象，这一点是很有用的，因为真要那样的话，会在很多情况下增加很多开销。那么如果想初始化这些引用，就可以在代码中的很多位置进行，其中“惰性初始化”是其中的一种方式。 12345678910111213class Simple &#123; String s; public Simple(String si) &#123; s = si; &#125;//构造函数,内部为构造变量赋值 public String toString() &#123; return s; &#125; //复写 public void setString(String sstr) &#123; s = sstr; &#125;//普通函数&#125; 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Second &#123; Simple simple; String s; public Second (String si) &#123; s = si; &#125;//构造函数,内部为变量赋值 public void check() &#123;//单纯检测simple是否已经创建. if(simple == null) System.out.println("simple is not initlized"); else System.out.println("simple is initlized"); &#125; private Simple lazy() &#123;//检测simple是否已经创建,如果没有创建就创建一个 if(simple == null) &#123; System.out.println("simple is creating"); simple = new Simple(s); &#125; return simple; &#125; public Simple getSimple() &#123;//获取simple的值 return lazy(); &#125; public void setSimple(String sNew) &#123;//设定simple的值 lazy().setString(sNew); &#125; public String toString() &#123; //复写tosring()方法,输出 return lazy().toString(); &#125;&#125;public class testLazy &#123; public static void main(String[] args) &#123; Second second = new Second("intit String"); second.check(); //输出:simple is not initlized //同时为second类中的变量s赋值为:s="intit String" System.out.println(second.getSimple()); //创建simple,为simple赋值:simple="intit String" //输出:simple is creating // intit String second.check(); //输出:simple is initlized second.setSimple("New String"); //输出:intit String System.out.println(second); //输出:New String &#125;&#125;]]></content>
+    <content type="text"><![CDATA[为什么要使用惰性初始化：因为类中为基本类型时，能够自动被初始化为0，但是对象引用会被初始化为null。编译器不是简单的为每一个引用创建对象创建默认对象，这一点是很有用的，因为真要那样的话，会在很多情况下增加很多开销。那么如果想初始化这些引用，就可以在代码中的很多位置进行，其中“惰性初始化”是其中的一种方式。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667class Simple &#123; String s; public Simple(String si) &#123; s = si; &#125;//构造函数,内部为构造变量赋值 public String toString() &#123; return s; &#125; //复写 public void setString(String sstr) &#123; s = sstr; &#125;//普通函数&#125;class Second &#123; Simple simple; String s; public Second (String si) &#123; s = si; &#125;//构造函数,内部为变量赋值 public void check() &#123;//单纯检测simple是否已经创建. if(simple == null) System.out.println("simple is not initlized"); else System.out.println("simple is initlized"); &#125; private Simple lazy() &#123;//检测simple是否已经创建,如果没有创建就创建一个 if(simple == null) &#123; System.out.println("simple is creating"); simple = new Simple(s); &#125; return simple; &#125; public Simple getSimple() &#123;//获取simple的值 return lazy(); &#125; public void setSimple(String sNew) &#123;//设定simple的值 lazy().setString(sNew); &#125; public String toString() &#123; //复写tosring()方法,输出 return lazy().toString(); &#125;&#125;public class testLazy &#123; public static void main(String[] args) &#123; Second second = new Second("intit String"); second.check(); //输出:simple is not initlized //同时为second类中的变量s赋值为:s="intit String" System.out.println(second.getSimple()); //创建simple,为simple赋值:simple="intit String" //输出:simple is creating // intit String second.check(); //输出:simple is initlized second.setSimple("New String"); //输出:intit String System.out.println(second); //输出:New String &#125;&#125;]]></content>
       <categories>
         <category>Coding</category>
       </categories>
@@ -58,10 +58,10 @@
         <category>游记</category>
       </categories>
       <tags>
-        <tag>游记</tag>
         <tag>欧洲</tag>
         <tag>博物馆</tag>
         <tag>KHM</tag>
+        <tag>游记</tag>
       </tags>
   </entry>
   <entry>
