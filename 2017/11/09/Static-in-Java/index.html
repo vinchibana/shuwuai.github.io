@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="中国,游记," />
+  <meta name="keywords" content="Java,Coding," />
 
 
 
@@ -75,20 +75,18 @@
 
 
 
-<meta name="description" content="中国人无疑是世界上最能隐忍的群体之一。 离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。 高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工">
-<meta name="keywords" content="中国,游记">
+<meta name="description" content="静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。 1、Java静态对象和非静态对象有什么区别？比对如下：     非静态对象 静态对象     拥有属性 是类共同拥有的 是类各对象独立拥有的   内存分配 内存空间上是固定的 空间在各个附属类里面分配   分配顺序 先分配静态对象的空间 继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态">
+<meta name="keywords" content="Java,Coding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="廉价，素质，人权与公权力滥用">
-<meta property="og:url" content="http://shuwuai.cc/2017/12/05/Cheap, quality, abuse of human rights and public power/index.html">
+<meta property="og:title" content="JAVA的静态变量、静态方法、静态类">
+<meta property="og:url" content="http://shuwuai.cc/2017/11/09/Static-in-Java/index.html">
 <meta property="og:site_name" content="博物志">
-<meta property="og:description" content="中国人无疑是世界上最能隐忍的群体之一。 离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。 高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工">
+<meta property="og:description" content="静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。 1、Java静态对象和非静态对象有什么区别？比对如下：     非静态对象 静态对象     拥有属性 是类共同拥有的 是类各对象独立拥有的   内存分配 内存空间上是固定的 空间在各个附属类里面分配   分配顺序 先分配静态对象的空间 继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/p2436227324.jpg">
-<meta property="og:updated_time" content="2017-12-05T05:24:44.395Z">
+<meta property="og:updated_time" content="2017-12-06T11:07:26.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="廉价，素质，人权与公权力滥用">
-<meta name="twitter:description" content="中国人无疑是世界上最能隐忍的群体之一。 离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。 高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工">
-<meta name="twitter:image" content="http://oxgw3nd2b.bkt.clouddn.com/p2436227324.jpg">
+<meta name="twitter:title" content="JAVA的静态变量、静态方法、静态类">
+<meta name="twitter:description" content="静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。 1、Java静态对象和非静态对象有什么区别？比对如下：     非静态对象 静态对象     拥有属性 是类共同拥有的 是类各对象独立拥有的   内存分配 内存空间上是固定的 空间在各个附属类里面分配   分配顺序 先分配静态对象的空间 继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态">
 
 
 
@@ -118,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://shuwuai.cc/2017/12/05/Cheap, quality, abuse of human rights and public power/"/>
+  <link rel="canonical" href="http://shuwuai.cc/2017/11/09/Static-in-Java/"/>
 
 
 
 
 
-  <title>廉价，素质，人权与公权力滥用 | 博物志</title>
+  <title>JAVA的静态变量、静态方法、静态类 | 博物志</title>
   
 
 
@@ -283,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuwuai.cc/2017/12/05/Cheap, quality, abuse of human rights and public power/">
+    <link itemprop="mainEntityOfPage" href="http://shuwuai.cc/2017/11/09/Static-in-Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="鹊桥仙仙">
@@ -300,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">廉价，素质，人权与公权力滥用</h1>
+          <h1 class="post-title" itemprop="name headline">JAVA的静态变量、静态方法、静态类</h1>
         
 
         <div class="post-meta">
@@ -312,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T13:13:36+08:00">
-                2017-12-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T20:44:23+08:00">
+                2017-11-09
               </time>
             
 
@@ -335,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/游记/" itemprop="url" rel="index">
-                    <span itemprop="name">游记</span>
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
                   </a>
                 </span>
 
@@ -354,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/05/Cheap, quality, abuse of human rights and public power/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/12/05/Cheap, quality, abuse of human rights and public power/" itemprop="commentsCount"></span>
+                <a href="/2017/11/09/Static-in-Java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/09/Static-in-Java/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -383,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  764 字
+                  1,234 字
                 </span>
               
 
@@ -399,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -420,16 +418,53 @@
       
 
       
-        <p><img src="http://oxgw3nd2b.bkt.clouddn.com/p2436227324.jpg" alt="p2436227324"></p>
-<p>中国人无疑是世界上最能隐忍的群体之一。</p>
-<p>离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。</p>
-<p>高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工者，城镇企业家打扮腰揣几把车钥匙的生意人，与我也不清楚有没有钱的学生。虽然那扛不动蛇皮口袋的身躯着实可怜，而吐槽上了半车实实在在的民工可能偷着抽烟不容易管的列车员倒也滑稽。各地铁路局也风格迥异，以南昌职业素养最高，青岛次之，西安最糟，普天之下不得不感叹基建狂魔蛮荒的内心。</p>
-<p>道听听到最多的莫过于我在xx呆过许多年这样的开头，虽然我经常背对他们，仍不难听出话语洋溢至脸上的走出来的自豪神情，即使如今仍不断被迫迁徙。而人群属性似乎注定了他们也有更多的弯路故事，比如我哥输掉了三轮车，我也输掉了，所以不得已出来打了几年工之类；大概都无暇顾及自己还是不是被总书记牵挂着。</p>
-<p>更有，一家四口、期间尚有不足岁的婴儿，车厢空隙席地而睡，于是你都分不清建议其他出土文物般的人是不是该洗洗衣服再来坐车以示对别人的尊重这件事是不是政治正确。</p>
-<p>也时常有游离于法外之地的“准传销者”，对落单的老人现场施法，以推销他们董事长十几岁自创中药企至今已治愈多少癌症的良方。</p>
-<p>更多的，则是日常打工的家长里短，北方媳妇儿不爱洗衣服。除了男的钟爱乐福鞋，女的钟爱皮裤，不少人排斥读书教育与新事物，而对假药、封建迷信、TG都有着天真的执念。</p>
-<p>公权力无孔不入的肆意侵入，高铁尚且每过一站布施几个红头文件，绿皮火车就干脆不考虑时宜的用抵挡不住的音量灌输所谓旅行文化，好似几年前去西安的夜车上被无数人建议过最好开小点暖气却始终一脸茫然的列车员。和谐社会，没有做“人”的机会。这是跟贫穷一样可悲的事情。</p>
-<p>世界那么大。</p>
+        <p>静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。</p>
+<h2 id="1、Java静态对象和非静态对象有什么区别？"><a href="#1、Java静态对象和非静态对象有什么区别？" class="headerlink" title="1、Java静态对象和非静态对象有什么区别？"></a>1、Java静态对象和非静态对象有什么区别？</h2><p>比对如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>非静态对象</th>
+<th>静态对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>拥有属性</td>
+<td>是类共同拥有的</td>
+<td>是类各对象独立拥有的</td>
+</tr>
+<tr>
+<td>内存分配</td>
+<td>内存空间上是固定的</td>
+<td>空间在各个附属类里面分配</td>
+</tr>
+<tr>
+<td>分配顺序</td>
+<td>先分配静态对象的空间</td>
+<td>继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3 id="java静态对象到底有什么好处？"><a href="#java静态对象到底有什么好处？" class="headerlink" title="java静态对象到底有什么好处？"></a>java静态对象到底有什么好处？</h3><p>A，静态对象的数据在全局是唯一的，一改都改。如果你想要处理的东西是整个程序中唯一的，弄成静态是个好方法。 非静态的东西你修改以后只是修改了他自己的数据，但是不会影响其他同类对象的数据。 </p>
+<p>B，引用方便。直接用 类名.静态方法名  或者  类名.静态变量名就可引用并且直接可以修改其属性值，不用get和set方法。</p>
+<p>C，保持数据的唯一性。此数据全局都是唯一的，修改他的任何一处地方，在程序所有使用到的地方都将会体现到这些数据的修改。有效减少多余的浪费。</p>
+<p>D，static final用来修饰成员变量和成员方法，可简单理解为“全局常量”。对于变量，表示一旦给值就不可修改；对于方法，表示不可覆盖。</p>
+<h2 id="2、静态变量、静态方法和静态块"><a href="#2、静态变量、静态方法和静态块" class="headerlink" title="2、静态变量、静态方法和静态块"></a>2、静态变量、静态方法和静态块</h2><p>通常情况下，类成员必须通过它的类的对象访问，但是可以创建这样一个成员，它能够被它自己使用，而不必引用特定的实例。在成员的声明前面加上关键字static就能创建这样的成员。如果一个成员被声明为static，它就能够在它的类的任何对象创建之前被访问，而不必引用任何对象（跟类是否有static修饰无关）。</p>
+<p>你可以将方法和变量都声明为static。static 成员的最常见的 例子是main( ) 。声明为static的方法有以下几条限制（main也是？？）：</p>
+<p>A，它们仅能调用其他的static 方法<br>B，它们只能访问static数据<br>C，它们不能以任何方式引用this 或super(this涉及到对象，super 与继承有关）</p>
+<h4 id="示例：Static-块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static-初始化块。"><a href="#示例：Static-块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static-初始化块。" class="headerlink" title="示例：Static 块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static 初始化块。"></a>示例：Static 块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static 初始化块。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNew</span> </span>&#123;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a = <span class="number">3</span>;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">meth</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"x = "</span>+x);  </div><div class="line">        System.out.println(<span class="string">"a = "</span>+a);  </div><div class="line">        System.out.println(<span class="string">"b = "</span>+b);  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">static</span> &#123;  </div><div class="line">        System.out.println(<span class="string">"static block initialized"</span>);  </div><div class="line">        b = a*<span class="number">4</span>;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        <span class="comment">// TODO Auto-generated method stub  </span></div><div class="line">        meth(<span class="number">42</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果是：<br>static block initialized<br>x = 42<br>a = 3<br>b = 12</p>
+<p>上述class TestNew的执行顺序是：首先static 块执行(打印一条消息)，a被设置为3，最后b被初始化为a*4 成12。然后调用main()，main () 调用meth() ，把值42传递给x。3个println ( ) 语句引用两个static变量a和b，以及局部变量x 。</p>
+<h2 id="3、外部使用静态变量或者静态方法"><a href="#3、外部使用静态变量或者静态方法" class="headerlink" title="3、外部使用静态变量或者静态方法"></a>3、外部使用静态变量或者静态方法</h2><p>在定义它们的类的外面，static 方法和变量能独立于任何对象而被使用，你只要在类的名字后面加点号运算符即可。可以看到，这种格式与通过对象引用变量调用非static方法或者变量的格式类似。示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticDemo</span></span>&#123;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a = <span class="number">42</span>;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b = <span class="number">99</span>;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">callme</span><span class="params">()</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"a = "</span>+a);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNew</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        <span class="comment">// TODO Auto-generated method stub  </span></div><div class="line">        StaticDemo.callme();  </div><div class="line">        System.out.println(<span class="string">"b = "</span>+StaticDemo.b);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果：<br>a = 42<br>b = 99</p>
+<h2 id="4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。"><a href="#4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。" class="headerlink" title="4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。"></a>4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。</h2><p>A，首先，用内部类是因为内部类与所在外部类有一定的关系，往往只有该外部类调用此内部类。所以没有必要专门用一个Java文件存放这个类。</p>
+<p>B，静态方法、静态成员变量。它唯一的作用就是随着类的加载（而不是随着对象的产生）而产生，以致可以用类名+静态成员名直接获得。这样静态内部类就可以理解了，它可以直接被用 外部类名+内部类名 获得。举例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Build</span> </span>&#123;</div><div class="line">       ..............</div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">VERSION</span> </span>&#123;</div><div class="line">            ................</div><div class="line">            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String RELEASE = getString(<span class="string">"ro.build.version.release"</span>);</div><div class="line">            ................</div><div class="line">      &#125;</div><div class="line">      ................</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在外部可以直接通过Build.VERSION.RELEASE来访问。</p>
+<p>参考原文：<a href="http://www.cnblogs.com/-0_0-/articles/1962368.html" target="_blank" rel="external">http://www.cnblogs.com/-0_0-/articles/1962368.html</a><br>参考原文：<a href="http://blog.sina.com.cn/s/blog_5cd7f5b40100r0rt.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_5cd7f5b40100r0rt.html</a><br>参考原文：<a href="http://zhidao.baidu.com/question/149873207.html" target="_blank" rel="external">http://zhidao.baidu.com/question/149873207.html</a><br>参考原文：<a href="http://ddvcxj.blog.51cto.com/1064441/26534" target="_blank" rel="external">http://ddvcxj.blog.51cto.com/1064441/26534</a></p>
 
       
     </div>
@@ -503,7 +538,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://shuwuai.cc/2017/12/05/Cheap, quality, abuse of human rights and public power/" title="廉价，素质，人权与公权力滥用">http://shuwuai.cc/2017/12/05/Cheap, quality, abuse of human rights and public power/</a>
+    <a href="http://shuwuai.cc/2017/11/09/Static-in-Java/" title="JAVA的静态变量、静态方法、静态类">http://shuwuai.cc/2017/11/09/Static-in-Java/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -518,9 +553,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/中国/" rel="tag"><i class="fa fa-tag"></i> 中国</a>
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
-            <a href="/tags/游记/" rel="tag"><i class="fa fa-tag"></i> 游记</a>
+            <a href="/tags/Coding/" rel="tag"><i class="fa fa-tag"></i> Coding</a>
           
         </div>
       
@@ -533,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/14/Lazy instantiation of Java/" rel="next" title="JAVA惰性初始化">
-                <i class="fa fa-chevron-left"></i> JAVA惰性初始化
+              <a href="/2017/10/21/EuroTour-Mid2017/" rel="next" title="观西">
+                <i class="fa fa-chevron-left"></i> 观西
               </a>
             
           </div>
@@ -543,8 +578,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/06/MySQL Crash Course Part I/" rel="prev" title="MySQL Crash Course Part I">
-                MySQL Crash Course Part I <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/14/Lazy-Instantiation-of-Java/" rel="prev" title="JAVA惰性初始化">
+                JAVA惰性初始化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -745,7 +780,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 96899, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 96899, xid: "2017/12/05/Cheap, quality, abuse of human rights and public power/"});
+		_hcwp.push({widget:"Stream", widget_id: 96899, xid: "2017/11/09/Static-in-Java/"});
 		
 
 		(function() {
