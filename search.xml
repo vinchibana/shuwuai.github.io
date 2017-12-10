@@ -1,485 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[MySQL Crash Course Part II]]></title>
-      <url>/2017/12/07/MySQL-Crash-Course-Part-II/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/mysql-banner.jpg" alt="mysql-banne"></p>
-<h1 id="MySQL-必知必会-Part-II"><a href="#MySQL-必知必会-Part-II" class="headerlink" title="MySQL 必知必会 Part II"></a>MySQL 必知必会 Part II</h1><h3 id="1-数据插入-INSERT"><a href="#1-数据插入-INSERT" class="headerlink" title="1. 数据插入 INSERT"></a>1. 数据插入 <code>INSERT</code></h3><p>用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。</p>
-<h4 id="·-插入完整的行"><a href="#·-插入完整的行" class="headerlink" title="· 插入完整的行"></a>· 插入完整的行</h4><p>要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。<br><code>INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL)</code></p>
-<a id="more"></a>
-<p>由于上述语法高度依赖于表中列的定义次序，因此并不保证下一次表结构变动后各个列保持完全相同的次序，并不安全。更安全但繁琐的方法如下，即给定对应的列名<br><code>INSERT INTO customers(cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES(&#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL);</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_23-32-43.png" alt="2017-12-06_23-32-43"></p>
-<blockquote>
-<p>给定列名时，如果表的定义允许，可以在 <code>INSERT</code> 语句中省略某些列，如果该列定义允许 NULL 值或该列有默认值；如果不满足以上条件，插入不成功。</p>
-</blockquote>
-<p>提高整体性能</p>
-<blockquote>
-<p>数据库经常被多个客户端访问，对处理什么请求以及用什么次序处理进行管理是 MySQL 的任务，<code>INSERT</code> 操作可能很耗时，而且可能降低等待处理的 <code>SELECT</code> 语句的性能，因此可以在 <code>INSERT</code> 和 <code>INTO</code> 之间插入关键字<code>LOW_PRIORITY</code></p>
-</blockquote>
-<h4 id="·-插入多行"><a href="#·-插入多行" class="headerlink" title="· 插入多行"></a>· 插入多行</h4><p>使用多条 <code>INSERT</code> 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 <code>INSERT</code> 语句处理多个插入比使用多条语句快。<br><code>INSERT INTO customers( ) VALUES ( ), ( ), ( );</code></p>
-<h4 id="·-插入检索出来的数据"><a href="#·-插入检索出来的数据" class="headerlink" title="· 插入检索出来的数据"></a>· 插入检索出来的数据</h4><p>由一条 <code>SELECT</code> 语句和一条 <code>INSERT</code> 语句组成<br><code>INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-27-36.png" alt="2017-12-07_00-27-36"></p>
-<p><code>INSERT SELECT</code> 中 <code>SELECT</code> 语句也可以包含 <code>WHERE</code> 子句以过滤插入的数据</p>
-<h3 id="2-更新和删除数据"><a href="#2-更新和删除数据" class="headerlink" title="2. 更新和删除数据"></a>2. 更新和删除数据</h3><p>####· 更新和修改表中的数据，可使用 <code>UPDATE</code> 语句<br>可更新表中特定行或所有行。<code>UPDATE</code> 语句由 <em>要更新的表</em>、<em>列名和它们的新值</em>、<em>确定要更新行的过滤条件</em> 三部分组成。</p>
-<p>Ex. 客户 10005 有了新的邮件地址需要更新：<br><code>UPDATE customers SET cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005;</code></p>
-<blockquote>
-<p><code>WHERE</code> 语句作为结束，告诉 MySQL 更新哪一行</p>
-</blockquote>
-<p>####· 更新多个列的语法稍有不同<br><code>UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005;</code></p>
-<blockquote>
-<p>如果用 <code>UPDATE</code> 语句更新多行中一行出现错误，整个 UPDATE 操作会被取消，可以用 <code>IGNORE</code> 关键字来在发生错误时继续更新</p>
-</blockquote>
-<h4 id="·-删除数据"><a href="#·-删除数据" class="headerlink" title="· 删除数据"></a>· 删除数据</h4><p>从表中删除一行或多行<br><code>DELETE FROM customers WHERE cust_id = 10006;</code></p>
-<blockquote>
-<p><code>DELETE</code> 不需要列名或通配符，因为其删除整行而不是整列，删除指定的整列需要使用 <code>UPDATE</code> 语句将该列设为 NULL <code>UPDATE customers SET cust_state = NULL;</code></p>
-</blockquote>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-00-05.png" alt="2017-12-07_01-00-05"><br>如果想从表中删除所有行，不要使用 <code>DELETE</code> 语句而要使用 <code>TRUNCATE TABLE</code> 语句，它完成相同的工作而且更快，实际上是删除原来的表并重建一个同名新表</p>
-<h3 id="3-创建和操纵表"><a href="#3-创建和操纵表" class="headerlink" title="3. 创建和操纵表"></a>3. 创建和操纵表</h3><p>####· 用 <code>CREATE TABLE</code> 语句创建新表</p>
-<p>必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等</p>
-<blockquote>
-<p>新表无法覆盖原来存在的同名表，必须手动删除它才能创建新表</p>
-</blockquote>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-37-31.png" alt="2017-12-07_00-37-31"><br>正如所述，主键值必须唯一。即表中的每个行必须具有唯一的主键值。如果主键使用单个列，则它的值必须唯一。如果使用多个列，则这些列的组合值必须唯一。</p>
-<p>####· 使用 <code>AUTO_INCREMENT</code><br>每个表只允许一个 <code>AUTO_INCREMENT</code> 列，而且它必须被索引（比如使它成为主键）。<br><code>SELECT last_insert_id( )</code> 函数返回最后一个<code>AUTO INCREMENT</code> 值，可以用于后续的 MySQL语句。</p>
-<p>####· 更新表<br>更新表定义可使用 <code>ALTER TABLE</code> 语句，但理想状态下，表中存储数据之后就不应该再被更新。</p>
-<p>给表添加一个列：<br><code>ALTER TABLE vendors ADD vend_phone CHAR(20);</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-23-23.png" alt="2017-12-07_01-23-23"></p>
-<p>删除刚刚添加的列：<br><code>ALTER TABLE vendors DROP COLOMN vend_phone;</code></p>
-<p>####· 删除表 <code>DROP TABLE customers;</code></p>
-<p>####· 重命名表 <code>RENAME TABLE customers2 TO customers;</code></p>
-<h3 id="4-视图"><a href="#4-视图" class="headerlink" title="4. 视图"></a>4. 视图</h3><p>视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。</p>
-<p>####· 视图的规则和限制</p>
-<p>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。<br>对于可以创建的视图数目没有限制。<br>为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。<br>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。<br><code>ORDER BY</code> 可以用在视图中，但如果从该视图检索数据 <code>SELECT</code> 中也含有 <code>ORDER BY</code>，那么该视图中的 <code>ORDER BY</code> 将被覆盖。<br>视图不能索引，也不能有关联的触发器或默认值。<br>视图可以和表一起使用。例如，编写一条联结表和视图的 <code>SELECT</code> 语句。</p>
-<p>####· 利用视图简化复杂联结</p>
-<p><code>CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num;</code></p>
-<p>从视图中检索订购了 TNT2 的客户：<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-34-31.png" alt="2017-12-07_01-34-31"></p>
-<p>####· 用视图过滤不想要的数据<br><code>CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL;</code></p>
-<h3 id="End-Of-Part-II"><a href="#End-Of-Part-II" class="headerlink" title="End Of Part II"></a>End Of Part II</h3>]]></content>
-      
-        <categories>
-            
-            <category> Coding </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> J2EE </tag>
-            
-            <tag> 数据库 </tag>
-            
-            <tag> MySQL </tag>
-            
-            <tag> JDBC </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Think Different]]></title>
-      <url>/2017/12/06/Think-Different/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/1200px-Apple_logo_Think_Different_vectorized.svg.png" alt="1200px-Apple_logo_Think_Different_vectorized.svg"></p>
-<p>Here’s to the crazy ones. The misfits. The rebels. The trouble-makers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules, and they have no respect for the status-quo. You can quote them, disagree with them, glorify, or vilify them. But the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do.     —Apple</p>
-<a id="more"></a>
-<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://oxgw3nd2b.bkt.clouddn.com/Apple%20Steve%20Jobs%20The%20Crazy%20Ones%20-%20NEVER%20BEFORE%20AIRED%201997%20-%20%28Original%20Post%29.mp4","pic":"http://oxgw3nd2b.bkt.clouddn.com/thinkdifferent.jpg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-]]></content>
-      
-        <categories>
-            
-            <category> 科技 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Apple </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[MySQL Crash Course Part I]]></title>
-      <url>/2017/12/06/MySQL-Crash-Course-Part-I/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_20-23-52.png" alt="2017-12-05_20-23-52"></p>
-<h2 id="MySQL-必知必会-Part-I"><a href="#MySQL-必知必会-Part-I" class="headerlink" title="MySQL 必知必会 Part I"></a>MySQL 必知必会 Part I</h2><h3 id="1-主键-primary-key"><a href="#1-主键-primary-key" class="headerlink" title="1. 主键 primary key:"></a>1. 主键 primary key:</h3><p><strong>唯一能够区分表中每个行（<code>订单ID</code> <code>雇员ID</code> <code>security ID</code>）</strong></p>
-<p>· 任意两行都不具有相同的主键值；每个行都必须具有一个主键值（不允许 NULL ）；使用多个列作为主键时，所有列值的组合必须是唯一的（单个列的值可以不唯一）；不更新主键列中的值；不重用主键列的值；不在主键列中使用可能会更改该的值。</p>
-<h3 id="2-数据库结构-row-coloumn"><a href="#2-数据库结构-row-coloumn" class="headerlink" title="2. 数据库结构 row coloumn"></a>2. 数据库结构 row coloumn</h3><p>Columns 包含字段名、数据类型、是否允许 NULL、键信息、默认值以及其他信息（<code>auto_increment</code>–id类似字段的自动增量）。</p>
-<a id="more"></a>
-<h3 id="3-检索语句-SELECT"><a href="#3-检索语句-SELECT" class="headerlink" title="3. 检索语句 SELECT"></a>3. 检索语句 SELECT</h3><h4 id="·-选择多列，列名之间加逗号"><a href="#·-选择多列，列名之间加逗号" class="headerlink" title="· 选择多列，列名之间加逗号"></a>· 选择多列，列名之间加逗号</h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_20-45-51.png" alt="2017-12-05_20-45-51"></p>
-<h4 id="·-检索有不同值的列"><a href="#·-检索有不同值的列" class="headerlink" title="· 检索有不同值的列"></a>· 检索有不同值的列</h4><p>使用 DISTINCT 关键字，此关键字指示 MySQL 只返回不同的值。DISTINCT 关键字应用于所有列。</p>
-<h4 id="·-限制结果"><a href="#·-限制结果" class="headerlink" title="· 限制结果"></a>· 限制结果</h4><p>可使用 LIMIT 子句，<code>SELECT prod_name FROM products LIMIT 5;</code> 要得出下一个 5 行，可以指定开始行和行数，<code>SELECT prod_name FROM products LIMIT 5,5;</code> ==检索出来的第一行是 0 而不是 1== </p>
-<h4 id="·-MySQL-5-开始支持另一种语法-OFFSET，即-LIMIT-3-4-LIMIT-4-OFFSET-3"><a href="#·-MySQL-5-开始支持另一种语法-OFFSET，即-LIMIT-3-4-LIMIT-4-OFFSET-3" class="headerlink" title="· MySQL 5 开始支持另一种语法 OFFSET，即 LIMIT 3,4 = LIMIT 4 OFFSET 3"></a>· MySQL 5 开始支持另一种语法 OFFSET，即 <code>LIMIT 3,4</code> = <code>LIMIT 4 OFFSET 3</code></h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_20-56-46.png" alt="2017-12-05_20-56-46"></p>
-<h4 id="·-完全限定表名与列名"><a href="#·-完全限定表名与列名" class="headerlink" title="· 完全限定表名与列名"></a>· 完全限定表名与列名</h4><p><code>SELECT products.prod_name FROM crAShcourse.products;</code></p>
-<h3 id="4-排序语句-ORDER-BY"><a href="#4-排序语句-ORDER-BY" class="headerlink" title="4. 排序语句 ORDER BY"></a>4. 排序语句 ORDER BY</h3><h4 id="·-单列排序"><a href="#·-单列排序" class="headerlink" title="· 单列排序"></a>· 单列排序</h4><p>排序列可以是 SELECT 的也可以是非 SELECT 的<br><code>SELECT prod_name FROM products ORDER BY prod_name;</code><br><code>SELECT prod_name, prod_id FROM products ORDER BY prod_price;</code></p>
-<h4 id="·-多列排序"><a href="#·-多列排序" class="headerlink" title="· 多列排序"></a>· 多列排序</h4><p><code>SELECT prod_name, prod_id, prod_price FROM products ORDER BY prod_name, prod_id;</code></p>
-<h4 id="·-升降-DESC-ASC"><a href="#·-升降-DESC-ASC" class="headerlink" title="· 升降 DESC/ASC"></a>· 升降 DESC/ASC</h4><p>只对关键字前的一列有效，如果要对多列进行升降排序，需要为每列指定 <code>DESC/ASC</code> 关键字（Dicionary 类数据库排序中，A = a，其他需要请求 DBA 帮助）</p>
-<h4 id="·-ORDER-BY-需位于-FROM-后-LIMIT-需位于-ORDER-BY-后"><a href="#·-ORDER-BY-需位于-FROM-后-LIMIT-需位于-ORDER-BY-后" class="headerlink" title="· ORDER BY 需位于 FROM 后, LIMIT 需位于 ORDER BY 后"></a>· ORDER BY 需位于 FROM 后, LIMIT 需位于 ORDER BY 后</h4><h3 id="5-过滤数据语句-WHERE"><a href="#5-过滤数据语句-WHERE" class="headerlink" title="5. 过滤数据语句 WHERE"></a>5. 过滤数据语句 WHERE</h3><p><code>SELECT prod_name, prod_id FROM products WHERE prod_price = 2.5;</code></p>
-<h4 id="·-同时使用-ORDER-BY-和-WHERE-时，ORDER-BY-需要位于-WHERE-后"><a href="#·-同时使用-ORDER-BY-和-WHERE-时，ORDER-BY-需要位于-WHERE-后" class="headerlink" title="· 同时使用 ORDER BY 和 WHERE 时，ORDER BY 需要位于 WHERE 后"></a>· 同时使用 ORDER BY 和 WHERE 时，ORDER BY 需要位于 WHERE 后</h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_21-37-14.png" alt="2017-12-05_21-37-14"></p>
-<h4 id="·-空值检查"><a href="#·-空值检查" class="headerlink" title="· 空值检查"></a>· 空值检查</h4><p>NULL 与包含 0、空字符串或仅仅包含空格不同<br><code>SELECT prod_name FROM products WHERE prod_price is NULL;</code></p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_21-50-42.png" alt="2017-12-05_21-50-42"></p>
-<h4 id="·-数据过滤操作符"><a href="#·-数据过滤操作符" class="headerlink" title="· 数据过滤操作符"></a>· 数据过滤操作符</h4><p><code>=</code> <code>!=</code> <code>&lt;&gt;</code> <code>&lt;=</code> <code>&gt;=</code> <code>&gt;</code> <code>&lt;</code> <code>BETWEEN AND</code></p>
-<p>####· AND OR 逻辑操作符<br>AND 优先级更高，搭配 OR 使用需要圆括号<br><code>SELECT prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 1003) and prod_price &gt;=10;</code></p>
-<h4 id="·-操作符-OR-与-IN-相同"><a href="#·-操作符-OR-与-IN-相同" class="headerlink" title="· 操作符 OR 与 IN 相同"></a>· 操作符 OR 与 IN 相同</h4><p><code>vend_id = 1002 OR vend_id = 1003</code>  等同于  <code>vend_id IN (1002,1003)</code></p>
-<p>IN 操作符语法更清楚直观，计算次序更容易管理，执行更快，可以包含其他 SELECT 子句</p>
-<h4 id="·-NOT-操作符，有且仅有一个功能，否定它之后跟的任何条件。MySQL-中的-NOT-语句支持对-IN、BETWEEN、EXISTS-语句取反"><a href="#·-NOT-操作符，有且仅有一个功能，否定它之后跟的任何条件。MySQL-中的-NOT-语句支持对-IN、BETWEEN、EXISTS-语句取反" class="headerlink" title="· NOT 操作符，有且仅有一个功能，否定它之后跟的任何条件。MySQL 中的 NOT 语句支持对 IN、BETWEEN、EXISTS 语句取反"></a>· NOT 操作符，有且仅有一个功能，否定它之后跟的任何条件。MySQL 中的 NOT 语句支持对 IN、BETWEEN、EXISTS 语句取反</h4><h3 id="6-通配符过滤-LIKE"><a href="#6-通配符过滤-LIKE" class="headerlink" title="6. 通配符过滤 LIKE"></a>6. 通配符过滤 LIKE</h3><h4 id="·-通配符"><a href="#·-通配符" class="headerlink" title="· %通配符"></a>· %通配符</h4><p>任何字符出现的任意次数，% 代表搜索中给定位置的 0 个、1 个或多个字符，但不能匹配 NULL</p>
-<p><code>SELECT prod_name FROM products WHERE prod_name LIKE &#39;jet%&#39;;</code> 检索以 jet 开头、后跟任意字符的词<br><code>SELECT prod_name FROM products WHERE prod_name LIKE &#39;%jet%&#39;;</code> 检索以任意字符开头和结尾，中间包含 jet 的词</p>
-<h4 id="·-下划线通配符"><a href="#·-下划线通配符" class="headerlink" title="· (_)下划线通配符"></a>· (_)下划线通配符</h4><p>用途与%一样，但匹配单个字符而非多个字符，其中搜索 1 要求匹配两个通配符，因此 .5 ton anvil 不显示；与 % 能够匹配 0 个字符不同，_只能匹配一个字符，不能多也不能少<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_22-29-07.png" alt="2017-12-05_22-29-07"></p>
-<h3 id="7-正则表达式-REGEXP"><a href="#7-正则表达式-REGEXP" class="headerlink" title="7. 正则表达式 REGEXP"></a>7. 正则表达式 REGEXP</h3><h4 id="·-需要大小写时用-BINARY"><a href="#·-需要大小写时用-BINARY" class="headerlink" title="· 需要大小写时用 BINARY"></a>· 需要大小写时用 BINARY</h4><p><code>SELECT prod_name FROM products WHERE prod_name REGEXP BINARY &#39;TON&#39;;</code></p>
-<h4 id="·-进行-OR-匹配用-“-”，多个-“-”-可并入多个正则表达式"><a href="#·-进行-OR-匹配用-“-”，多个-“-”-可并入多个正则表达式" class="headerlink" title="· 进行 OR 匹配用 “ | ”，多个 “ | ” 可并入多个正则表达式"></a>· 进行 OR 匹配用 “ | ”，多个 “ | ” 可并入多个正则表达式</h4><p><code>SELECT prod_name FROM products WHERE prod_name REGEXP &#39;anvil|et&#39;;</code></p>
-<h4 id="·-匹配几个字符之一"><a href="#·-匹配几个字符之一" class="headerlink" title="· 匹配几个字符之一"></a>· 匹配几个字符之一</h4><p><code>&#39;[123] ton&#39;</code> 为 <code>&#39;[1|2|3] ton&#39;</code> 的缩写，不等于 <code>&#39;1|2|3 ton&#39;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_22-49-39.png" alt="2017-12-05_22-49-39"><br>匹配范围时，<code>[0123456789]</code> 等同于 <code>[0-9]</code>，同样的，<code>[a-z]</code> 可以匹配所有字母<br>匹配特殊字符时，使用 <code>\\</code> 进行前导，如默认情况下 <code>&#39;.&#39;</code> 匹配所有结果，而 <code>&#39;\\.&#39;</code> 只匹配含有 <code>“.”</code> 的记录</p>
-<h4 id="·-匹配多个实例"><a href="#·-匹配多个实例" class="headerlink" title="· 匹配多个实例"></a>· 匹配多个实例</h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_23-08-58.png" alt="2017-12-05_23-08-58"><br>需要解说一下，<code>\\(</code>匹配 <code>(</code>，<code>[0-9]</code> 匹配任意数字（这个例子中为 1 和 5), <code>sticks？</code> 匹配 stick 和 sticks (s 后的 <code>？</code> 使 s 可选，因为 <code>？</code> 匹配它前面的任何字符的 0 次或 1 次出现，<code>\\)</code> 匹配<code>)</code>。没有 <code>？</code>，匹配 stick 和 sticks 会非常困难。</p>
-<p>分析如前所述，<code>[:digit:]</code> 匹配任意数字，因而它为数字的一个集合。<code>{4}</code> 确切地要求它前面的字符（任意数字）出现 4 次，所以 <code>[[:digit:]] {4}</code> 匹配连在一起的任意 4 位数字。<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_23-23-10.png" alt="2017-12-05_23-23-10"></p>
-<h4 id="·-定位符：匹配-特定位置-的文本"><a href="#·-定位符：匹配-特定位置-的文本" class="headerlink" title="· 定位符：匹配 特定位置 的文本"></a>· 定位符：匹配 <em>特定位置</em> 的文本</h4><p><code>^</code> 文本的开始、<code>$</code> 文本的结尾、<code>[[:&lt;:]]</code> 词的开始、<code>[[:&gt;:]]</code> 词的结尾<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-05_23-46-39.png" alt="2017-12-05_23-46-39"></p>
-<h3 id="8-创建计算字段"><a href="#8-创建计算字段" class="headerlink" title="8. 创建计算字段"></a>8. 创建计算字段</h3><p>如果想在一个字段中既显示公司名，又显示公司的地址，但这两个信息一般包含在不同的表列中。城市、州和邮政编码存储在不同的列中（应该这样），但邮件标签打印程序却需要把它们作为一个恰当格式的字段检索出来。列数据是大小写混合的，但报表程序需要把所有数据按大写表示出来。</p>
-<p>Vendors 表包含供应商名和位置信息。假如要生成一个供应商报表，需要在供应商的名字中按照 <code>name (location）</code> 这样的格式列出供应商的位置。此报表需要单个值，而表中数据存储在两个列 <code>vend_name</code>  和 <code>vend_country</code> 中。此外，需要用括号将 <code>vend_country</code> 括起来，这些东西都没有明确存储在数据库表中。</p>
-<p><code>Concat( )</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_12-23-45.png" alt="2017-12-06_12-23-45"><br><code>RTrim( )</code>  <code>LRrim( )</code> 去掉左右两边的空格<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_13-08-30.png" alt="2017-12-06_13-08-30"><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_12-40-06.png" alt="2017-12-06_12-40-06"><br>使用别名：<code>SELECT Concat(RTrim(vend_name), &#39; (&#39;, RTrim(vend_COUNTry), &#39;)&#39;) AS vend_title FROM vendors;</code>  并不新建一个列</p>
-<p>执行计算：<code>SELECT prod_id, quantity, item_price, quantity*item_price AS expanded_price FROM orderitems WHERE order_num = 20005;</code> 可以用圆括号来限制运算符执行顺序</p>
-<h3 id="9-使用数据处理函数"><a href="#9-使用数据处理函数" class="headerlink" title="9. 使用数据处理函数"></a>9. 使用数据处理函数</h3><p>函数没有 SQL 语句的可移植性强，使用时应做好代码注释</p>
-<h4 id="·-文本处理函数-MySQL-5-7-StrINg-Functions"><a href="#·-文本处理函数-MySQL-5-7-StrINg-Functions" class="headerlink" title="· 文本处理函数  MySQL 5.7 StrINg Functions"></a>· 文本处理函数  <a href="https://dev.mysql.com/doc/refman/5.7/en/strINg-functions.html" target="_blank" rel="external">MySQL 5.7 StrINg Functions</a></h4><p><code>Upper( )</code> 将文本转换为大写、<code>Soundex( )</code> 返回文本串为描述其语音表示的字母数字模式</p>
-<h4 id="·-时间日期处理函数-MySQL-5-7-Data-and-Time-Functions"><a href="#·-时间日期处理函数-MySQL-5-7-Data-and-Time-Functions" class="headerlink" title="· 时间日期处理函数 MySQL 5.7 Data and Time Functions"></a>· 时间日期处理函数 <a href="https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html" target="_blank" rel="external">MySQL 5.7 Data and Time Functions</a></h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_13-19-08.png" alt="2017-12-06_13-19-08"><br>处理 period of time 的几种方法:<br><code>SELECT cust_id, order_num FROM orders WHERE Date(order_date) BETWEEN &#39;2005-09-01&#39; AND &#39;2005-09-30&#39;;</code><br><code>SELECT cust_id, order_num FROM orders WHERE Year(order_date) = 2005 AND Month(order_date) = 9;</code></p>
-<h4 id="·-汇总函数-AVG-SUM-COUNT-MIN-MAX"><a href="#·-汇总函数-AVG-SUM-COUNT-MIN-MAX" class="headerlink" title="· 汇总函数  AVG( ) SUM( ) COUNT( ) MIN( ) MAX( )"></a>· 汇总函数  <code>AVG( )</code> <code>SUM( )</code> <code>COUNT( )</code> <code>MIN( )</code> <code>MAX( )</code></h4><p><code>COUNT( )</code> 忽略 NULL<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_13-35-43.png" alt="2017-12-06_13-35-43"><br><code>MAX( )</code>  可以用于文本，如果数据按相应的列排序，<code>MAX( )</code> 返回最后一行<br><code>MIN( )</code>  可以用于文本，如果数据按相应的列排序，<code>MIN( )</code> 返回最前面的行，并忽略 NULL 值</p>
-<p><code>SUM( )</code> 可以用来合计计算值，忽略 NULL 值  <code>SELECT SUM(item_price*quantity) AS total_price FROM orderitems WHERE order_num = 20005;</code></p>
-<p><code>AVG( )</code> 可以使用 DISTNCT 函数，只返回不同价格 produc 的价格平均值（2.5，10 只计算一个） <code>SELECT avg(distINct prod_price) AS avg FROM products WHERE vend_id = 1003;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_13-47-33.png" alt="2017-12-06_13-47-33"><br>如果指定列名，则 <code>DISTINCT</code> 只能用于 <code>COUNT（ ）</code>。<code>DISTINCT</code>不能用于 <code>COUNT（*）</code>，因此不允许使用 <code>COUNT  (DISTINCT）</code>，否则会产生错误。类似地，<code>DISTINCT</code> 必须使用列名，不能用于计算或表达式。</p>
-<p>组合聚集函数：SELECT 可根据需要包含多个聚集函数<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_13-55-57.png" alt="2017-12-06_13-55-57"></p>
-<h4 id="·-分组数据"><a href="#·-分组数据" class="headerlink" title="· 分组数据"></a>· 分组数据</h4><p><code>SELECT vend_id, COUNT(*) AS num_prods FROM products GROUP BY vend_id;</code></p>
-<p>· <code>GROUP BY</code> 子句可以包含任意数目的列。这使得能对分组进行嵌套，为数据分组提供更细致的控制。<br>· 如果在 <code>GROUP BY</code> 子句中嵌套了分组，数据将在最后规定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）。<br>· <code>GROUP BY</code> 子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在 SELECT 中使用表达式，则必须在 <code>GROUP BY</code> 子句中指定相同的表达式。不能使用别名。<br>· 除聚集计算语句外，<code>SELECT</code> 语句中的每个列都必须在 <code>GROUP BY</code> 子句中给出。<br>· 如果分组列中具有 NULL 值，则 NULL 将作为一个分组返回。如果列中有多行 NULL 值，它们将分为一组。<br>· <code>GROUP BY</code> 子句必须出现在 <code>WHERE</code> 子句之后，<code>ORDER BY</code> 子句之前。</p>
-<p><code>WHERE</code> 过滤行，<code>HAVING</code> 过滤分组<br><code>SELECT cust_id ,COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(*) &gt;= 2;</code> 中，<code>WHERE</code> 不起作用<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_14-06-19.png" alt="2017-12-06_14-06-19"><br>· 分组排序 <code>GROUP BY</code> / <code>ORDER BY</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_14-43-10.png" alt="2017-12-06_14-43-10"></p>
-<h4 id="SELECT-子句顺序"><a href="#SELECT-子句顺序" class="headerlink" title="SELECT 子句顺序"></a>SELECT 子句顺序</h4><table>
-<thead>
-<tr>
-<th></th>
-<th>说明</th>
-<th>是否必须使用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SELECT</td>
-<td>要返回的列或表达式</td>
-<td>是</td>
-</tr>
-<tr>
-<td>FROM</td>
-<td>从中检索数据的表</td>
-<td>仅在从表选择数据时使用</td>
-</tr>
-<tr>
-<td>WHERE</td>
-<td>行级过滤</td>
-<td>否</td>
-</tr>
-<tr>
-<td>GROUP BY</td>
-<td>分组说明</td>
-<td>仅在按组计算聚集时使用</td>
-</tr>
-<tr>
-<td>HAVING</td>
-<td>组级过滤</td>
-<td>否</td>
-</tr>
-<tr>
-<td>ORDER BY</td>
-<td>输出排序顺序</td>
-<td>否</td>
-</tr>
-<tr>
-<td>LIMIT</td>
-<td>要检索的行数</td>
-<td>否</td>
-</tr>
-</tbody>
-</table>
-<h3 id="10-使用子查询"><a href="#10-使用子查询" class="headerlink" title="10. 使用子查询"></a>10. 使用子查询</h3><p><code>SELECT cust_id FROM orders WHERE order_num IN (SELECT order_num FROM orderitems WHERE prod_id = &#39;TNT2&#39;);</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_14-55-33.png" alt="2017-12-06_14-55-33"><br><code>SELECT cust_name, cust_contact FROM customers WHERE cust_id IN (SELECT cust_id FROM orders WHERE order_num IN (SELECT order_num FROM orderitems WHERE prod_id = &#39;TNT2&#39;));</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_14-57-44.png" alt="2017-12-06_14-57-44"></p>
-<h4 id="·-作为计算字段使用子查询，需要限定列名"><a href="#·-作为计算字段使用子查询，需要限定列名" class="headerlink" title="· 作为计算字段使用子查询，需要限定列名"></a>· 作为计算字段使用子查询，需要限定列名</h4><p><code>SELECT cust_name, cust_state, (SELECT COUNT(*) FROM orders WHERE orders.cust_id = customers.cust_id) AS orders FROM customers ORDER BY cust_name;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_15-13-50.png" alt="2017-12-06_15-13-50"></p>
-<h3 id="11-联结（Join）表"><a href="#11-联结（Join）表" class="headerlink" title="11. 联结（Join）表"></a>11. 联结（Join）表</h3><h4 id="·-检索的两个列分别位于两个表中，需要完全限定列名"><a href="#·-检索的两个列分别位于两个表中，需要完全限定列名" class="headerlink" title="· 检索的两个列分别位于两个表中，需要完全限定列名"></a>· 检索的两个列分别位于两个表中，需要完全限定列名</h4><p><code>SELECT vend_name, prod_name, prod_price FROM vendors, products WHERE vendors.vend_id = products.vend_id ORDER BY vend_name, prod_name;</code></p>
-<h4 id="·-笛卡儿积（cartesian-product）"><a href="#·-笛卡儿积（cartesian-product）" class="headerlink" title="· 笛卡儿积（cartesian product）"></a>· 笛卡儿积（cartesian product）</h4><p>由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数。</p>
-<h4 id="·-联结多个表"><a href="#·-联结多个表" class="headerlink" title="· 联结多个表"></a>· 联结多个表</h4><p><code>SELECT prod_name, vend_name, prod_price, quantity FROM orderitems, products, vendors WHERE products.vend_id = vendors.vend_id and orderitems.prod_id = products.prod_id and order_num = 20005;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_15-31-52.png" alt="2017-12-06_15-31-52"></p>
-<h4 id="·-自联结"><a href="#·-自联结" class="headerlink" title="· 自联结"></a>· 自联结</h4><p>查询 products 表中供应商与商品名为 ‘DRNTR’ 相同的商品<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_15-42-29.png" alt="2017-12-06_15-42-29"></p>
-<h4 id="·-外部联结-LEFT-RIGHT-OUTER-JOIN-ON"><a href="#·-外部联结-LEFT-RIGHT-OUTER-JOIN-ON" class="headerlink" title="· 外部联结 LEFT/RIGHT OUTER JOIN ON"></a>· 外部联结 <code>LEFT/RIGHT OUTER JOIN ON</code></h4><p>必须使用 LEFT/RIGHT 关键字指定包含所有行的表；<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_17-04-14.png" alt="2017-12-06_17-04-14"></p>
-<h4 id="·-使用-UNION-求两个-SELECT-语句的并集"><a href="#·-使用-UNION-求两个-SELECT-语句的并集" class="headerlink" title="· 使用 UNION 求两个 SELECT 语句的并集"></a>· 使用 <code>UNION</code> 求两个 <code>SELECT</code> 语句的并集</h4><p>不管查询结构是否包含重复，可简化复杂语句的 <code>WHERE</code> 操作<br><code>SELECT vend_id, prod_id, prod_price FROM products WHERE prod_price &lt;= 5 UNION SELECT vend_id, prod_id, prod_price FROM products WHERE vend_id IN (1001, 1002) ORDER BY vend_id, prod_price;</code></p>
-<h3 id="12-使用全文本搜索"><a href="#12-使用全文本搜索" class="headerlink" title="12. 使用全文本搜索"></a>12. 使用全文本搜索</h3><p>在创建表时启用全文本搜索支持 <code>FULLTEXT( )</code></p>
-<h4 id="使用查询扩展"><a href="#使用查询扩展" class="headerlink" title=". 使用查询扩展"></a>. 使用查询扩展</h4><p>这次返回了 7 行。第一行包含词 anvils，因此等级最高。第二分析行与 anvils 无关，但因为它包含第一行中的两个词（customer 和 recommend），所以也被检索出来。第 3 行也包含这两个相同的词，但它们在文本中的位置更靠后且分开得更远，因此也包含这一行，但等级为第三。第三行确实也没有涉及 anvils（按它们的产品名）。正如所见，查询扩展极大地增加了返回的行数，但这样做也增加了你实际上并不想要的行的数目。<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_17-29-13.png" alt="2017-12-06_17-29-13"></p>
-<h4 id="·-布尔文本搜索"><a href="#·-布尔文本搜索" class="headerlink" title="· 布尔文本搜索"></a>· 布尔文本搜索</h4><p>包含匹配词 heavy，但 -rope<em> 表示不包含以 rope 开头的词： `SELECT note_text FROM productnotes WHERE MATCH(note_text) AGAINST(‘heavy -rope</em>‘ IN BOOLEAN MODE);`</p>
-<p>匹配包含词 rabbit 和 bait 的行： <code>SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39;+rabbit +bait&#39; IN BOOLEAN MODE);</code></p>
-<p>没有指定操作符，这个搜索匹配包含 rabbit 和 bait 中的至少一个词的行： <code>SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39;rabbit bait&#39; IN BOOLEAN MODE);</code></p>
-<p>这个搜索匹配短语 rabbit bait 而不是匹配两个词 rabbit 和 bait： <code>SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; &quot;rabbit bait&quot; &#39; IN BOOLEAN MODE);</code></p>
-<p>匹配 rabbit 和 carrot，增加前者的等级，降低后者的等级： <code>SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; &gt;rabbit &lt;carrot &#39; IN BOOLEAN MODE);</code></p>
-<p>匹配词 safe 和 combINation，降低后者的等级： <code>SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; +safe +(&lt; combINation) &#39; IN BOOLEAN MODE);</code></p>
-<h3 id="End-of-Part-I"><a href="#End-of-Part-I" class="headerlink" title="End of Part I"></a>End of Part I</h3>]]></content>
-      
-        <categories>
-            
-            <category> Coding </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> J2EE </tag>
-            
-            <tag> 数据库 </tag>
-            
-            <tag> MySQL </tag>
-            
-            <tag> JDBC </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[廉价，素质，人权与公权力滥用]]></title>
-      <url>/2017/12/05/Cheap-quality-abuse-of-human-rights-and-public-power/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/p2436227324.jpg" alt="p2436227324"></p>
-<p>中国人无疑是世界上最能隐忍的群体之一。</p>
-<p>离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。</p>
-<p>高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工者，城镇企业家打扮腰揣几把车钥匙的生意人，与我也不清楚有没有钱的学生。虽然那扛不动蛇皮口袋的身躯着实可怜，而吐槽上了半车实实在在的民工可能偷着抽烟不容易管的列车员倒也滑稽。各地铁路局也风格迥异，以南昌职业素养最高，青岛次之，西安最糟，普天之下不得不感叹基建狂魔蛮荒的内心。</p>
-<a id="more"></a>
-<p>道听听到最多的莫过于我在xx呆过许多年这样的开头，虽然我经常背对他们，仍不难听出话语洋溢至脸上的走出来的自豪神情，即使如今仍不断被迫迁徙。而人群属性似乎注定了他们也有更多的弯路故事，比如我哥输掉了三轮车，我也输掉了，所以不得已出来打了几年工之类；大概都无暇顾及自己还是不是被总书记牵挂着。</p>
-<p>更有，一家四口、期间尚有不足岁的婴儿，车厢空隙席地而睡，于是你都分不清建议其他出土文物般的人是不是该洗洗衣服再来坐车以示对别人的尊重这件事是不是政治正确。</p>
-<p>也时常有游离于法外之地的“准传销者”，对落单的老人现场施法，以推销他们董事长十几岁自创中药企至今已治愈多少癌症的良方。</p>
-<p>更多的，则是日常打工的家长里短，北方媳妇儿不爱洗衣服。除了男的钟爱乐福鞋，女的钟爱皮裤，不少人排斥读书教育与新事物，而对假药、封建迷信、TG都有着天真的执念。</p>
-<p>公权力无孔不入的肆意侵入，高铁尚且每过一站布施几个红头文件，绿皮火车就干脆不考虑时宜的用抵挡不住的音量灌输所谓旅行文化，好似几年前去西安的夜车上被无数人建议过最好开小点暖气却始终一脸茫然的列车员。和谐社会，没有做“人”的机会。这是跟贫穷一样可悲的事情。</p>
-<p>世界那么大。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 游记 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 游记 </tag>
-            
-            <tag> 中国 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java 惰性初始化]]></title>
-      <url>/2017/11/14/Lazy-Instantiation-of-Java/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Array-in-Java-methods-initialization-with-example.jpg" alt="Array-in-Java-methods-initialization-with-example"></p>
-<h3 id="为什么要使用惰性初始化："><a href="#为什么要使用惰性初始化：" class="headerlink" title="为什么要使用惰性初始化："></a>为什么要使用惰性初始化：</h3><p>因为类中为基本类型时，能够自动被初始化为0，但是对象引用会被初始化为null。编译器不是简单的为每一个引用创建对象创建默认对象，这一点是很有用的，因为真要那样的话，会在很多情况下增加很多开销。那么如果想初始化这些引用，就可以在代码中的很多位置进行，其中“惰性初始化”是其中的一种方式。</p>
-<a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Simple</span> </span>&#123;</div><div class="line">    String s;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Simple</span><span class="params">(String si)</span> </span>&#123;</div><div class="line">        s = si;</div><div class="line">    &#125;<span class="comment">//构造函数,内部为构造变量赋值</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> s;</div><div class="line">    &#125; <span class="comment">//复写</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setString</span><span class="params">(String sstr)</span> </span>&#123;</div><div class="line">        s = sstr;</div><div class="line">    &#125;<span class="comment">//普通函数</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Second</span> </span>&#123;</div><div class="line">    Simple simple;</div><div class="line">    String s;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Second</span> <span class="params">(String si)</span> </span>&#123;</div><div class="line">        s = si;</div><div class="line">    &#125;<span class="comment">//构造函数,内部为变量赋值</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">()</span> </span>&#123;<span class="comment">//单纯检测simple是否已经创建.</span></div><div class="line">        <span class="keyword">if</span>(simple == <span class="keyword">null</span>)</div><div class="line">            System.out.println(<span class="string">"simple is not initlized"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            System.out.println(<span class="string">"simple is initlized"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Simple <span class="title">lazy</span><span class="params">()</span> </span>&#123;<span class="comment">//检测simple是否已经创建,如果没有创建就创建一个</span></div><div class="line">        <span class="keyword">if</span>(simple == <span class="keyword">null</span>) &#123;</div><div class="line">            System.out.println(<span class="string">"simple is creating"</span>);</div><div class="line">            simple = <span class="keyword">new</span> Simple(s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> simple;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Simple <span class="title">getSimple</span><span class="params">()</span> </span>&#123;<span class="comment">//获取simple的值</span></div><div class="line">        <span class="keyword">return</span> lazy();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSimple</span><span class="params">(String sNew)</span> </span>&#123;<span class="comment">//设定simple的值</span></div><div class="line">        lazy().setString(sNew);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span>  String <span class="title">toString</span><span class="params">()</span> </span>&#123; <span class="comment">//复写tosring()方法,输出</span></div><div class="line">        <span class="keyword">return</span> lazy().toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testLazy</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Second second = <span class="keyword">new</span> Second(<span class="string">"intit String"</span>);</div><div class="line">        second.check();</div><div class="line">        <span class="comment">//输出:simple is not initlized</span></div><div class="line">        <span class="comment">//同时为second类中的变量s赋值为:s="intit String"</span></div><div class="line">        System.out.println(second.getSimple());</div><div class="line">        <span class="comment">//创建simple,为simple赋值:simple="intit String"</span></div><div class="line">        <span class="comment">//输出:simple is creating</span></div><div class="line">        <span class="comment">//    intit String</span></div><div class="line">        second.check();</div><div class="line">        <span class="comment">//输出:simple is initlized</span></div><div class="line">        second.setSimple(<span class="string">"New String"</span>);</div><div class="line">        <span class="comment">//输出:intit String</span></div><div class="line">        System.out.println(second);</div><div class="line">        <span class="comment">//输出:New String</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Coding </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> J2SE </tag>
-            
-            <tag> Coding </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java 的静态变量、静态方法、静态类]]></title>
-      <url>/2017/11/09/Static-in-Java/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/stack%20and%20heap%E5%89%AF%E6%9C%AC.jpg" alt="maxresdefault"></p>
-<h4 id="静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。"><a href="#静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。" class="headerlink" title="静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。"></a>静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。</h4><blockquote>
-<h3 id="Java静态对象和非静态对象有什么区别？"><a href="#Java静态对象和非静态对象有什么区别？" class="headerlink" title="Java静态对象和非静态对象有什么区别？"></a>Java静态对象和非静态对象有什么区别？</h3><p>比对如下：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>非静态对象</th>
-<th>静态对象</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>拥有属性</td>
-<td>是类共同拥有的</td>
-<td>是类各对象独立拥有的</td>
-</tr>
-<tr>
-<td>内存分配</td>
-<td>内存空间上是固定的</td>
-<td>空间在各个附属类里面分配</td>
-</tr>
-<tr>
-<td>分配顺序</td>
-<td>先分配静态对象的空间</td>
-<td>继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态</td>
-</tr>
-</tbody>
-</table>
-<a id="more"></a>
-<h2 id="1、Java静态对象到底有什么好处"><a href="#1、Java静态对象到底有什么好处" class="headerlink" title="1、Java静态对象到底有什么好处"></a>1、Java静态对象到底有什么好处</h2><p>A，静态对象的数据在全局是唯一的，一改都改。如果你想要处理的东西是整个程序中唯一的，弄成静态是个好方法。 非静态的东西你修改以后只是修改了他自己的数据，但是不会影响其他同类对象的数据。 </p>
-<p>B，引用方便。直接用 类名.静态方法名  或者  类名.静态变量名就可引用并且直接可以修改其属性值，不用get和set方法。</p>
-<p>C，保持数据的唯一性。此数据全局都是唯一的，修改他的任何一处地方，在程序所有使用到的地方都将会体现到这些数据的修改。有效减少多余的浪费。</p>
-<p>D，static final用来修饰成员变量和成员方法，可简单理解为“全局常量”。对于变量，表示一旦给值就不可修改；对于方法，表示不可覆盖。</p>
-<h2 id="2、静态变量、静态方法和静态块"><a href="#2、静态变量、静态方法和静态块" class="headerlink" title="2、静态变量、静态方法和静态块"></a>2、静态变量、静态方法和静态块</h2><p>通常情况下，类成员必须通过它的类的对象访问，但是可以创建这样一个成员，它能够被它自己使用，而不必引用特定的实例。在成员的声明前面加上关键字static就能创建这样的成员。如果一个成员被声明为static，它就能够在它的类的任何对象创建之前被访问，而不必引用任何对象（跟类是否有static修饰无关）。</p>
-<p>你可以将方法和变量都声明为static。static 成员的最常见的 例子是main( ) 。声明为static的方法有以下几条限制（main也是？？）：</p>
-<p>A，它们仅能调用其他的static 方法<br>B，它们只能访问static数据<br>C，它们不能以任何方式引用this 或super(this涉及到对象，super 与继承有关）</p>
-<h4 id="示例：Static-块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static-初始化块。"><a href="#示例：Static-块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static-初始化块。" class="headerlink" title="示例：Static 块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static 初始化块。"></a>示例：Static 块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static 初始化块。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNew</span> </span>&#123;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a = <span class="number">3</span>;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">meth</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"x = "</span>+x);  </div><div class="line">        System.out.println(<span class="string">"a = "</span>+a);  </div><div class="line">        System.out.println(<span class="string">"b = "</span>+b);  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">static</span> &#123;  </div><div class="line">        System.out.println(<span class="string">"static block initialized"</span>);  </div><div class="line">        b = a*<span class="number">4</span>;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        <span class="comment">// TODO Auto-generated method stub  </span></div><div class="line">        meth(<span class="number">42</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>执行结果是：<br>static block initialized<br>x = 42<br>a = 3<br>b = 12</p>
-<p>上述class TestNew的执行顺序是：首先static 块执行(打印一条消息)，a被设置为3，最后b被初始化为a*4 成12。然后调用main()，main () 调用meth() ，把值42传递给x。3个println ( ) 语句引用两个static变量a和b，以及局部变量x 。</p>
-<h2 id="3、外部使用静态变量或者静态方法"><a href="#3、外部使用静态变量或者静态方法" class="headerlink" title="3、外部使用静态变量或者静态方法"></a>3、外部使用静态变量或者静态方法</h2><p>在定义它们的类的外面，static 方法和变量能独立于任何对象而被使用，你只要在类的名字后面加点号运算符即可。可以看到，这种格式与通过对象引用变量调用非static方法或者变量的格式类似。示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticDemo</span></span>&#123;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a = <span class="number">42</span>;  </div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> b = <span class="number">99</span>;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">callme</span><span class="params">()</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"a = "</span>+a);  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNew</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        <span class="comment">// TODO Auto-generated method stub  </span></div><div class="line">        StaticDemo.callme();  </div><div class="line">        System.out.println(<span class="string">"b = "</span>+StaticDemo.b);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>执行结果：<br>a = 42<br>b = 99</p>
-<h2 id="4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。"><a href="#4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。" class="headerlink" title="4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。"></a>4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。</h2><p>A，首先，用内部类是因为内部类与所在外部类有一定的关系，往往只有该外部类调用此内部类。所以没有必要专门用一个Java文件存放这个类。</p>
-<p>B，静态方法、静态成员变量。它唯一的作用就是随着类的加载（而不是随着对象的产生）而产生，以致可以用类名+静态成员名直接获得。这样静态内部类就可以理解了，它可以直接被用 外部类名+内部类名 获得。举例如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Build</span> </span>&#123;</div><div class="line">       ..............</div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">VERSION</span> </span>&#123;</div><div class="line">            ................</div><div class="line">            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String RELEASE = getString(<span class="string">"ro.build.version.release"</span>);</div><div class="line">            ................</div><div class="line">      &#125;</div><div class="line">      ................</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在外部可以直接通过Build.VERSION.RELEASE来访问。</p>
-<blockquote>
-<p>参考原文：<a href="http://www.cnblogs.com/-0_0-/articles/1962368.html" target="_blank" rel="external">http://www.cnblogs.com/-0_0-/articles/1962368.html</a><br>参考原文：<a href="http://blog.sina.com.cn/s/blog_5cd7f5b40100r0rt.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_5cd7f5b40100r0rt.html</a><br>参考原文：<a href="http://zhidao.baidu.com/question/149873207.html" target="_blank" rel="external">http://zhidao.baidu.com/question/149873207.html</a><br>参考原文：<a href="http://ddvcxj.blog.51cto.com/1064441/26534" target="_blank" rel="external">http://ddvcxj.blog.51cto.com/1064441/26534</a></p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> Coding </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> J2SE </tag>
-            
-            <tag> Coding </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[观西]]></title>
-      <url>/2017/10/21/Europe-Mid2017/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Het.jpg" alt="Het Concertgebouw"></p>
-<p>Het Concertgebouw，当从来不知道中午十一点也能开音乐会的我坐在这家世界三大音响效果最佳的音乐厅之一的RCO主场，拍完照装完逼，准备听一段并不感冒的莫扎特K219，在几乎忽视了这松润甜的混响的确比干涩的国家大剧院高到不知哪里去的事实的同时，一阵雷动的掌声倏忽间将我埋进了齐齐站起的满场垂垂老矣的白发先生当中，生出一阵焦虑。</p>
-<a id="more"></a>
-<h2 id="阿姆斯特丹"><a href="#阿姆斯特丹" class="headerlink" title="阿姆斯特丹"></a>阿姆斯特丹</h2><p>德奥系目的地偏多的行程里阿姆斯特丹算是奇葩一朵，位列周游列国印象最佳，虽然整座城市大多只是以运河为经脉的老城环状地带以及清一色的联排建筑，大概也是因为荷兰人看上去比傲的要上天的德奥人nice以及从巴黎过去的一路看太多荷兰境内草场看到吐的缘故。搭积木般的小城里人行道有轨电车Tram甚至汽车混搭的交通，且不说两百多米一站的路程时常让你决断不了干脆走路还是花1个多欧去乘Tram，一些小街区出了车门两步路就能迈进一家店的体验可真是住在北京这种出了地铁车厢还要经过少说两段长梯到路面，再走十几分钟才能进家门的人不曾体会到的。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3410.jpg" alt="IMG_3410"></p>
-<p>城小，于是文化生活的消息相对容易掌握，爱音乐之人前面的Het Concertgebouw自然不可错过，碰到RCO的演出最好。与之隔一片草地的梵高博物馆，也值得每个爱好者或者像我这般完全连不上平面艺术WiFi的人逛逛，展品不必多说，而从展馆设计到服务到展陈设计到路线几乎是垂直专业类博物馆里的翘楚，导览以及Audioguide也是至今逛到的博物馆里最好用的；可以说除了那本名画集的中文版封面标题排版之外，鲜有槽点。要是上溯到海上霸权的那些事儿，就得荷兰国家博物馆来撑场面了，只是贪多易乱，虽然乱不过卢浮宫，但也要抱着相当的耐心；除了著名打卡地《夜巡》，在日不落帝国都不曾见过如此密集的展现盛极一时的航海时代。</p>
-<p>至于De Wallen那边tedious的橱窗长腿妹，放到东方男性oriented的市场里估计要垫底，就连后来的东欧也接受不能，而且被大麻味熏到头疼也并不是多好的体验，曼谷才是你们的福地。大概也因为太过出名，除了运河两边的橱窗，这里的小巷子里挤满了男女老少各色观光客，虽然真的不会有人冲亚洲长相的男性喊“发票”，但也能不时听到国内游客们“她们能有生意么？”的讨论。</p>
-<h2 id="维也纳"><a href="#维也纳" class="headerlink" title="维也纳"></a>维也纳</h2><p>作为德语区第二大城市的维也纳显然要比柏林幸运的多，昔日帝国与王朝的心血并未因战争受损太多，建筑一派雍容华贵，只是在巴黎已经对建筑审美疲劳的我美泉宫美景宫霍夫堡不是没去就是匆匆路过，唯一进过号称混杂各种建筑风格的St. Stephen’s教堂，修葺的影子挡不住本身的巍峨，这几天里唯有布拉格的圣维特可与之一拼。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3694.jpg" alt="IMG_3694"></p>
-<p>而发现了艺术史博物馆这块福地绝对是在维也纳最大的惊喜，以“宝石雕刻”为主的装饰艺术不得不让你对这种原本印象中奇技淫巧的花哨玩意儿肃然起敬，简单到金银宝石雕刻的华贵器具，复杂到拟生物座钟及天文钟，远到埃及纸莎草死者之书，近到文具水晶这些科学启蒙时代的产物，远比伦敦的VA及大英的装饰艺术馆好看。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3608.jpg" alt="IMG_3608"></p>
-<p>更不用说二层这种“课本名画”堆的到处都是，卡拉瓦乔、勃鲁盖尔、鲁本斯每个人都能挂一屋子的地方了。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3618.jpg" alt="IMG_3618"></p>
-<p>艺术史博物馆与对面的自然史博物馆，是特雷西亚广场两侧几乎相同的两栋建筑，一个收藏了最多的宝石雕刻，一个收藏了最多的陨石和矿藏（大概也是最多的鹦鹉螺壳…）。一层鳞次栉比分布着各色矿藏，其中的衍生晶体除了让你感叹自然之无限诡谲之外别无他念，二楼的脊椎动物标本就比较无趣和常见；整体来说矿藏化石和陈年标本值得一逛，假如你对泡了两百多年的带状绦虫之类的奇葩展品感兴趣的话。首先不要被3000万件藏品的简介吓到，因为大概那几百只蚂蚁跟几百只瓢虫就能贡献好几个百分点……</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3616.jpg" alt="IMG_3616"></p>
-<p>名声在外的金色大厅不常遇得上维也纳爱乐的演出，更多的是到处都有兜售的不知名乐团的旅游团曲目音乐会，还好我也不听施特劳斯……倒是临时起意跑去国家歌剧院碰碰站票的运气，第一次Opera的经历就这么3个欧贱卖了出去，歌剧院虽老却也为了照顾各国观众几乎每个座位都有不同语言的字幕提词器，然而还是在听完熟悉的第一幕配乐之后不可避免的逃了出去。德奥观众的严谨在于他绝对会群起而厉声制止那些意不在演出却有意无意制造噪音的人。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3691.jpg" alt="IMG_3691"></p>
-<h2 id="巴黎"><a href="#巴黎" class="headerlink" title="巴黎"></a>巴黎</h2><p>巴黎的沉淀是能直接把所有装逼的心态打回原形的地方，作为两个领域的纯小白，当你不知道该从历史开始看起还是城市建筑史开始看起的时候，就只是想哭。被奥斯曼新古典主义的中产阶级石砌建筑重重包围了两天的行程，也就依稀记得卢浮宫的乱，奥赛的莫奈，埃菲尔的小和圣母院全程懵逼的弥撒。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20171026_1.png" alt="Snip20171026_1"></p>
-<p>高潮出现在铁塔旁边的河畔博物馆Musée du Quai Branly，藏品多来自处在世界边缘的亚非拉和大洋洲；古希腊罗马雕塑再多，能见到的也大都是高度拟人化的风格，就算是怪力乱神也得尽量安个人的样子；土著先民可不管这一套，一路下来直感叹所谓“文明社会”想象力之匮乏。</p>
-<h2 id="萨尔茨堡"><a href="#萨尔茨堡" class="headerlink" title="萨尔茨堡"></a>萨尔茨堡</h2><p>多年以前受古典乐荼毒不深尚在新粉丝狂热时候留下了这样的豆瓣签名“老了能在萨尔茨堡的山下湖前有个小屋，每天走在街上就能听到巴赫”，能不能有个小屋两说，小城南边阿尔卑斯北麓以及去往维也纳的一路倒是林立各种精致的木屋建筑，但估计每天走在街上听到的只能是各种语言的旅游团喇叭声了。幸好不是在萨尔茨堡音乐节到此，或者在琉森音乐节去琉森，得见这种小城的本来面目只能以无聊概括，论景点恨不得全城一天可以逛两次，对于一个从城中心的酒店走着就能去中央车站的“城市”，生活一个月大概就能逛遍和吃遍所有的店了吧。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/ppetmp.jpg" alt="ppetmp"></p>
-<p>布拉格，没什么意思，Communism害死人。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3784.jpg" alt="IMG_3784"><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3783.jpg" alt="IMG_3783"></p>
-<p>FYI：“说走就走”其实对于欧洲是个不小的挑战，时常会让你面临房少车少而人多的状况，比如提前几个月能比提前几天便宜两三倍的火车票，幸好我这种辞职流浪时间重要不过钱包的时候也有便宜到不行的跨国巴士可以选择，无论是巴黎往阿姆斯特丹的Euroline、德国主营周边的Flixbus、捷克主营的Regiojet都是除了时间之外完全不输火车的体验；不过巴士跑高速，火车钻山，后者风景常会好过前者；然而并非高铁的大多数线路真的很难让你找到时间上的优势。至于房，除非太穷或者酒店一间不剩，还是不要住民宿这种东西了。</p>
-<p>妨碍一时冲动的还有比语言更难懂的各国市内交通，已经无力吐槽，对于布拉格这种最糟糕的城市还是早日买24小时票保命，免得满地找售票机甚至假如身上还没有合适的硬币克朗；反正除了逃票之外完全找不到日本那种往售票机里无脑扔一把硬币一秒钟收到找零的快感。</p>
-<h2 id="莱比锡"><a href="#莱比锡" class="headerlink" title="莱比锡"></a>莱比锡</h2><p>差点忘了巴赫爸爸。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/9DB6F43A-7392-4EB0-8827-8BF4C3254683-1.jpg" alt="9DB6F43A-7392-4EB0-8827-8BF4"></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 游记 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 欧洲 </tag>
-            
-            <tag> 博物馆 </tag>
-            
-            <tag> KHM </tag>
-            
-            <tag> 游记 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[观东]]></title>
-      <url>/2017/10/08/Japan-Early2017/</url>
-      <content type="html"><![CDATA[<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_3164%20%28Priime%20Fall%29.jpeg" alt="Kyoto"></p>
-<p>人大概在这两种时候会心生忐忑，见自己初喜欢的人，和见自己喜欢过的未知，后者如日本。</p>
-<p>该怎么形容“我与日本”这样的话题呢？始终到临走前，我还是没想好的哇。而且总是会想起跟过去有关的事。你的童年与她有关，你的梦想与她有关，你对世界的幻想与她有关，你对爱情的期望与她有关，你的成人礼都与她有关，这么多角色扭打在一起的时候，忐忑就更悠远绵长起来。</p>
-<a id="more"></a>
-<h2 id="大阪"><a href="#大阪" class="headerlink" title="大阪"></a>大阪</h2><p>价值观如我这般摇摆的人就不应该在去关西前先入为主的听了《日谈公园》，主播菌口中的大农村的印象就那么结实的印到了大阪的首日里；且不说爱彼迎的小屋再一次让人咬牙切齿的痛恨了一回摄影师这个职业（不过也倒是目前见过设施最全的民宿了喂），心斋桥这种小商品一条街也实在让人提不起兴趣，任你优衣库的整栋楼再多可以逛，药妆店吆喝中文的姑娘们再好看，也只是喜欢躲到河边排个一兰拉面尝试一下各种软硬面条和汤底的搭配。</p>
-<p>对于一个ぜんぜん弄不懂织田信长丰臣秀吉德川家康谁创业谁守业的人来说，天守城这种大阪为数不多的景点也是百无聊赖，好在旁边就是大阪历史博物馆，在经历了跟基本听不懂英语的接待比划半天我到底该不该存包然后干脆趁那个难缠的人不在溜了进去之后，不得不说总算是找到了抵日两天的精神寄托；硬货不多，要不也不会满是中国都唐了日本同期还是以为属于绳纹弥生时代的陶罐之类的东西；不过日本人的精致还是在还原江户生活的模型里体现的淋漓尽致，比南博负一层的民国时代大模型们难做多了……</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fkjcfi8pruj31kw11xdwk.jpg" alt="大阪历史博物馆"></p>
-<p>打定主意不怎么做攻略的我提前一个周才知道买了买电话卡跟地铁票，遗憾是错过了东京的三鹰吉卜力这个需要提前一月订票的情怀之地，但惊喜也是有的，梅田就是第一个。说来也巧，在那个有百八十个出口的站把我绕晕之前，捡了个百货商场出口的门就夺门而逃了，路遇现在才知道曲风叫做neo soul的band，看在keyboard姑娘美，哦不，是好听而且还是少见的不是solo的份上，现场不失所望的越来越燃，至少听起来比买回来的拘谨的录音室CD张狂的多，所以谁会说未来Live不是比Record更好更有发展的音乐形式呢？嗯已经在打FUJI ROCK的主意了。</p>
-<h2 id="京都"><a href="#京都" class="headerlink" title="京都"></a>京都</h2><p>真正爱上日本也是从京都开始的吧。当然还是不太推荐在游客高峰期去岚山这种地方，必然是满脑子WTF的怀疑这是个假日本……攻略都是骗人的……要不是有抹茶冰淇淋的拯救，大概对京都的印象也不会好。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/79B81741-228C-4245-A1FB-9FA499B02DA1.jpg" alt="79B81741-228C-4245-A1FB-9FA499B02DA1"></p>
-<p>踩了踩岚山的竹林，并且没看懂周总理写的是什么诗，小火车回到住地四条大宫的时间还早，折转就去了八坂神社圆山公园二年坂，然后就在四条出口和公园见识了日本人都是怎么卖艺的……大叔拿把破琴指弹玩儿的再认真点就赶上押尾了，而另一位大叔的乐器是两万多的手碟，真是不知道给多少钱合适啊。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fkjchn7p3jj31kw11xu0x.jpg" alt="京都历史博物馆"></p>
-<p>第二日的雨让原本金阁寺银阁寺各种寺伏见稻荷打卡一日游的计划被打乱，跑去京都博物馆的室内临时躲雨行程也因为傲娇的非闭馆日闭馆而只花门票的价格参观了一个庭院终结。在纠结总不至于为了一点小雨就牺牲一天住宿费的时候，还是强忍着坐电车去扫一个景点算一个，那就伏见稻荷吧。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fkjc49mz59j31kw11x4qp.jpg" alt="伏见稻荷山下"></p>
-<p>虽然没见过阳光嶙峋的千鸟居，但雨中同样流连。伏见稻荷的鸟居漫山遍野，如果你挤不过山脚下围住它们拍照的游客们，山上一点儿不输于此，无论体量还是规模；当然半腰下山的一段奉满了各路神像，要是再有点儿阴天，大概走着就会怕会不会像千寻的爸妈一样被抓去变成猪。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_1903.JPG" alt="IMG_1903"></p>
-<p>除了文保原因的电车不多，店家关门过早也是不小的困扰，想来八坂神社以上的二年坂三年坂入夜挑灯应该是蛮迷离隔世的一番景色，奈何天一擦黑就纷纷收摊，简直是让人羡慕嫉妒恨的日落而息的生活状态。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fkjcjahdapj31kw11x4qp.jpg" alt="京都御陵卫"></p>
-<p>总之这是个遗憾大过惊喜的地方，换句话说还对它有绵延不止的期待，比如没去成金阁寺和没吃成怀石料理，anyway，当在御陵卫外边追着那一线阳光拍影子的时候，大概就决定了以后会去常住的吧。</p>
-<h2 id="东京"><a href="#东京" class="headerlink" title="东京"></a>东京</h2><p>去过伦敦之后，我一直以为，东京大概也是类似的“大城市”，那句“如果你厌倦了伦敦，你就厌倦了生活”大概也能套用到后者身上。谁能不爱东京呢？</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_2003.JPG" alt="IMG_2003"></p>
-<p>不知是否被贵到吃土的新干线伤了神，反正东京的电车还是再次印证了在日本的几天依然没弄懂铁路系统的问题；在出东京站出了半小时、转大手町找了半小时之后，总算找到了去押上的线。好在如此的折腾又换到了一个惊喜，酒店旁边就藏着东京的两家Pokemon Center之一，不由分说抱一只皮卡丘回去是当然的，只是不得不吐槽，除了皮卡丘的等身之外，其他周边还是粗糙，而且一架子不认识的精灵都在冲你说：你老了。</p>
-<p>东京的游记至今已经理不出头绪，就像在东京的几天永远没有头绪一样，坐地铁走到哪儿，哪儿都可以玩上半天，计划的落空与补给来的惊喜错综交织，到最后你就早已不记得为玩而玩这件事了。本来的赏樱路线变成了银座那连比弗利和广东道都比不了的大牌林立，本来打个卡就走的早稻田却意外碰上了无法理解的春季毕业季，唯有秋叶原去的符合行程，而那堆成山的手办和小电影真是让人有心无力。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_2009.JPG" alt="IMG_2009"></p>
-<p>转头说说文化的事，住在押上的另一个好处是，上野就在附近，当然樱花尚不吐蕊的上野恩赐公园并不好玩，而整个上野像柏林的博物馆岛和伦敦特拉法加广场周围一样遍布博物馆，从森美术馆开始，到柯布西耶设计的国立西洋美术馆，到始终没机会进去的自然博物馆，到逛了一天半收藏了规模宏大的植轮跟太刀的最大的东京国立博物馆。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_1941.JPG" alt="IMG_1941"></p>
-<p>当然六本木偶遇的印度Harsha的Charming Journey展，也比东京塔的夜景有趣，毕竟世界上只有爱情和艺术这两件东西使我们的生活值得苟且。</p>
-<p>这样的苗头像极了伦敦四万步的经历，既然肯定有下次，最后一天的行程干脆完全留给了花钱不多的博物馆系列（日本每个博物馆都花钱这很蛋疼），看在上野的那一片离酒店近取行李也方便而且晚上还开的份上就先去了《博物志》里推荐的印刷博物馆。虽然没怎么去过国内的主题博物馆，没得比较，但还是惊叹于展陈的完整性和事无巨细，展品收集上是否丰富有代表性不好评论，毕竟不懂，然而就教学作用来说，完全是白痴看完也能懂的节奏。</p>
-<p>出门有每天一节接待六位的印刷体验课，看在人不多的份上尽管不怎么懂日语我还是抱着看展的余热排在门口，奈何半天才找出一位会英语的能交流的叫やまだ的小姑娘，全程被特殊对待并且拿据说是40年代的英产手动活字印刷机印了七张写我名字的信笺而告终。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_2017.JPG" alt="IMG_2017"><br><img src="http://oxgw3nd2b.bkt.clouddn.com/IMG_2022.JPG" alt="IMG_2022"></p>
-<p>其他，且不说服务与清洁程度，就是自动化程度之高，也是去过的其他发达国家都无法企及的，路边随处可见的自动贩卖机几乎永远有冷饮热咖啡（似乎厂牌还分的很明显，三得利的机器永远只有旗下的各式咖啡，朝日的机器啤酒居多，伊右卫门的机器自然是热茶居多，其他不知名的则提供各种品牌的小甜水），一兰（要是不等位的话）和松屋这样的快餐以及京都车站的拉面一条街几乎靠自动点餐机就能解决问题，永远提供中日韩英四国语言，酒店的自动洗衣烘干状态能显示到客房电视上，社区也总有自动洗衣门店，就连东京国立博物馆的门票都是自动投币买，车站的精算机也是个神奇的东西。</p>
-<p>能在这样一个不需要见人说人话见鬼说鬼话的地方，不愁吃不愁喝，有温暖的周末，做个平凡人没什么不好。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 游记 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 游记 </tag>
-            
-            <tag> 大阪 </tag>
-            
-            <tag> 东京 </tag>
-            
-            <tag> 京都 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[MySQL Crash Course Part II]]></title>
+    <url>%2F2017%2F12%2F07%2FMySQL-Crash-Course-Part-II%2F</url>
+    <content type="text"><![CDATA[MySQL 必知必会 Part II1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 · 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL) 由于上述语法高度依赖于表中列的定义次序，因此并不保证下一次表结构变动后各个列保持完全相同的次序，并不安全。更安全但繁琐的方法如下，即给定对应的列名INSERT INTO customers(cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES(&#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL); 给定列名时，如果表的定义允许，可以在 INSERT 语句中省略某些列，如果该列定义允许 NULL 值或该列有默认值；如果不满足以上条件，插入不成功。 提高整体性能 数据库经常被多个客户端访问，对处理什么请求以及用什么次序处理进行管理是 MySQL 的任务，INSERT 操作可能很耗时，而且可能降低等待处理的 SELECT 语句的性能，因此可以在 INSERT 和 INTO 之间插入关键字LOW_PRIORITY · 插入多行使用多条 INSERT 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 INSERT 语句处理多个插入比使用多条语句快。INSERT INTO customers( ) VALUES ( ), ( ), ( ); · 插入检索出来的数据由一条 SELECT 语句和一条 INSERT 语句组成INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew; INSERT SELECT 中 SELECT 语句也可以包含 WHERE 子句以过滤插入的数据 2. 更新和删除数据####· 更新和修改表中的数据，可使用 UPDATE 语句可更新表中特定行或所有行。UPDATE 语句由 要更新的表、列名和它们的新值、确定要更新行的过滤条件 三部分组成。 Ex. 客户 10005 有了新的邮件地址需要更新：UPDATE customers SET cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; WHERE 语句作为结束，告诉 MySQL 更新哪一行 ####· 更新多个列的语法稍有不同UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; 如果用 UPDATE 语句更新多行中一行出现错误，整个 UPDATE 操作会被取消，可以用 IGNORE 关键字来在发生错误时继续更新 · 删除数据从表中删除一行或多行DELETE FROM customers WHERE cust_id = 10006; DELETE 不需要列名或通配符，因为其删除整行而不是整列，删除指定的整列需要使用 UPDATE 语句将该列设为 NULL UPDATE customers SET cust_state = NULL; 如果想从表中删除所有行，不要使用 DELETE 语句而要使用 TRUNCATE TABLE 语句，它完成相同的工作而且更快，实际上是删除原来的表并重建一个同名新表 3. 创建和操纵表####· 用 CREATE TABLE 语句创建新表 必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等 新表无法覆盖原来存在的同名表，必须手动删除它才能创建新表 正如所述，主键值必须唯一。即表中的每个行必须具有唯一的主键值。如果主键使用单个列，则它的值必须唯一。如果使用多个列，则这些列的组合值必须唯一。 ####· 使用 AUTO_INCREMENT每个表只允许一个 AUTO_INCREMENT 列，而且它必须被索引（比如使它成为主键）。SELECT last_insert_id( ) 函数返回最后一个AUTO INCREMENT 值，可以用于后续的 MySQL语句。 ####· 更新表更新表定义可使用 ALTER TABLE 语句，但理想状态下，表中存储数据之后就不应该再被更新。 给表添加一个列：ALTER TABLE vendors ADD vend_phone CHAR(20); 删除刚刚添加的列：ALTER TABLE vendors DROP COLOMN vend_phone; ####· 删除表 DROP TABLE customers; ####· 重命名表 RENAME TABLE customers2 TO customers; 4. 视图视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。 ####· 视图的规则和限制 与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。对于可以创建的视图数目没有限制。为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。ORDER BY 可以用在视图中，但如果从该视图检索数据 SELECT 中也含有 ORDER BY，那么该视图中的 ORDER BY 将被覆盖。视图不能索引，也不能有关联的触发器或默认值。视图可以和表一起使用。例如，编写一条联结表和视图的 SELECT 语句。 ####· 利用视图简化复杂联结 CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num; 从视图中检索订购了 TNT2 的客户： ####· 用视图过滤不想要的数据CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL; End Of Part II]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>J2EE</tag>
+        <tag>数据库</tag>
+        <tag>MySQL</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Think Different]]></title>
+    <url>%2F2017%2F12%2F06%2FThink-Different%2F</url>
+    <content type="text"><![CDATA[Here’s to the crazy ones. The misfits. The rebels. The trouble-makers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules, and they have no respect for the status-quo. You can quote them, disagree with them, glorify, or vilify them. But the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do. —Apple (function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://oxgw3nd2b.bkt.clouddn.com/Apple%20Steve%20Jobs%20The%20Crazy%20Ones%20-%20NEVER%20BEFORE%20AIRED%201997%20-%20%28Original%20Post%29.mp4","pic":"http://oxgw3nd2b.bkt.clouddn.com/thinkdifferent.jpg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()]]></content>
+      <categories>
+        <category>科技</category>
+      </categories>
+      <tags>
+        <tag>Apple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL Crash Course Part I]]></title>
+    <url>%2F2017%2F12%2F06%2FMySQL-Crash-Course-Part-I%2F</url>
+    <content type="text"><![CDATA[MySQL 必知必会 Part I1. 主键 primary key:唯一能够区分表中每个行（订单ID 雇员ID security ID） · 任意两行都不具有相同的主键值；每个行都必须具有一个主键值（不允许 NULL ）；使用多个列作为主键时，所有列值的组合必须是唯一的（单个列的值可以不唯一）；不更新主键列中的值；不重用主键列的值；不在主键列中使用可能会更改该的值。 2. 数据库结构 row coloumnColumns 包含字段名、数据类型、是否允许 NULL、键信息、默认值以及其他信息（auto_increment–id类似字段的自动增量）。 3. 检索语句 SELECT· 选择多列，列名之间加逗号 · 检索有不同值的列使用 DISTINCT 关键字，此关键字指示 MySQL 只返回不同的值。DISTINCT 关键字应用于所有列。 · 限制结果可使用 LIMIT 子句，SELECT prod_name FROM products LIMIT 5; 要得出下一个 5 行，可以指定开始行和行数，SELECT prod_name FROM products LIMIT 5,5; ==检索出来的第一行是 0 而不是 1== · MySQL 5 开始支持另一种语法 OFFSET，即 LIMIT 3,4 = LIMIT 4 OFFSET 3 · 完全限定表名与列名SELECT products.prod_name FROM crAShcourse.products; 4. 排序语句 ORDER BY· 单列排序排序列可以是 SELECT 的也可以是非 SELECT 的SELECT prod_name FROM products ORDER BY prod_name;SELECT prod_name, prod_id FROM products ORDER BY prod_price; · 多列排序SELECT prod_name, prod_id, prod_price FROM products ORDER BY prod_name, prod_id; · 升降 DESC/ASC只对关键字前的一列有效，如果要对多列进行升降排序，需要为每列指定 DESC/ASC 关键字（Dicionary 类数据库排序中，A = a，其他需要请求 DBA 帮助） · ORDER BY 需位于 FROM 后, LIMIT 需位于 ORDER BY 后5. 过滤数据语句 WHERESELECT prod_name, prod_id FROM products WHERE prod_price = 2.5; · 同时使用 ORDER BY 和 WHERE 时，ORDER BY 需要位于 WHERE 后 · 空值检查NULL 与包含 0、空字符串或仅仅包含空格不同SELECT prod_name FROM products WHERE prod_price is NULL; · 数据过滤操作符= != &lt;&gt; &lt;= &gt;= &gt; &lt; BETWEEN AND ####· AND OR 逻辑操作符AND 优先级更高，搭配 OR 使用需要圆括号SELECT prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 1003) and prod_price &gt;=10; · 操作符 OR 与 IN 相同vend_id = 1002 OR vend_id = 1003 等同于 vend_id IN (1002,1003) IN 操作符语法更清楚直观，计算次序更容易管理，执行更快，可以包含其他 SELECT 子句 · NOT 操作符，有且仅有一个功能，否定它之后跟的任何条件。MySQL 中的 NOT 语句支持对 IN、BETWEEN、EXISTS 语句取反6. 通配符过滤 LIKE· %通配符任何字符出现的任意次数，% 代表搜索中给定位置的 0 个、1 个或多个字符，但不能匹配 NULL SELECT prod_name FROM products WHERE prod_name LIKE &#39;jet%&#39;; 检索以 jet 开头、后跟任意字符的词SELECT prod_name FROM products WHERE prod_name LIKE &#39;%jet%&#39;; 检索以任意字符开头和结尾，中间包含 jet 的词 · (_)下划线通配符用途与%一样，但匹配单个字符而非多个字符，其中搜索 1 要求匹配两个通配符，因此 .5 ton anvil 不显示；与 % 能够匹配 0 个字符不同，_只能匹配一个字符，不能多也不能少 7. 正则表达式 REGEXP· 需要大小写时用 BINARYSELECT prod_name FROM products WHERE prod_name REGEXP BINARY &#39;TON&#39;; · 进行 OR 匹配用 “ | ”，多个 “ | ” 可并入多个正则表达式SELECT prod_name FROM products WHERE prod_name REGEXP &#39;anvil|et&#39;; · 匹配几个字符之一&#39;[123] ton&#39; 为 &#39;[1|2|3] ton&#39; 的缩写，不等于 &#39;1|2|3 ton&#39;匹配范围时，[0123456789] 等同于 [0-9]，同样的，[a-z] 可以匹配所有字母匹配特殊字符时，使用 \\ 进行前导，如默认情况下 &#39;.&#39; 匹配所有结果，而 &#39;\\.&#39; 只匹配含有 “.” 的记录 · 匹配多个实例需要解说一下，\\(匹配 (，[0-9] 匹配任意数字（这个例子中为 1 和 5), sticks？ 匹配 stick 和 sticks (s 后的 ？ 使 s 可选，因为 ？ 匹配它前面的任何字符的 0 次或 1 次出现，\\) 匹配)。没有 ？，匹配 stick 和 sticks 会非常困难。 分析如前所述，[:digit:] 匹配任意数字，因而它为数字的一个集合。{4} 确切地要求它前面的字符（任意数字）出现 4 次，所以 [[:digit:]] {4} 匹配连在一起的任意 4 位数字。 · 定位符：匹配 特定位置 的文本^ 文本的开始、$ 文本的结尾、[[:&lt;:]] 词的开始、[[:&gt;:]] 词的结尾 8. 创建计算字段如果想在一个字段中既显示公司名，又显示公司的地址，但这两个信息一般包含在不同的表列中。城市、州和邮政编码存储在不同的列中（应该这样），但邮件标签打印程序却需要把它们作为一个恰当格式的字段检索出来。列数据是大小写混合的，但报表程序需要把所有数据按大写表示出来。 Vendors 表包含供应商名和位置信息。假如要生成一个供应商报表，需要在供应商的名字中按照 name (location） 这样的格式列出供应商的位置。此报表需要单个值，而表中数据存储在两个列 vend_name 和 vend_country 中。此外，需要用括号将 vend_country 括起来，这些东西都没有明确存储在数据库表中。 Concat( )RTrim( ) LRrim( ) 去掉左右两边的空格使用别名：SELECT Concat(RTrim(vend_name), &#39; (&#39;, RTrim(vend_COUNTry), &#39;)&#39;) AS vend_title FROM vendors; 并不新建一个列 执行计算：SELECT prod_id, quantity, item_price, quantity*item_price AS expanded_price FROM orderitems WHERE order_num = 20005; 可以用圆括号来限制运算符执行顺序 9. 使用数据处理函数函数没有 SQL 语句的可移植性强，使用时应做好代码注释 · 文本处理函数 MySQL 5.7 StrINg FunctionsUpper( ) 将文本转换为大写、Soundex( ) 返回文本串为描述其语音表示的字母数字模式 · 时间日期处理函数 MySQL 5.7 Data and Time Functions处理 period of time 的几种方法:SELECT cust_id, order_num FROM orders WHERE Date(order_date) BETWEEN &#39;2005-09-01&#39; AND &#39;2005-09-30&#39;;SELECT cust_id, order_num FROM orders WHERE Year(order_date) = 2005 AND Month(order_date) = 9; · 汇总函数 AVG( ) SUM( ) COUNT( ) MIN( ) MAX( )COUNT( ) 忽略 NULLMAX( ) 可以用于文本，如果数据按相应的列排序，MAX( ) 返回最后一行MIN( ) 可以用于文本，如果数据按相应的列排序，MIN( ) 返回最前面的行，并忽略 NULL 值 SUM( ) 可以用来合计计算值，忽略 NULL 值 SELECT SUM(item_price*quantity) AS total_price FROM orderitems WHERE order_num = 20005; AVG( ) 可以使用 DISTNCT 函数，只返回不同价格 produc 的价格平均值（2.5，10 只计算一个） SELECT avg(distINct prod_price) AS avg FROM products WHERE vend_id = 1003;如果指定列名，则 DISTINCT 只能用于 COUNT（ ）。DISTINCT不能用于 COUNT（*），因此不允许使用 COUNT (DISTINCT），否则会产生错误。类似地，DISTINCT 必须使用列名，不能用于计算或表达式。 组合聚集函数：SELECT 可根据需要包含多个聚集函数 · 分组数据SELECT vend_id, COUNT(*) AS num_prods FROM products GROUP BY vend_id; · GROUP BY 子句可以包含任意数目的列。这使得能对分组进行嵌套，为数据分组提供更细致的控制。· 如果在 GROUP BY 子句中嵌套了分组，数据将在最后规定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）。· GROUP BY 子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在 SELECT 中使用表达式，则必须在 GROUP BY 子句中指定相同的表达式。不能使用别名。· 除聚集计算语句外，SELECT 语句中的每个列都必须在 GROUP BY 子句中给出。· 如果分组列中具有 NULL 值，则 NULL 将作为一个分组返回。如果列中有多行 NULL 值，它们将分为一组。· GROUP BY 子句必须出现在 WHERE 子句之后，ORDER BY 子句之前。 WHERE 过滤行，HAVING 过滤分组SELECT cust_id ,COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(*) &gt;= 2; 中，WHERE 不起作用· 分组排序 GROUP BY / ORDER BY SELECT 子句顺序 说明 是否必须使用 SELECT 要返回的列或表达式 是 FROM 从中检索数据的表 仅在从表选择数据时使用 WHERE 行级过滤 否 GROUP BY 分组说明 仅在按组计算聚集时使用 HAVING 组级过滤 否 ORDER BY 输出排序顺序 否 LIMIT 要检索的行数 否 10. 使用子查询SELECT cust_id FROM orders WHERE order_num IN (SELECT order_num FROM orderitems WHERE prod_id = &#39;TNT2&#39;);SELECT cust_name, cust_contact FROM customers WHERE cust_id IN (SELECT cust_id FROM orders WHERE order_num IN (SELECT order_num FROM orderitems WHERE prod_id = &#39;TNT2&#39;)); · 作为计算字段使用子查询，需要限定列名SELECT cust_name, cust_state, (SELECT COUNT(*) FROM orders WHERE orders.cust_id = customers.cust_id) AS orders FROM customers ORDER BY cust_name; 11. 联结（Join）表· 检索的两个列分别位于两个表中，需要完全限定列名SELECT vend_name, prod_name, prod_price FROM vendors, products WHERE vendors.vend_id = products.vend_id ORDER BY vend_name, prod_name; · 笛卡儿积（cartesian product）由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数。 · 联结多个表SELECT prod_name, vend_name, prod_price, quantity FROM orderitems, products, vendors WHERE products.vend_id = vendors.vend_id and orderitems.prod_id = products.prod_id and order_num = 20005; · 自联结查询 products 表中供应商与商品名为 ‘DRNTR’ 相同的商品 · 外部联结 LEFT/RIGHT OUTER JOIN ON必须使用 LEFT/RIGHT 关键字指定包含所有行的表； · 使用 UNION 求两个 SELECT 语句的并集不管查询结构是否包含重复，可简化复杂语句的 WHERE 操作SELECT vend_id, prod_id, prod_price FROM products WHERE prod_price &lt;= 5 UNION SELECT vend_id, prod_id, prod_price FROM products WHERE vend_id IN (1001, 1002) ORDER BY vend_id, prod_price; 12. 使用全文本搜索在创建表时启用全文本搜索支持 FULLTEXT( ) . 使用查询扩展这次返回了 7 行。第一行包含词 anvils，因此等级最高。第二分析行与 anvils 无关，但因为它包含第一行中的两个词（customer 和 recommend），所以也被检索出来。第 3 行也包含这两个相同的词，但它们在文本中的位置更靠后且分开得更远，因此也包含这一行，但等级为第三。第三行确实也没有涉及 anvils（按它们的产品名）。正如所见，查询扩展极大地增加了返回的行数，但这样做也增加了你实际上并不想要的行的数目。 · 布尔文本搜索包含匹配词 heavy，但 -rope 表示不包含以 rope 开头的词： `SELECT note_text FROM productnotes WHERE MATCH(note_text) AGAINST(‘heavy -rope‘ IN BOOLEAN MODE);` 匹配包含词 rabbit 和 bait 的行： SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39;+rabbit +bait&#39; IN BOOLEAN MODE); 没有指定操作符，这个搜索匹配包含 rabbit 和 bait 中的至少一个词的行： SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39;rabbit bait&#39; IN BOOLEAN MODE); 这个搜索匹配短语 rabbit bait 而不是匹配两个词 rabbit 和 bait： SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; &quot;rabbit bait&quot; &#39; IN BOOLEAN MODE); 匹配 rabbit 和 carrot，增加前者的等级，降低后者的等级： SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; &gt;rabbit &lt;carrot &#39; IN BOOLEAN MODE); 匹配词 safe 和 combINation，降低后者的等级： SELECT note_text FROM product notes WHERE MATCH(note_text) AGAINST(&#39; +safe +(&lt; combINation) &#39; IN BOOLEAN MODE); End of Part I]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>J2EE</tag>
+        <tag>数据库</tag>
+        <tag>MySQL</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[廉价，素质，人权与公权力滥用]]></title>
+    <url>%2F2017%2F12%2F05%2FCheap-quality-abuse-of-human-rights-and-public-power%2F</url>
+    <content type="text"><![CDATA[中国人无疑是世界上最能隐忍的群体之一。 离开养尊处优的媒体圈子，你发现只能以穷游的方式去远方；辗转于地理学过却没走过的京九贵昆湘黔浙赣，吐槽联通出了城就傻逼的同时作为基本是孤品的一类旅客开始阅人无数。 高铁滚滚洪流之下，如今的绿皮火车自然以四海为家的农民工居多，但最明显的也只见于皖鲁之间；大多是一眼就能见生活所迫的碌碌迁徙者，间或有穿戴尚可的一级站之间的短途客，一身廉价西装工牌还没来得及摘的打工者，城镇企业家打扮腰揣几把车钥匙的生意人，与我也不清楚有没有钱的学生。虽然那扛不动蛇皮口袋的身躯着实可怜，而吐槽上了半车实实在在的民工可能偷着抽烟不容易管的列车员倒也滑稽。各地铁路局也风格迥异，以南昌职业素养最高，青岛次之，西安最糟，普天之下不得不感叹基建狂魔蛮荒的内心。 道听听到最多的莫过于我在xx呆过许多年这样的开头，虽然我经常背对他们，仍不难听出话语洋溢至脸上的走出来的自豪神情，即使如今仍不断被迫迁徙。而人群属性似乎注定了他们也有更多的弯路故事，比如我哥输掉了三轮车，我也输掉了，所以不得已出来打了几年工之类；大概都无暇顾及自己还是不是被总书记牵挂着。 更有，一家四口、期间尚有不足岁的婴儿，车厢空隙席地而睡，于是你都分不清建议其他出土文物般的人是不是该洗洗衣服再来坐车以示对别人的尊重这件事是不是政治正确。 也时常有游离于法外之地的“准传销者”，对落单的老人现场施法，以推销他们董事长十几岁自创中药企至今已治愈多少癌症的良方。 更多的，则是日常打工的家长里短，北方媳妇儿不爱洗衣服。除了男的钟爱乐福鞋，女的钟爱皮裤，不少人排斥读书教育与新事物，而对假药、封建迷信、TG都有着天真的执念。 公权力无孔不入的肆意侵入，高铁尚且每过一站布施几个红头文件，绿皮火车就干脆不考虑时宜的用抵挡不住的音量灌输所谓旅行文化，好似几年前去西安的夜车上被无数人建议过最好开小点暖气却始终一脸茫然的列车员。和谐社会，没有做“人”的机会。这是跟贫穷一样可悲的事情。 世界那么大。]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>游记</tag>
+        <tag>中国</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java 惰性初始化]]></title>
+    <url>%2F2017%2F11%2F14%2FLazy-Instantiation-of-Java%2F</url>
+    <content type="text"><![CDATA[为什么要使用惰性初始化：因为类中为基本类型时，能够自动被初始化为0，但是对象引用会被初始化为null。编译器不是简单的为每一个引用创建对象创建默认对象，这一点是很有用的，因为真要那样的话，会在很多情况下增加很多开销。那么如果想初始化这些引用，就可以在代码中的很多位置进行，其中“惰性初始化”是其中的一种方式。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667class Simple &#123; String s; public Simple(String si) &#123; s = si; &#125;//构造函数,内部为构造变量赋值 public String toString() &#123; return s; &#125; //复写 public void setString(String sstr) &#123; s = sstr; &#125;//普通函数&#125;class Second &#123; Simple simple; String s; public Second (String si) &#123; s = si; &#125;//构造函数,内部为变量赋值 public void check() &#123;//单纯检测simple是否已经创建. if(simple == null) System.out.println("simple is not initlized"); else System.out.println("simple is initlized"); &#125; private Simple lazy() &#123;//检测simple是否已经创建,如果没有创建就创建一个 if(simple == null) &#123; System.out.println("simple is creating"); simple = new Simple(s); &#125; return simple; &#125; public Simple getSimple() &#123;//获取simple的值 return lazy(); &#125; public void setSimple(String sNew) &#123;//设定simple的值 lazy().setString(sNew); &#125; public String toString() &#123; //复写tosring()方法,输出 return lazy().toString(); &#125;&#125;public class testLazy &#123; public static void main(String[] args) &#123; Second second = new Second("intit String"); second.check(); //输出:simple is not initlized //同时为second类中的变量s赋值为:s="intit String" System.out.println(second.getSimple()); //创建simple,为simple赋值:simple="intit String" //输出:simple is creating // intit String second.check(); //输出:simple is initlized second.setSimple("New String"); //输出:intit String System.out.println(second); //输出:New String &#125;&#125;]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>J2SE</tag>
+        <tag>Coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java 的静态变量、静态方法、静态类]]></title>
+    <url>%2F2017%2F11%2F09%2FStatic-in-Java%2F</url>
+    <content type="text"><![CDATA[静态变量和静态方法都属于静态对象，它与非静态对象的差别需要做个说明。 Java静态对象和非静态对象有什么区别？比对如下： 非静态对象 静态对象 拥有属性 是类共同拥有的 是类各对象独立拥有的 内存分配 内存空间上是固定的 空间在各个附属类里面分配 分配顺序 先分配静态对象的空间 继而再对费静态对象分配空间，也就是初始化顺序是先静态再非静态 1、Java静态对象到底有什么好处A，静态对象的数据在全局是唯一的，一改都改。如果你想要处理的东西是整个程序中唯一的，弄成静态是个好方法。 非静态的东西你修改以后只是修改了他自己的数据，但是不会影响其他同类对象的数据。 B，引用方便。直接用 类名.静态方法名 或者 类名.静态变量名就可引用并且直接可以修改其属性值，不用get和set方法。 C，保持数据的唯一性。此数据全局都是唯一的，修改他的任何一处地方，在程序所有使用到的地方都将会体现到这些数据的修改。有效减少多余的浪费。 D，static final用来修饰成员变量和成员方法，可简单理解为“全局常量”。对于变量，表示一旦给值就不可修改；对于方法，表示不可覆盖。 2、静态变量、静态方法和静态块通常情况下，类成员必须通过它的类的对象访问，但是可以创建这样一个成员，它能够被它自己使用，而不必引用特定的实例。在成员的声明前面加上关键字static就能创建这样的成员。如果一个成员被声明为static，它就能够在它的类的任何对象创建之前被访问，而不必引用任何对象（跟类是否有static修饰无关）。 你可以将方法和变量都声明为static。static 成员的最常见的 例子是main( ) 。声明为static的方法有以下几条限制（main也是？？）： A，它们仅能调用其他的static 方法B，它们只能访问static数据C，它们不能以任何方式引用this 或super(this涉及到对象，super 与继承有关） 示例：Static 块仅在该类被加载时执行一次。下面的例子显示的类有一个static方法，一些static变量，以及一个static 初始化块。1234567891011121314151617public class TestNew &#123; static int a = 3; static int b; static void meth(int x)&#123; System.out.println("x = "+x); System.out.println("a = "+a); System.out.println("b = "+b); &#125; static &#123; System.out.println("static block initialized"); b = a*4; &#125; public static void main(String[] args) &#123; // TODO Auto-generated method stub meth(42); &#125; &#125; 执行结果是：static block initializedx = 42a = 3b = 12 上述class TestNew的执行顺序是：首先static 块执行(打印一条消息)，a被设置为3，最后b被初始化为a*4 成12。然后调用main()，main () 调用meth() ，把值42传递给x。3个println ( ) 语句引用两个static变量a和b，以及局部变量x 。 3、外部使用静态变量或者静态方法在定义它们的类的外面，static 方法和变量能独立于任何对象而被使用，你只要在类的名字后面加点号运算符即可。可以看到，这种格式与通过对象引用变量调用非static方法或者变量的格式类似。示例： 1234567891011121314class StaticDemo&#123; static int a = 42; static int b = 99; static void callme()&#123; System.out.println("a = "+a); &#125; &#125; public class TestNew &#123; public static void main(String[] args) &#123; // TODO Auto-generated method stub StaticDemo.callme(); System.out.println("b = "+StaticDemo.b); &#125; &#125; 执行结果：a = 42b = 99 4、静态内部类是指在一个类的内部，又定义了一个用static修饰的类。可以用C中的结构体内嵌结构体来理解。A，首先，用内部类是因为内部类与所在外部类有一定的关系，往往只有该外部类调用此内部类。所以没有必要专门用一个Java文件存放这个类。 B，静态方法、静态成员变量。它唯一的作用就是随着类的加载（而不是随着对象的产生）而产生，以致可以用类名+静态成员名直接获得。这样静态内部类就可以理解了，它可以直接被用 外部类名+内部类名 获得。举例如下： 123456789public class Build &#123; .............. public static class VERSION &#123; ................ public static final String RELEASE = getString("ro.build.version.release"); ................ &#125; ................&#125; 在外部可以直接通过Build.VERSION.RELEASE来访问。 参考原文：http://www.cnblogs.com/-0_0-/articles/1962368.html参考原文：http://blog.sina.com.cn/s/blog_5cd7f5b40100r0rt.html参考原文：http://zhidao.baidu.com/question/149873207.html参考原文：http://ddvcxj.blog.51cto.com/1064441/26534]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>J2SE</tag>
+        <tag>Coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[观西]]></title>
+    <url>%2F2017%2F10%2F21%2FEurope-Mid2017%2F</url>
+    <content type="text"><![CDATA[Het Concertgebouw，当从来不知道中午十一点也能开音乐会的我坐在这家世界三大音响效果最佳的音乐厅之一的RCO主场，拍完照装完逼，准备听一段并不感冒的莫扎特K219，在几乎忽视了这松润甜的混响的确比干涩的国家大剧院高到不知哪里去的事实的同时，一阵雷动的掌声倏忽间将我埋进了齐齐站起的满场垂垂老矣的白发先生当中，生出一阵焦虑。 阿姆斯特丹德奥系目的地偏多的行程里阿姆斯特丹算是奇葩一朵，位列周游列国印象最佳，虽然整座城市大多只是以运河为经脉的老城环状地带以及清一色的联排建筑，大概也是因为荷兰人看上去比傲的要上天的德奥人nice以及从巴黎过去的一路看太多荷兰境内草场看到吐的缘故。搭积木般的小城里人行道有轨电车Tram甚至汽车混搭的交通，且不说两百多米一站的路程时常让你决断不了干脆走路还是花1个多欧去乘Tram，一些小街区出了车门两步路就能迈进一家店的体验可真是住在北京这种出了地铁车厢还要经过少说两段长梯到路面，再走十几分钟才能进家门的人不曾体会到的。 城小，于是文化生活的消息相对容易掌握，爱音乐之人前面的Het Concertgebouw自然不可错过，碰到RCO的演出最好。与之隔一片草地的梵高博物馆，也值得每个爱好者或者像我这般完全连不上平面艺术WiFi的人逛逛，展品不必多说，而从展馆设计到服务到展陈设计到路线几乎是垂直专业类博物馆里的翘楚，导览以及Audioguide也是至今逛到的博物馆里最好用的；可以说除了那本名画集的中文版封面标题排版之外，鲜有槽点。要是上溯到海上霸权的那些事儿，就得荷兰国家博物馆来撑场面了，只是贪多易乱，虽然乱不过卢浮宫，但也要抱着相当的耐心；除了著名打卡地《夜巡》，在日不落帝国都不曾见过如此密集的展现盛极一时的航海时代。 至于De Wallen那边tedious的橱窗长腿妹，放到东方男性oriented的市场里估计要垫底，就连后来的东欧也接受不能，而且被大麻味熏到头疼也并不是多好的体验，曼谷才是你们的福地。大概也因为太过出名，除了运河两边的橱窗，这里的小巷子里挤满了男女老少各色观光客，虽然真的不会有人冲亚洲长相的男性喊“发票”，但也能不时听到国内游客们“她们能有生意么？”的讨论。 维也纳作为德语区第二大城市的维也纳显然要比柏林幸运的多，昔日帝国与王朝的心血并未因战争受损太多，建筑一派雍容华贵，只是在巴黎已经对建筑审美疲劳的我美泉宫美景宫霍夫堡不是没去就是匆匆路过，唯一进过号称混杂各种建筑风格的St. Stephen’s教堂，修葺的影子挡不住本身的巍峨，这几天里唯有布拉格的圣维特可与之一拼。 而发现了艺术史博物馆这块福地绝对是在维也纳最大的惊喜，以“宝石雕刻”为主的装饰艺术不得不让你对这种原本印象中奇技淫巧的花哨玩意儿肃然起敬，简单到金银宝石雕刻的华贵器具，复杂到拟生物座钟及天文钟，远到埃及纸莎草死者之书，近到文具水晶这些科学启蒙时代的产物，远比伦敦的VA及大英的装饰艺术馆好看。 更不用说二层这种“课本名画”堆的到处都是，卡拉瓦乔、勃鲁盖尔、鲁本斯每个人都能挂一屋子的地方了。 艺术史博物馆与对面的自然史博物馆，是特雷西亚广场两侧几乎相同的两栋建筑，一个收藏了最多的宝石雕刻，一个收藏了最多的陨石和矿藏（大概也是最多的鹦鹉螺壳…）。一层鳞次栉比分布着各色矿藏，其中的衍生晶体除了让你感叹自然之无限诡谲之外别无他念，二楼的脊椎动物标本就比较无趣和常见；整体来说矿藏化石和陈年标本值得一逛，假如你对泡了两百多年的带状绦虫之类的奇葩展品感兴趣的话。首先不要被3000万件藏品的简介吓到，因为大概那几百只蚂蚁跟几百只瓢虫就能贡献好几个百分点…… 名声在外的金色大厅不常遇得上维也纳爱乐的演出，更多的是到处都有兜售的不知名乐团的旅游团曲目音乐会，还好我也不听施特劳斯……倒是临时起意跑去国家歌剧院碰碰站票的运气，第一次Opera的经历就这么3个欧贱卖了出去，歌剧院虽老却也为了照顾各国观众几乎每个座位都有不同语言的字幕提词器，然而还是在听完熟悉的第一幕配乐之后不可避免的逃了出去。德奥观众的严谨在于他绝对会群起而厉声制止那些意不在演出却有意无意制造噪音的人。 巴黎巴黎的沉淀是能直接把所有装逼的心态打回原形的地方，作为两个领域的纯小白，当你不知道该从历史开始看起还是城市建筑史开始看起的时候，就只是想哭。被奥斯曼新古典主义的中产阶级石砌建筑重重包围了两天的行程，也就依稀记得卢浮宫的乱，奥赛的莫奈，埃菲尔的小和圣母院全程懵逼的弥撒。 高潮出现在铁塔旁边的河畔博物馆Musée du Quai Branly，藏品多来自处在世界边缘的亚非拉和大洋洲；古希腊罗马雕塑再多，能见到的也大都是高度拟人化的风格，就算是怪力乱神也得尽量安个人的样子；土著先民可不管这一套，一路下来直感叹所谓“文明社会”想象力之匮乏。 萨尔茨堡多年以前受古典乐荼毒不深尚在新粉丝狂热时候留下了这样的豆瓣签名“老了能在萨尔茨堡的山下湖前有个小屋，每天走在街上就能听到巴赫”，能不能有个小屋两说，小城南边阿尔卑斯北麓以及去往维也纳的一路倒是林立各种精致的木屋建筑，但估计每天走在街上听到的只能是各种语言的旅游团喇叭声了。幸好不是在萨尔茨堡音乐节到此，或者在琉森音乐节去琉森，得见这种小城的本来面目只能以无聊概括，论景点恨不得全城一天可以逛两次，对于一个从城中心的酒店走着就能去中央车站的“城市”，生活一个月大概就能逛遍和吃遍所有的店了吧。 布拉格，没什么意思，Communism害死人。 FYI：“说走就走”其实对于欧洲是个不小的挑战，时常会让你面临房少车少而人多的状况，比如提前几个月能比提前几天便宜两三倍的火车票，幸好我这种辞职流浪时间重要不过钱包的时候也有便宜到不行的跨国巴士可以选择，无论是巴黎往阿姆斯特丹的Euroline、德国主营周边的Flixbus、捷克主营的Regiojet都是除了时间之外完全不输火车的体验；不过巴士跑高速，火车钻山，后者风景常会好过前者；然而并非高铁的大多数线路真的很难让你找到时间上的优势。至于房，除非太穷或者酒店一间不剩，还是不要住民宿这种东西了。 妨碍一时冲动的还有比语言更难懂的各国市内交通，已经无力吐槽，对于布拉格这种最糟糕的城市还是早日买24小时票保命，免得满地找售票机甚至假如身上还没有合适的硬币克朗；反正除了逃票之外完全找不到日本那种往售票机里无脑扔一把硬币一秒钟收到找零的快感。 莱比锡差点忘了巴赫爸爸。]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>欧洲</tag>
+        <tag>博物馆</tag>
+        <tag>KHM</tag>
+        <tag>游记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[观东]]></title>
+    <url>%2F2017%2F10%2F08%2FJapan-Early2017%2F</url>
+    <content type="text"><![CDATA[人大概在这两种时候会心生忐忑，见自己初喜欢的人，和见自己喜欢过的未知，后者如日本。 该怎么形容“我与日本”这样的话题呢？始终到临走前，我还是没想好的哇。而且总是会想起跟过去有关的事。你的童年与她有关，你的梦想与她有关，你对世界的幻想与她有关，你对爱情的期望与她有关，你的成人礼都与她有关，这么多角色扭打在一起的时候，忐忑就更悠远绵长起来。 大阪价值观如我这般摇摆的人就不应该在去关西前先入为主的听了《日谈公园》，主播菌口中的大农村的印象就那么结实的印到了大阪的首日里；且不说爱彼迎的小屋再一次让人咬牙切齿的痛恨了一回摄影师这个职业（不过也倒是目前见过设施最全的民宿了喂），心斋桥这种小商品一条街也实在让人提不起兴趣，任你优衣库的整栋楼再多可以逛，药妆店吆喝中文的姑娘们再好看，也只是喜欢躲到河边排个一兰拉面尝试一下各种软硬面条和汤底的搭配。 对于一个ぜんぜん弄不懂织田信长丰臣秀吉德川家康谁创业谁守业的人来说，天守城这种大阪为数不多的景点也是百无聊赖，好在旁边就是大阪历史博物馆，在经历了跟基本听不懂英语的接待比划半天我到底该不该存包然后干脆趁那个难缠的人不在溜了进去之后，不得不说总算是找到了抵日两天的精神寄托；硬货不多，要不也不会满是中国都唐了日本同期还是以为属于绳纹弥生时代的陶罐之类的东西；不过日本人的精致还是在还原江户生活的模型里体现的淋漓尽致，比南博负一层的民国时代大模型们难做多了…… 打定主意不怎么做攻略的我提前一个周才知道买了买电话卡跟地铁票，遗憾是错过了东京的三鹰吉卜力这个需要提前一月订票的情怀之地，但惊喜也是有的，梅田就是第一个。说来也巧，在那个有百八十个出口的站把我绕晕之前，捡了个百货商场出口的门就夺门而逃了，路遇现在才知道曲风叫做neo soul的band，看在keyboard姑娘美，哦不，是好听而且还是少见的不是solo的份上，现场不失所望的越来越燃，至少听起来比买回来的拘谨的录音室CD张狂的多，所以谁会说未来Live不是比Record更好更有发展的音乐形式呢？嗯已经在打FUJI ROCK的主意了。 京都真正爱上日本也是从京都开始的吧。当然还是不太推荐在游客高峰期去岚山这种地方，必然是满脑子WTF的怀疑这是个假日本……攻略都是骗人的……要不是有抹茶冰淇淋的拯救，大概对京都的印象也不会好。 踩了踩岚山的竹林，并且没看懂周总理写的是什么诗，小火车回到住地四条大宫的时间还早，折转就去了八坂神社圆山公园二年坂，然后就在四条出口和公园见识了日本人都是怎么卖艺的……大叔拿把破琴指弹玩儿的再认真点就赶上押尾了，而另一位大叔的乐器是两万多的手碟，真是不知道给多少钱合适啊。 第二日的雨让原本金阁寺银阁寺各种寺伏见稻荷打卡一日游的计划被打乱，跑去京都博物馆的室内临时躲雨行程也因为傲娇的非闭馆日闭馆而只花门票的价格参观了一个庭院终结。在纠结总不至于为了一点小雨就牺牲一天住宿费的时候，还是强忍着坐电车去扫一个景点算一个，那就伏见稻荷吧。 虽然没见过阳光嶙峋的千鸟居，但雨中同样流连。伏见稻荷的鸟居漫山遍野，如果你挤不过山脚下围住它们拍照的游客们，山上一点儿不输于此，无论体量还是规模；当然半腰下山的一段奉满了各路神像，要是再有点儿阴天，大概走着就会怕会不会像千寻的爸妈一样被抓去变成猪。 除了文保原因的电车不多，店家关门过早也是不小的困扰，想来八坂神社以上的二年坂三年坂入夜挑灯应该是蛮迷离隔世的一番景色，奈何天一擦黑就纷纷收摊，简直是让人羡慕嫉妒恨的日落而息的生活状态。 总之这是个遗憾大过惊喜的地方，换句话说还对它有绵延不止的期待，比如没去成金阁寺和没吃成怀石料理，anyway，当在御陵卫外边追着那一线阳光拍影子的时候，大概就决定了以后会去常住的吧。 东京去过伦敦之后，我一直以为，东京大概也是类似的“大城市”，那句“如果你厌倦了伦敦，你就厌倦了生活”大概也能套用到后者身上。谁能不爱东京呢？ 不知是否被贵到吃土的新干线伤了神，反正东京的电车还是再次印证了在日本的几天依然没弄懂铁路系统的问题；在出东京站出了半小时、转大手町找了半小时之后，总算找到了去押上的线。好在如此的折腾又换到了一个惊喜，酒店旁边就藏着东京的两家Pokemon Center之一，不由分说抱一只皮卡丘回去是当然的，只是不得不吐槽，除了皮卡丘的等身之外，其他周边还是粗糙，而且一架子不认识的精灵都在冲你说：你老了。 东京的游记至今已经理不出头绪，就像在东京的几天永远没有头绪一样，坐地铁走到哪儿，哪儿都可以玩上半天，计划的落空与补给来的惊喜错综交织，到最后你就早已不记得为玩而玩这件事了。本来的赏樱路线变成了银座那连比弗利和广东道都比不了的大牌林立，本来打个卡就走的早稻田却意外碰上了无法理解的春季毕业季，唯有秋叶原去的符合行程，而那堆成山的手办和小电影真是让人有心无力。 转头说说文化的事，住在押上的另一个好处是，上野就在附近，当然樱花尚不吐蕊的上野恩赐公园并不好玩，而整个上野像柏林的博物馆岛和伦敦特拉法加广场周围一样遍布博物馆，从森美术馆开始，到柯布西耶设计的国立西洋美术馆，到始终没机会进去的自然博物馆，到逛了一天半收藏了规模宏大的植轮跟太刀的最大的东京国立博物馆。 当然六本木偶遇的印度Harsha的Charming Journey展，也比东京塔的夜景有趣，毕竟世界上只有爱情和艺术这两件东西使我们的生活值得苟且。 这样的苗头像极了伦敦四万步的经历，既然肯定有下次，最后一天的行程干脆完全留给了花钱不多的博物馆系列（日本每个博物馆都花钱这很蛋疼），看在上野的那一片离酒店近取行李也方便而且晚上还开的份上就先去了《博物志》里推荐的印刷博物馆。虽然没怎么去过国内的主题博物馆，没得比较，但还是惊叹于展陈的完整性和事无巨细，展品收集上是否丰富有代表性不好评论，毕竟不懂，然而就教学作用来说，完全是白痴看完也能懂的节奏。 出门有每天一节接待六位的印刷体验课，看在人不多的份上尽管不怎么懂日语我还是抱着看展的余热排在门口，奈何半天才找出一位会英语的能交流的叫やまだ的小姑娘，全程被特殊对待并且拿据说是40年代的英产手动活字印刷机印了七张写我名字的信笺而告终。 其他，且不说服务与清洁程度，就是自动化程度之高，也是去过的其他发达国家都无法企及的，路边随处可见的自动贩卖机几乎永远有冷饮热咖啡（似乎厂牌还分的很明显，三得利的机器永远只有旗下的各式咖啡，朝日的机器啤酒居多，伊右卫门的机器自然是热茶居多，其他不知名的则提供各种品牌的小甜水），一兰（要是不等位的话）和松屋这样的快餐以及京都车站的拉面一条街几乎靠自动点餐机就能解决问题，永远提供中日韩英四国语言，酒店的自动洗衣烘干状态能显示到客房电视上，社区也总有自动洗衣门店，就连东京国立博物馆的门票都是自动投币买，车站的精算机也是个神奇的东西。 能在这样一个不需要见人说人话见鬼说鬼话的地方，不愁吃不愁喝，有温暖的周末，做个平凡人没什么不好。]]></content>
+      <categories>
+        <category>游记</category>
+      </categories>
+      <tags>
+        <tag>游记</tag>
+        <tag>大阪</tag>
+        <tag>东京</tag>
+        <tag>京都</tag>
+      </tags>
+  </entry>
 </search>
