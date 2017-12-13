@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://shuwuai.cc/2017/12/13/JavaScript-Tutorial/</loc>
+    <lastmod>2017-12-13T14:50:56.684Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript 基础</title>
+        <pubTime>2017-12-13T14:30:43.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>JavaWeb</tag>
+         
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/</loc>
     <lastmod>2017-12-13T14:39:12.429Z</lastmod>
     <data>
@@ -24,27 +48,6 @@
              
               <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://shuwuai.cc/2017/12/13/JavaScript-Tutorial/</loc>
-    <lastmod>2017-12-13T14:39:04.424Z</lastmod>
-    <data>
-        <display>
-        <title>JavaScript 基础</title>
-        <pubTime>2017-12-13T14:30:43.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>JavaWeb</tag>
-         
-        <tag>JavaScript</tag>
-         
-         
-           
         </display>
     </data>
     </url>
