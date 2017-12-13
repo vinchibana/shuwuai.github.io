@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,JavaWeb,CSS,HTML," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. Elements:&amp;lt;em&amp;gt; &amp;lt;/em&amp;gt; 斜体 &amp;lt;strong&amp;gt; &amp;lt;/strong&amp;gt;加粗 &amp;lt;blockquote&amp;gt; &amp;lt;/blockquote&amp;gt; 段引用block 元素：&amp;lt;h1&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;blockquote&amp;gt;inline 元素：&amp;lt;e">
+<meta name="keywords" content="前端,JavaWeb,CSS,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Head First HTML &amp; CSS">
+<meta property="og:url" content="http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/index.html">
+<meta property="og:site_name" content="博物志">
+<meta property="og:description" content="1. Elements:&amp;lt;em&amp;gt; &amp;lt;/em&amp;gt; 斜体 &amp;lt;strong&amp;gt; &amp;lt;/strong&amp;gt;加粗 &amp;lt;blockquote&amp;gt; &amp;lt;/blockquote&amp;gt; 段引用block 元素：&amp;lt;h1&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;blockquote&amp;gt;inline 元素：&amp;lt;e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/html-css.jpg">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-11_15-24-40.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-11_23-51-36.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-12_00-26-11.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-12_00-29-18.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/1cf28bca2738ab2474fb102ca936355b.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_00-09-35.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_13-30-15.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_14-28-07.png">
+<meta property="og:updated_time" content="2017-12-13T07:19:41.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Head First HTML &amp; CSS">
+<meta name="twitter:description" content="1. Elements:&amp;lt;em&amp;gt; &amp;lt;/em&amp;gt; 斜体 &amp;lt;strong&amp;gt; &amp;lt;/strong&amp;gt;加粗 &amp;lt;blockquote&amp;gt; &amp;lt;/blockquote&amp;gt; 段引用block 元素：&amp;lt;h1&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;blockquote&amp;gt;inline 元素：&amp;lt;e">
+<meta name="twitter:image" content="http://oxgw3nd2b.bkt.clouddn.com/html-css.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/"/>
+
+
+
+
+
+  <title>Head First HTML & CSS | 博物志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博物志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鹊桥仙仙">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博物志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Head First HTML & CSS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T15:04:35+08:00">
+                2017-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/13/Head-First-HTML-CSS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/12/13/Head-First-HTML-CSS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,922 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://oxgw3nd2b.bkt.clouddn.com/html-css.jpg" alt="html-css"></p>
+<h3 id="1-Elements"><a href="#1-Elements" class="headerlink" title="1. Elements:"></a>1. Elements:</h3><p><code>&lt;em&gt; &lt;/em&gt;</code> 斜体 <code>&lt;strong&gt; &lt;/strong&gt;</code>加粗 <code>&lt;blockquote&gt; &lt;/blockquote&gt;</code> 段引用<br>block 元素：<code>&lt;h1&gt;</code> <code>&lt;ul&gt;</code> <code>&lt;li&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;blockquote&gt;</code><br>inline 元素：<code>&lt;em&gt;</code> <code>&lt;img&gt;</code> <code>&lt;q&gt;</code> </p>
+<p>图片链接： <code>&lt;a&gt; &lt;/a&gt;</code> 内嵌 <code>img</code> 元素<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-11_15-24-40.png" alt="2017-12-11_15-24-40"></p>
+<h3 id="2-CSS-Id-和-Class"><a href="#2-CSS-Id-和-Class" class="headerlink" title="2.CSS Id 和 Class"></a>2.CSS Id 和 Class</h3><ul>
+<li>id 选择器可以为标有 ==特定 id 的 HTML 元素== 指定特定的样式。HTML 元素以 id 属性来设置 id 选择器, CSS  中 id 选择器以 “#” 来定义。</li>
+<li>class 选择器用于描述 ==一组元素的样式==，class 选择器有别于id选择器，class可以在 ==多个元素== 中使用。class 选择器在 HTML 中以 class 属性表示, 在 CSS 中，类选择器以一个点”.”号显示。</li>
+</ul>
+<a id="more"></a>
+<h3 id="3-插入样式表的方法："><a href="#3-插入样式表的方法：" class="headerlink" title="3.插入样式表的方法："></a>3.插入样式表的方法：</h3><ul>
+<li>外部样式表，当样式表需要用于很多页面时</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>内部样式表，当单个文档需要特殊的样式时</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">body &#123;</div><div class="line">    background-color: linen;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1 &#123;</div><div class="line">    color: maroon;</div><div class="line">    margin-left: 40px;</div><div class="line">&#125; </div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>内联样式，当样式仅需要在一个元素上应用一次时</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 style=&quot;color:blue;margin-left:30px;&quot;&gt;This is a heading&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>多重样式优先级：</strong><br>内联样式）Inline style &gt; （内部样式）Internal style sheet &gt;（外部样式）External style sheet &gt; 浏览器默认样式</p>
+</blockquote>
+<h3 id="4-CSS-文本与字体"><a href="#4-CSS-文本与字体" class="headerlink" title="4. CSS 文本与字体"></a>4. CSS 文本与字体</h3><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-11_23-51-36.png" alt="2017-12-11_23-51-36"><br><strong>字体系列 font-family</strong></p>
+<p>font-family 属性应该设置几个字体名称作为一种”后备”机制，如果浏览器不支持第一种字体，他将尝试下一种字体。</p>
+<blockquote>
+<p>注意: 如果字体系列的名称超过一个字，它必须用引号，如 Font Family：”Times New Roman”。</p>
+</blockquote>
+<p><strong>使用 Web 字体：<a href="https://fonts.google.com/" target="_blank" rel="external">Google Fonts</a></strong><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-12_00-26-11.png" alt="2017-12-12_00-26-11-w968"><br><strong>使用 Woff 字体：<a href="view-source:https://www.theverge.com/" target="_blank" rel="external">Homepage of THE VERGE</a></strong><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-12_00-29-18.png" alt="2017-12-12_00-29-18"><br><strong>字体大小：像素、百分比、倍数、关键字</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>: <span class="number">14px</span>; &#125;</div><div class="line"><span class="selector-tag">h1</span>&#123; <span class="attribute">font-size</span>: <span class="number">150%</span>; &#125;</div><div class="line"><span class="selector-tag">h2</span>&#123; <span class="attribute">font-size</span>: <span class="number">1.2em</span>; &#125; (倍数)</div><div class="line"><span class="selector-tag">h3</span>&#123; <span class="attribute">font-size</span>: small/large; &#125;</div></pre></td></tr></table></figure>
+<p><strong>推荐方式：（ 后续只需改动<code>body</code>）</strong></p>
+<blockquote>
+<p>选择一个关键字（small 或 medium），指定其作为 <code>body</code> 规则中的字体大小。这相当于页面默认的字体大小。<br>使用 <code>em</code> 或百分数，相对于 <code>body</code> 字体大小指定其他元素的字体大小。</p>
+</blockquote>
+<p><strong>改变字体粗细：<code>font-weight</code></strong><br>normal, bold, lighter</p>
+<p><strong>增加字体风格：<code>font-style</code></strong><br>italic（自带斜体风格）, oblique（浏览器将正常文字倾斜）</p>
+<p><strong>字体颜色定义：</strong></p>
+<ul>
+<li>直接命名：silver, maroon, purple</li>
+<li>RGB（80%, 40%, 0%）RGB（204, 102, 0）</li>
+<li>十六进制：<code>#cc(R)66(G)00(B)</code><blockquote>
+<p>一组颜色分量的两位数字相同，可以缩写成一位数字，<code>#cc6600</code> = <code>#c60</code></p>
+</blockquote>
+</li>
+</ul>
+<p><strong>文本对齐方式</strong><br>文本排列属性是用来设置文本的水平对齐方式。文本可居中或对齐到左或右,两端对齐。当text-align设置为”justify”，每一行被展开为宽度相等，左，右外边距是对齐（如杂志和报纸）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">h1 &#123;text-align:center;&#125;</div><div class="line">p.date &#123;text-align:right;&#125;</div><div class="line">p.main &#123;text-align:justify;&#125;</div></pre></td></tr></table></figure>
+<p><strong>文本装饰与大小写转换：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">text-decoration: line-through;</div><div class="line">text-decoration: underline;</div><div class="line">text-decoration: overline;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p.uppercase &#123;text-transform:uppercase;&#125;</div><div class="line">p.lowercase &#123;text-transform:lowercase;&#125;</div><div class="line">p.capitalize &#123;text-transform:capitalize;&#125;</div></pre></td></tr></table></figure>
+<p><strong>font-variant 属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p.small &#123; font-variant:small-caps; &#125;</div></pre></td></tr></table></figure>
+<p>font-variant 属性设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小</p>
+<h3 id="5-CSS-背景"><a href="#5-CSS-背景" class="headerlink" title="5. CSS 背景"></a>5. CSS 背景</h3><ul>
+<li>background    简写属性，作用是将背景属性设置在一个声明中。</li>
+<li>background-attachment    背景图像是否固定或者随着页面的其余部分滚动。</li>
+<li>background-color    设置元素的背景颜色。</li>
+<li>background-image    把图像设置为背景。</li>
+<li>background-position    设置背景图像的起始位置。</li>
+<li>background-repeat    设置背景图像是否及如何重复。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">body</div><div class="line">&#123;</div><div class="line">	background-image:url(&apos;img_tree.png&apos;);</div><div class="line">	background-repeat:no-repeat;</div><div class="line">	background-position:right top;</div><div class="line">	margin-right:200px;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h3 id="6-CSS-Box-Model-Border"><a href="#6-CSS-Box-Model-Border" class="headerlink" title="6. CSS Box Model / Border"></a>6. CSS Box Model / Border</h3><p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。</p>
+<p><img src="http://oxgw3nd2b.bkt.clouddn.com/1cf28bca2738ab2474fb102ca936355b.png" alt="1cf28bca2738ab2474fb102ca936355b"></p>
+<ul>
+<li>Margin(外边距) - 清除边框外的区域，==外边距是透明的==。</li>
+<li>Border(边框) - 围绕在内边距和内容外的边框。</li>
+<li>Padding(内边距) - 清除内容周围的区域，==内边距是透明的==。</li>
+<li>Content(内容) - 盒子的内容，显示文本和图像，内容与盒子边缘之间没有空间</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">line-height:         1.9em;</div><div class="line">font-style:          italic;</div><div class="line">font-family:         Georgia, &quot;Times New Roman&quot;, Times, serif;</div><div class="line">color:               #444444;</div><div class="line">border-color:        white;</div><div class="line">border-width:        2px;</div><div class="line">border-style:        dashed;</div><div class="line">background-color:    #a7cece;</div><div class="line">padding:             25px;</div><div class="line">padding-left:        80px;</div><div class="line">margin:              30px;</div><div class="line">margin-right:        250px;</div><div class="line">background-image:    url(images/background.gif);</div><div class="line">background-repeat:   no-repeat;</div><div class="line">background-position: top left;</div></pre></td></tr></table></figure>
+<p><strong>8种边框样式：</strong><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_00-09-35.png" alt="2017-12-13_00-09-35"><br><strong>CSS 元素 Display(显示) 与 Visibility（可见性）</strong></p>
+<p>隐藏一个元素可以通过把display属性设置为”none”，或把visibility属性设置为”hidden”。</p>
+<ul>
+<li>visibility：hidden可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间。也就是说，该元素虽然被隐藏了，但仍然会影响布局。</li>
+<li>display：none可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失。</li>
+</ul>
+<p><strong>block 元素与 inline 元素的显示互换</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">span &#123; display:block; &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h2&gt;Nirvana&lt;/h2&gt;</div><div class="line">&lt;span&gt;Record: MTV Unplugged in New York&lt;/span&gt;</div><div class="line">&lt;span&gt;Year: 1993&lt;/span&gt;</div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">Output：</div><div class="line"></div><div class="line">Nirvana</div><div class="line">Record: MTV Unplugged in New York</div><div class="line">Year: 1993</div></pre></td></tr></table></figure>
+<h3 id="7-CSS-定位、浮动、对齐"><a href="#7-CSS-定位、浮动、对齐" class="headerlink" title="7. CSS 定位、浮动、对齐"></a>7. CSS 定位、浮动、对齐</h3><ul>
+<li>relative 定位：相对定位元素的定位是相对其正常位置。</li>
+<li>absolute 定位：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html></html></li>
+<li>overflow：设置当元素的内容溢出其区域时发生的事情（<code>auto、hidden、scroll、visible、inherit</code>）</li>
+<li>CSS 的 Float，会使元素向左或向右移动，其周围的元素也会重新排列。Float（浮动），往往是用于图像，但它在布局时一样非常有用。    </li>
+<li>清除浮动 - 使用 clear。元素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。clear 属性指定元素两侧不能出现浮动元素。</li>
+</ul>
+<h3 id="8-CSS-导航栏"><a href="#8-CSS-导航栏" class="headerlink" title="8. CSS 导航栏"></a>8. CSS 导航栏</h3><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_13-30-15.png" alt="2017-12-13_13-30-15"><br><strong>导航栏 = 链接列表</strong></p>
+<p>导航条基本上是一个链接列表，所以使用 <code>&lt;ul&gt;</code> 和 <code>&lt;li&gt;</code> 元素非常有意义</p>
+<p><strong>链接样式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a:link &#123;color:#000000;&#125;      /* 未访问链接*/</div><div class="line">a:visited &#123;color:#00FF00;&#125;  /* 已访问链接 */</div><div class="line">a:hover &#123;color:#FF00FF;&#125;  /* 鼠标移动到链接上 */</div><div class="line">a:active &#123;color:#0000FF;&#125;  /* 鼠标点击时 */</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Ex. 全屏高度固定导航条：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;style&gt;</div><div class="line">body &#123;</div><div class="line">    margin: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ul &#123;</div><div class="line">    list-style-type: none;</div><div class="line">    margin: 0;</div><div class="line">    padding: 0;</div><div class="line">    width: 25%;</div><div class="line">    background-color: #f1f1f1;</div><div class="line">    position: fixed;</div><div class="line">    height: 100%;</div><div class="line">    overflow: auto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li a &#123;</div><div class="line">    display: block;</div><div class="line">    color: #000;</div><div class="line">    padding: 8px 16px;</div><div class="line">    text-decoration: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li a.active &#123;</div><div class="line">    background-color: #4CAF50;</div><div class="line">    color: white;</div><div class="line">&#125;</div><div class="line"></div><div class="line">li a:hover:not(.active) &#123;</div><div class="line">    background-color: #555;</div><div class="line">    color: white;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;&lt;a class=&quot;active&quot; href=&quot;#home&quot;&gt;主页&lt;/a&gt;&lt;/li&gt;</div><div class="line">  &lt;li&gt;&lt;a href=&quot;#news&quot;&gt;新闻&lt;/a&gt;&lt;/li&gt;</div><div class="line">  &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;联系&lt;/a&gt;&lt;/li&gt;</div><div class="line">  &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;div style=&quot;margin-left:25%;padding:1px 16px;height:1000px;&quot;&gt;</div><div class="line">......</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>水平导航栏：</strong></p>
+<p>有两种方法创建横向导航栏。使用内联(inline)或浮动(float)的列表项。这两种方法都很好，但如果想链接到具有相同的大小，必须使用浮动的方法。</p>
+<p>###9. CSS 媒体</p>
+<h4 id="Image-Gallary"><a href="#Image-Gallary" class="headerlink" title="Image Gallary"></a>Image Gallary</h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-13_14-28-07.png" alt="2017-12-13_14-28-07"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">div.gallery &#123;</div><div class="line">    margin: 5px;</div><div class="line">    border: 1px solid #ccc;</div><div class="line">    float: left;</div><div class="line">    width: 180px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">div.gallery:hover &#123;</div><div class="line">    border: 1px solid #777; /* 鼠标放上时增加边框 */</div><div class="line">&#125;</div><div class="line"></div><div class="line">div.gallery img &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: auto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">div.desc &#123;</div><div class="line">    padding: 15px; /* 文本描述部分的 padding */</div><div class="line">    text-align: center;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div class=&quot;gallery&quot;&gt;</div><div class="line">  &lt;a target=&quot;_blank&quot; href=&quot;img_fjords.jpg&quot;&gt;</div><div class="line">    &lt;img src=&quot;img_fjords.jpg&quot; alt=&quot;Trolltunga Norway&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;</div><div class="line">  &lt;/a&gt;</div><div class="line">  &lt;div class=&quot;desc&quot;&gt;Add a description of the image here&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div class=&quot;gallery&quot;&gt;</div><div class="line">  &lt;a target=&quot;_blank&quot; href=&quot;img_forest.jpg&quot;&gt;</div><div class="line">    &lt;img src=&quot;img_forest.jpg&quot; alt=&quot;Forest&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;</div><div class="line">  &lt;/a&gt;</div><div class="line">  &lt;div class=&quot;desc&quot;&gt;Add a description of the image here&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束 <i class="fa fa-github-alt"></i> 感谢阅读------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="鹊桥仙仙 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信公众号：无伴奏第三奏鸣曲</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请简单粗暴地爱我。</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="鹊桥仙仙 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="鹊桥仙仙 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    鹊桥仙仙
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/" title="Head First HTML & CSS">http://shuwuai.cc/2017/12/13/Head-First-HTML-CSS/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+            <a href="/tags/JavaWeb/" rel="tag"><i class="fa fa-tag"></i> JavaWeb</a>
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/07/MySQL-Crash-Course-Part-II/" rel="next" title="MySQL Crash Course Part II">
+                <i class="fa fa-chevron-left"></i> MySQL Crash Course Part II
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="hypercomments_widget"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鹊桥仙仙</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">迄今写了多少字&#58;</span>
+    
+    <span title="迄今写了多少字">13.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="copyright">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="powered-by">
+      <i class="fa fa-hand-peace-o"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人来过
+    </span>
+  
+
+  
+    <span class="theme-info">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次浏览
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 96899, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 96899, xid: "2017/12/13/Head-First-HTML-CSS/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/96899/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
