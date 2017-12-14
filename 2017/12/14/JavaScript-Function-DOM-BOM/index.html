@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="博物志" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="title: JavaScript 函数、DOM、BOMdate: 2017-12-14 17:17:09tags: [前端, JavaWeb, JavaScript]categories: Codingcomments: true copyright: 1. JavaScript 函数JavaScript 使用关键字 function 定义函数。函数可以通过声明定义，也可以是一个表达式。 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博物志">
+<meta property="og:url" content="http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/index.html">
+<meta property="og:site_name" content="博物志">
+<meta property="og:description" content="title: JavaScript 函数、DOM、BOMdate: 2017-12-14 17:17:09tags: [前端, JavaWeb, JavaScript]categories: Codingcomments: true copyright: 1. JavaScript 函数JavaScript 使用关键字 function 定义函数。函数可以通过声明定义，也可以是一个表达式。 12">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/bom.jpg">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20171214_1.png">
+<meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20171214_3.png">
+<meta property="og:updated_time" content="2017-12-14T09:18:44.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博物志">
+<meta name="twitter:description" content="title: JavaScript 函数、DOM、BOMdate: 2017-12-14 17:17:09tags: [前端, JavaWeb, JavaScript]categories: Codingcomments: true copyright: 1. JavaScript 函数JavaScript 使用关键字 function 定义函数。函数可以通过声明定义，也可以是一个表达式。 12">
+<meta name="twitter:image" content="http://oxgw3nd2b.bkt.clouddn.com/bom.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/"/>
+
+
+
+
+
+  <title> | 博物志</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博物志</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="鹊桥仙仙">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博物志">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T17:17:09+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/14/JavaScript-Function-DOM-BOM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/12/14/JavaScript-Function-DOM-BOM/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,963 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: JavaScript 函数、DOM、BOM<br>date: 2017-12-14 17:17:09<br>tags: [前端, JavaWeb, JavaScript]<br>categories: Coding<br>comments: true</p>
+<h2 id="copyright"><a href="#copyright" class="headerlink" title="copyright:"></a>copyright:</h2><p><img src="http://oxgw3nd2b.bkt.clouddn.com/bom.jpg" alt="bo"></p>
+<h3 id="1-JavaScript-函数"><a href="#1-JavaScript-函数" class="headerlink" title="1. JavaScript 函数"></a>1. JavaScript 函数</h3><p>JavaScript 使用关键字 function 定义函数。函数可以通过声明定义，也可以是一个表达式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">functionName(parameter1, parameter2, parameter3) &#123;</div><div class="line">    <span class="comment">// 要执行的代码……</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="函数的定义与实用："><a href="#函数的定义与实用：" class="headerlink" title="函数的定义与实用："></a>函数的定义与实用：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过表达式定义并使用</span></div><div class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a * b&#125;;</div><div class="line"><span class="keyword">var</span> z = x(<span class="number">4</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过函数构造器定义</span></div><div class="line"><span class="keyword">var</span> myFunction = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a * b&#125;</div><div class="line"><span class="keyword">var</span> x = myFunction(<span class="number">4</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a * b;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 作为一个值使用</span></div><div class="line"><span class="keyword">var</span> x = myFunction(<span class="number">4</span>, <span class="number">3</span>);</div><div class="line"><span class="comment">// 作为表达式使用</span></div><div class="line"><span class="keyword">var</span> x = myFunction(<span class="number">4</span>, <span class="number">3</span>) * <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>JavaScript 函数有个内置的对象 arguments 对象。argument 对象包含了函数调用的参数数组。</p>
+</blockquote>
+<h4 id="JavaScript-函数调用的四种方式："><a href="#JavaScript-函数调用的四种方式：" class="headerlink" title="JavaScript 函数调用的四种方式："></a>JavaScript 函数调用的四种方式：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 作为一个函数调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a * b;</div><div class="line">&#125;</div><div class="line">myFunction(<span class="number">10</span>, <span class="number">2</span>); </div><div class="line"></div><div class="line"><span class="comment">// 作为对象的方法调用</span></div><div class="line"><span class="keyword">var</span> myObject = &#123; <span class="attr">firstName</span>:<span class="string">"John"</span>, <span class="attr">lastName</span>: <span class="string">"Doe"</span>, <span class="attr">fullName</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="string">" "</span> + <span class="keyword">this</span>.lastName;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">myObject.fullName(); </div><div class="line"></div><div class="line"><span class="comment">// 使用构造函数调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.firstName = arg1;</div><div class="line">    <span class="keyword">this</span>.lastName  = arg2;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> myFunction(<span class="string">"John"</span>,<span class="string">"Doe"</span>);</div><div class="line">x.firstName;     </div><div class="line"></div><div class="line"><span class="comment">// 作为函数的方法调用函数，call() 和 apply() 是预定义的函数方法。 两个方法可用于调用函数，两个方法的第一个参数必须是对象本身</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a * b;</div><div class="line">&#125;</div><div class="line">myObject = myFunction.call(myObject, <span class="number">10</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure>
+<h3 id="2-JavaScript-HTML-DOM"><a href="#2-JavaScript-HTML-DOM" class="headerlink" title="2. JavaScript HTML DOM"></a>2. JavaScript HTML DOM</h3><p>当网页被加载时，浏览器会创建页面的文档对象模型（Document Object Model）。通过 HTML DOM，可访问 JavaScript HTML 文档的所有元素。</p>
+<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20171214_1.png" alt="Snip20171214_1"><br>通过可编程的对象模型，JavaScript 获得了足够的能力来创建动态的 HTML。</p>
+<ul>
+<li>JavaScript 能够改变页面中的所有 HTML 元素</li>
+<li>JavaScript 能够改变页面中的所有 HTML 属性</li>
+<li>JavaScript 能够改变页面中的所有 CSS 样式</li>
+<li>JavaScript 能够对页面中的所有事件做出反应</li>
+</ul>
+<h4 id="查找-HTML-元素"><a href="#查找-HTML-元素" class="headerlink" title="查找 HTML 元素"></a>查找 HTML 元素</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过 id 查找 HTML 元素</span></div><div class="line"><span class="keyword">var</span> x=<span class="built_in">document</span>.getElementById(<span class="string">"intro"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过标签名查找 HTML 元素</span></div><div class="line"><span class="keyword">var</span> x=<span class="built_in">document</span>.getElementById(<span class="string">"main"</span>);</div><div class="line"><span class="keyword">var</span> y=x.getElementsByTagName(<span class="string">"p"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过类名查找 HTML 元素</span></div><div class="line"><span class="keyword">var</span> x=<span class="built_in">document</span>.getElementsByClassName(<span class="string">"intro"</span>);</div></pre></td></tr></table></figure>
+<h4 id="DOM-改变-HTML"><a href="#DOM-改变-HTML" class="headerlink" title="DOM - 改变 HTML"></a>DOM - 改变 HTML</h4><p><strong>改变 HTML 输出流：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 HTML DOM 获得 id = "header" 的元素</span></div><div class="line"><span class="keyword">var</span> element=<span class="built_in">document</span>.getElementById(<span class="string">"header"</span>);</div><div class="line"><span class="comment">// 更改此元素的内容 (innerHTML)</span></div><div class="line">element.innerHTML=<span class="string">"新标题"</span>;</div></pre></td></tr></table></figure>
+<p><strong>改变 HTML 属性：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 HTML DOM 来获得 id="image" 的元素</span></div><div class="line"><span class="comment">// 更改此元素的属性（把 "smiley.gif" 改为 "landscape.jpg"）</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"image"</span>).src=<span class="string">"landscape.jpg"</span>;</div></pre></td></tr></table></figure>
+<p><strong>改变 HTML 样式：</strong></p>
+<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20171214_3.png" alt="Snip20171214_3"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"p2"</span>).style.color=<span class="string">"blue"</span>;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"p2"</span>).style.fontFamily=<span class="string">"Arial"</span>;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"p2"</span>).style.fontSize=<span class="string">"larger"</span>;</div></pre></td></tr></table></figure>
+<h4 id="DOM-事件"><a href="#DOM-事件" class="headerlink" title="DOM 事件"></a>DOM 事件</h4><p>我们可以在事件发生时执行 JavaScript，比如当用户在 HTML 元素上点击时。</p>
+<p>如需在用户点击某个元素时执行代码，请向一个 HTML 事件属性添加 JavaScript 代码：</p>
+<ul>
+<li>当用户点击鼠标时</li>
+<li>当网页已加载时</li>
+<li>当图像已加载时</li>
+<li>当鼠标移动到元素上时</li>
+<li>当输入字段被改变时</li>
+<li>当提交 HTML 表单时</li>
+<li>当用户触发按键时</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changetext</span>(<span class="params">id</span>) </span>&#123;</div><div class="line">	id.innerHTML=<span class="string">"Ooops!"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用 DOM 分配事件</span></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;displayDate()&#125;;</div><div class="line"></div><div class="line"><span class="comment">// onload 和 onunload 事件会在用户进入或离开页面时被触发。</span></div><div class="line"><span class="comment">// onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。</span></div><div class="line"><span class="comment">// onload 和 onunload 事件可用于处理 cookie。</span></div><div class="line">&lt;body onload=<span class="string">"checkCookies()"</span>&gt;</div><div class="line"></div><div class="line"><span class="comment">// onchange 事件常结合对输入字段的验证来使用。</span></div><div class="line"><span class="comment">// 下面是一个如何使用 onchange 的例子。当用户改变输入字段的内容时，会调用 upperCase() 函数。</span></div><div class="line">&lt;input type=<span class="string">"text"</span> id=<span class="string">"fname"</span> onchange=<span class="string">"upperCase()"</span>&gt;</div><div class="line"></div><div class="line"><span class="comment">// onmouseover 和 onmouseout 事件可用于在用户的鼠标移至 HTML 元素上方或移出元素时触发函数。</span></div><div class="line">onmouseover=<span class="string">"mOver(this)"</span> onmouseout=<span class="string">"mOut(this)"</span> style=<span class="string">"background-color:#D94A38;width:120px;height:20px;padding:40px;"</span>&gt;Mouse Over Me</div></pre></td></tr></table></figure>
+<h4 id="DOM-EventListener"><a href="#DOM-EventListener" class="headerlink" title="DOM EventListener"></a>DOM EventListener</h4><p>addEventListener( ) 方法用于向指定元素添加事件句柄。addEventListener( ) 方法添加的事件句柄不会覆盖已存在的事件句柄。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>).addEventListener(<span class="string">"click"</span>, myFunction);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert (<span class="string">"Hello World!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以向一个元素添加多个事件句柄。你可以向同个元素添加多个同类型的事件句柄，如：两个 “click” 事件。你可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同个元素多个同类型事件</span></div><div class="line"><span class="keyword">var</span> x = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">x.addEventListener(<span class="string">"click"</span>, myFunction);</div><div class="line">x.addEventListener(<span class="string">"click"</span>, someOtherFunction);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert (<span class="string">"Hello World!"</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">someOtherFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert (<span class="string">"函数已执行!"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 同个元素多个不同类型事件</span></div><div class="line"><span class="keyword">var</span> x = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">x.addEventListener(<span class="string">"mouseover"</span>, myFunction);</div><div class="line">x.addEventListener(<span class="string">"click"</span>, mySecondFunction);</div><div class="line">x.addEventListener(<span class="string">"mouseout"</span>, myThirdFunction);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML += <span class="string">"Moused over!&lt;br&gt;"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mySecondFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML += <span class="string">"Clicked!&lt;br&gt;"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myThirdFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML += <span class="string">"Moused out!&lt;br&gt;"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当你使用 addEventListener( ) 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。</p>
+<p>你可以使用 removeEventListener( ) 方法来移除事件的监听。</p>
+<h3 id="3-Java-浏览器-BOM"><a href="#3-Java-浏览器-BOM" class="headerlink" title="3. Java 浏览器 BOM"></a>3. Java 浏览器 BOM</h3><p>浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器”对话”。</p>
+<h4 id="Window-尺寸"><a href="#Window-尺寸" class="headerlink" title="Window 尺寸"></a>Window 尺寸</h4><p>有三种方法能够确定浏览器窗口的尺寸。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：</span></div><div class="line"><span class="built_in">window</span>.innerHeight;</div><div class="line"><span class="built_in">window</span>.innerWidth;</div><div class="line"></div><div class="line"><span class="comment">// 对于 Internet Explorer 8、7、6、5：</span></div><div class="line"><span class="built_in">document</span>.documentElement.clientHeight;</div><div class="line"><span class="built_in">document</span>.documentElement.clientWidth;</div><div class="line"></div><div class="line"><span class="comment">// 其他</span></div><div class="line"><span class="built_in">document</span>.body.clientHeight;</div><div class="line"><span class="built_in">document</span>.body.clientWidth;</div><div class="line"></div><div class="line"><span class="comment">// 实例</span></div><div class="line"><span class="keyword">var</span> w=<span class="built_in">window</span>.innerWidth</div><div class="line">|| <span class="built_in">document</span>.documentElement.clientWidth</div><div class="line">|| <span class="built_in">document</span>.body.clientWidth;</div><div class="line"><span class="keyword">var</span> h=<span class="built_in">window</span>.innerHeight</div><div class="line">|| <span class="built_in">document</span>.documentElement.clientHeight</div><div class="line">|| <span class="built_in">document</span>.body.clientHeight;</div><div class="line">x=<span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>);</div><div class="line">x.innerHTML=<span class="string">"浏览器window宽度: "</span> + w + <span class="string">", 高度: "</span> + h + <span class="string">"。"</span></div></pre></td></tr></table></figure>
+<h4 id="Window-Screen"><a href="#Window-Screen" class="headerlink" title="Window Screen"></a>Window Screen</h4><p>window.screen 对象包含有关用户屏幕的信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(screen.width + <span class="string">"*"</span> + screen.height);</div><div class="line"><span class="built_in">document</span>.write(screen.availWidth + <span class="string">"*"</span> + screen.availHeight);</div><div class="line"><span class="built_in">document</span>.write(screen.colorDepth);</div><div class="line"><span class="built_in">document</span>.write(screen.pixelDepth);</div></pre></td></tr></table></figure>
+<h4 id="Window-Location"><a href="#Window-Location" class="headerlink" title="Window Location"></a>Window Location</h4><p>window.location 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。</p>
+<ul>
+<li>location.hostname 返回 web 主机的域名</li>
+<li>location.pathname 返回当前页面的路径和文件名</li>
+<li>location.port 返回 web 主机的端口 （80 或 443）</li>
+<li>location.protocol 返回所使用的 web 协议（http:// 或 https://）</li>
+<li>location.href 属性返回当前页面的 URL。</li>
+</ul>
+<h4 id="Window-History"><a href="#Window-History" class="headerlink" title="Window History"></a>Window History</h4><p>window.history 对象包含浏览器的历史。window.history对象在编写时可不使用 window 这个前缀。</p>
+<p>为了保护用户隐私，对 JavaScript 访问该对象的方法做出了限制。</p>
+<p>history.back( ) - 与在浏览器点击后退按钮相同<br>history.forward( ) - 与在浏览器中点击向前按钮相同</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">goBack</span>(<span class="params"></span>) </span>&#123; <span class="built_in">window</span>.history.back() &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Back"</span> <span class="attr">onclick</span>=<span class="string">"goBack()"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="Window-Navigator"><a href="#Window-Navigator" class="headerlink" title="Window Navigator"></a>Window Navigator</h4><p>window.navigator 对象包含有关访问者浏览器的信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"example"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line">txt = <span class="string">"&lt;p&gt;浏览器代号: "</span> + navigator.appCodeName + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;浏览器名称: "</span> + navigator.appName + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;浏览器版本: "</span> + navigator.appVersion + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;启用Cookies: "</span> + navigator.cookieEnabled + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;硬件平台: "</span> + navigator.platform + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;用户代理: "</span> + navigator.userAgent + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line">txt+= <span class="string">"&lt;p&gt;用户代理语言: "</span> + navigator.systemLanguage + <span class="string">"&lt;/p&gt;"</span>;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"example"</span>).innerHTML=txt;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="JavaScript-弹窗"><a href="#JavaScript-弹窗" class="headerlink" title="JavaScript 弹窗"></a>JavaScript 弹窗</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 确认框 confirm()</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> x;</div><div class="line">	<span class="keyword">var</span> r=confirm(<span class="string">"按下按钮!"</span>);</div><div class="line">	<span class="keyword">if</span> (r==<span class="literal">true</span>)&#123; x=<span class="string">"你按下了\"确定\"按钮!"</span>;</div><div class="line">	&#125; <span class="keyword">else</span> &#123; x=<span class="string">"你按下了\"取消\"按钮!"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 提示输入框 prompt()</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> x;</div><div class="line">	<span class="keyword">var</span> person=prompt(<span class="string">"请输入你的名字"</span>,<span class="string">"Harry Potter"</span>);</div><div class="line">	<span class="keyword">if</span> (person!=<span class="literal">null</span> &amp;&amp; person!=<span class="string">""</span>)&#123;</div><div class="line">	    x=<span class="string">"你好 "</span> + person + <span class="string">"! 今天感觉如何?"</span>;</div><div class="line">	    <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML=x;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="JavaScript-Cookie"><a href="#JavaScript-Cookie" class="headerlink" title="JavaScript Cookie"></a>JavaScript Cookie</h4><p>Cookie 用于存储 web 页面的用户信息。Cookie 是一些数据, 存储于你电脑上的文本文件中。</p>
+<p>当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。</p>
+<p>Cookie 的作用就是用于解决 “如何记录客户端的用户信息”:</p>
+<p>当用户访问 web 页面时，他的名字可以记录在 cookie 中。<br>在用户下一次访问该页面时，可以在 cookie 中读取用户访问记录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">cname,cvalue,exdays</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    d.setTime(d.getTime()+(exdays*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>));</div><div class="line">    <span class="keyword">var</span> expires = <span class="string">"expires="</span>+d.toGMTString();</div><div class="line">    <span class="built_in">document</span>.cookie = cname+<span class="string">"="</span>+cvalue+<span class="string">"; "</span>+expires;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">cname</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> name = cname + <span class="string">"="</span>;</div><div class="line">    <span class="keyword">var</span> ca = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;ca.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> c = ca[i].trim();</div><div class="line">        <span class="keyword">if</span> (c.indexOf(name)==<span class="number">0</span>) <span class="keyword">return</span> c.substring(name.length,c.length);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkCookie</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> user=getCookie(<span class="string">"username"</span>);</div><div class="line">    <span class="keyword">if</span> (user!=<span class="string">""</span>)&#123;</div><div class="line">        alert(<span class="string">"Welcome again "</span> + user);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        user = prompt(<span class="string">"Please enter your name:"</span>,<span class="string">""</span>);</div><div class="line">        <span class="keyword">if</span> (user!=<span class="string">""</span> &amp;&amp; user!=<span class="literal">null</span>)&#123;</div><div class="line">            setCookie(<span class="string">"username"</span>,user,<span class="number">30</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束 <i class="fa fa-github-alt"></i> 感谢阅读------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="鹊桥仙仙 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信公众号：无伴奏第三奏鸣曲</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请简单粗暴地爱我。</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="鹊桥仙仙 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="鹊桥仙仙 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    鹊桥仙仙
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/" title="">http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/13/JavaScript-Tutorial/" rel="next" title="JavaScript 基础">
+                <i class="fa fa-chevron-left"></i> JavaScript 基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="hypercomments_widget"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鹊桥仙仙</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">迄今写了多少字&#58;</span>
+    
+    <span title="迄今写了多少字">17.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="copyright">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="powered-by">
+      <i class="fa fa-hand-peace-o"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人来过
+    </span>
+  
+
+  
+    <span class="theme-info">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次浏览
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 96899, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 96899, xid: "2017/12/14/JavaScript-Function-DOM-BOM/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/96899/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
