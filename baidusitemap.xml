@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://shuwuai.cc/2018/01/05/Simple-Shopping-Cart-using-Sessions/</loc>
+    <lastmod>2018-01-05T14:58:10.776Z</lastmod>
+    <data>
+        <display>
+        <title>Simple Shopping Cart using Sessions</title>
+        <pubTime>2018-01-05T14:55:55.000Z</pubTime>
+        
+        <tag>JavaWeb</tag>
+         
+         
+           
+             
+              <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://shuwuai.cc/2017/12/17/HTTP-Textbook-Part1/</loc>
     <lastmod>2017-12-17T13:00:55.862Z</lastmod>
     <data>
@@ -11,9 +31,9 @@
         <title>HTTP の教科書 Part I</title>
         <pubTime>2017-12-17T12:50:38.000Z</pubTime>
         
-        <tag>HTTP</tag>
-         
         <tag>JavaWeb</tag>
+         
+        <tag>HTTP</tag>
          
          
            
@@ -33,9 +53,9 @@
         <title>JavaScript 函数 DOM BOM</title>
         <pubTime>2017-12-14T09:17:09.000Z</pubTime>
         
-        <tag>JavaWeb</tag>
-         
         <tag>前端</tag>
+         
+        <tag>JavaWeb</tag>
          
         <tag>JavaScript</tag>
          
@@ -57,9 +77,9 @@
         <title>JavaScript 基础</title>
         <pubTime>2017-12-13T14:30:43.000Z</pubTime>
         
-        <tag>JavaWeb</tag>
-         
         <tag>前端</tag>
+         
+        <tag>JavaWeb</tag>
          
         <tag>JavaScript</tag>
          
@@ -81,9 +101,9 @@
         <title>Head First HTML & CSS</title>
         <pubTime>2017-12-13T07:04:35.000Z</pubTime>
         
-        <tag>JavaWeb</tag>
-         
         <tag>前端</tag>
+         
+        <tag>JavaWeb</tag>
          
         <tag>CSS</tag>
          
