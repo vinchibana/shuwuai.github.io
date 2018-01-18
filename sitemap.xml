@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://shuwuai.cc/2017/12/06/Think-Different/</loc>
+    
+    <lastmod>2018-01-18T07:30:01.170Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://shuwuai.cc/2018/01/18/Git-Introduction/</loc>
     
     <lastmod>2018-01-18T07:23:13.019Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://shuwuai.cc/2017/11/09/Static-in-Java/</loc>
     
     <lastmod>2017-12-06T14:41:14.059Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://shuwuai.cc/2017/12/06/Think-Different/</loc>
-    
-    <lastmod>2017-12-06T14:18:51.919Z</lastmod>
     
   </url>
   
