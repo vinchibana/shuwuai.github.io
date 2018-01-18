@@ -75,13 +75,13 @@
 
 
 
-<meta name="description" content="Git 入门Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。 首先，Git 的数据库分为远端数据库和本地端数据库。  远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。 本地端数据库：为了方便用户个人使用，在自己的机器上配置的数据库。  可以在本地端数据库上使用像是还原更改">
+<meta name="description" content="git 是用于 Linux 内核开发的版本控制工具。与 CVS、Subversion 一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git 的速度很快，这对于诸如 Linux 内核这样的大项目来说自然很重要。git 最为出色的是它的合并追踪（merge tracing）能力。">
 <meta name="keywords" content="Git,版本控制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Introduction">
 <meta property="og:url" content="http://shuwuai.cc/2018/01/18/Git-Introduction/index.html">
 <meta property="og:site_name" content="博物志">
-<meta property="og:description" content="Git 入门Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。 首先，Git 的数据库分为远端数据库和本地端数据库。  远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。 本地端数据库：为了方便用户个人使用，在自己的机器上配置的数据库。  可以在本地端数据库上使用像是还原更改">
+<meta property="og:description" content="git 是用于 Linux 内核开发的版本控制工具。与 CVS、Subversion 一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git 的速度很快，这对于诸如 Linux 内核这样的大项目来说自然很重要。git 最为出色的是它的合并追踪（merge tracing）能力。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/gswg-git-solid-choice.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_1.png">
@@ -92,10 +92,10 @@
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_5.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_7.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_8.png">
-<meta property="og:updated_time" content="2018-01-18T05:47:30.574Z">
+<meta property="og:updated_time" content="2018-01-18T07:23:13.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Introduction">
-<meta name="twitter:description" content="Git 入门Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。 首先，Git 的数据库分为远端数据库和本地端数据库。  远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。 本地端数据库：为了方便用户个人使用，在自己的机器上配置的数据库。  可以在本地端数据库上使用像是还原更改">
+<meta name="twitter:description" content="git 是用于 Linux 内核开发的版本控制工具。与 CVS、Subversion 一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git 的速度很快，这对于诸如 Linux 内核这样的大项目来说自然很重要。git 最为出色的是它的合并追踪（merge tracing）能力。">
 <meta name="twitter:image" content="http://oxgw3nd2b.bkt.clouddn.com/gswg-git-solid-choice.png">
 
 
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,083 字
+                  1,204 字
                 </span>
               
 
@@ -428,7 +428,9 @@
 
       
         <p><img src="http://oxgw3nd2b.bkt.clouddn.com/gswg-git-solid-choice.png" alt="gswg-git-solid-choice"></p>
-<h1 id="Git-入门"><a href="#Git-入门" class="headerlink" title="Git 入门"></a>Git 入门</h1><p>Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。</p>
+<p>git 是用于 Linux 内核开发的版本控制工具。与 CVS、Subversion 一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git 的速度很快，这对于诸如 Linux 内核这样的大项目来说自然很重要。git 最为出色的是它的合并追踪（merge tracing）能力。</p>
+<a id="more"></a>
+<h3 id="Rpository"><a href="#Rpository" class="headerlink" title="Rpository"></a>Rpository</h3><p>Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。</p>
 <p>首先，Git 的数据库分为远端数据库和本地端数据库。</p>
 <ul>
 <li>远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。</li>
@@ -632,7 +634,7 @@
     
       <span class="post-meta-item-text">迄今写了多少字&#58;</span>
     
-    <span title="迄今写了多少字">20.9k</span>
+    <span title="迄今写了多少字">21.1k</span>
   
 </div>
 

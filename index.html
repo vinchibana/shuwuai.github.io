@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,083 字
+                  1,204 字
                 </span>
               
 
@@ -414,44 +414,15 @@
 
       
         
-          
-            <p><img src="http://oxgw3nd2b.bkt.clouddn.com/gswg-git-solid-choice.png" alt="gswg-git-solid-choice"></p>
-<h1 id="Git-入门"><a href="#Git-入门" class="headerlink" title="Git 入门"></a>Git 入门</h1><p>Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。</p>
-<p>首先，Git 的数据库分为远端数据库和本地端数据库。</p>
-<ul>
-<li>远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。</li>
-<li>本地端数据库：为了方便用户个人使用，在自己的机器上配置的数据库。</li>
-</ul>
-<p>可以在本地端数据库上使用像是还原更改、跟踪更改等所有 Git 版本控制功能。不过，如果想要公开在本地端数据库的修改内容，就需要将内容上传到远端数据库了。另外，透过远端数据库还可以取得其他人修改的内容。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_1.png" alt="Snip20180118_1"></p>
-<h3 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h3><p>建立本地数据库的方法有两种：一种是重建新数据库，另一种是复制远端数据库。</p>
-<h3 id="记录修改的提交"><a href="#记录修改的提交" class="headerlink" title="记录修改的提交"></a>记录修改的提交</h3><p>把变更与新增的档案/目录储存到数据库中，需要执行 Commit，执行提交后，数据库会产生上次提交的状态与现在状态的差异记录，也被称为 Revision</p>
-<p>工作目录（ Working Tree）是保存您目前正在处理档桉的目录，Git 相关的操作都会在这个目录下完成。</p>
-<p>索引 ( Index )位于工作目录和数据库之间，是为了向数据库提交作准备的暂存区域。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_2.png" alt="Snip20180118_2"></p>
-<h3 id="工作目录与索引"><a href="#工作目录与索引" class="headerlink" title="工作目录与索引"></a>工作目录与索引</h3><p>所以在工作目录上做的任何变更并不会直接提交到数据库的。Git 在执行提交的时候，不是直接将工作目录的状态储存到数据库，而是将索引的状态储存到数据库。因此，要提交变更，首先必需要把变更内容加入到索引中。</p>
-<p>索引的存在可以排除工作目录里不必要的档案提交，还可以只将档案变更内容的一部分加入索引并提交。</p>
-<h4 id="Push-推送"><a href="#Push-推送" class="headerlink" title="Push (推送)"></a>Push (推送)</h4><p><img src="http://oxgw3nd2b.bkt.clouddn.com/pull push.png" alt="pull push"></p>
-<p>为了将本地端数据库的修改历史共享到远程数据库，必须上​​传本地端数据库中储存的修改历史。</p>
-<p>为此，需要在 Git 执行 Push (推送) 操作。执行 Push 之后，本地端的修改历史会被上传到远端数据库。远端数据库的修改历史就会和本地端数据库的修改历史保持同步。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_3.png" alt="Snip20180118_3"></p>
-<p>若是共享的远端数据库由多人同时作业，那么作业完毕后所有人都会把修改历史 push 到远端数据库。所以需要同步其他人 push 的修改内容到自己的本地端数据库。</p>
-<h4 id="Pull-拉取"><a href="#Pull-拉取" class="headerlink" title="Pull (拉取)"></a>Pull (拉取)</h4><p>欲同步远端数据库以更新本地端数据库，请使用 Pull(拉取)。</p>
-<p>执行 pull 之后，会从远端数据库下载最新的修改历史，将其同步到自己的本地端数据库。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_4.png" alt="Snip20180118_4"></p>
-<ul>
-<li>origin/master：代表远端数据库「origin」的「master」分支位置。</li>
-<li>origin/HEAD：代表远端数据库「origin」当前提交的位置。通常和「origin/master」的位置相同。</li>
-<li>master：代表本地端数据库的「master」分支位置。</li>
-</ul>
-<p>上次的 push 到执行下一次的 push 的期间，如果有其他人 push 更新了远端数据库，而你没有更新本地端数据库，那么你的 push 会被拒绝。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_5.png" alt="Snip20180118_5"></p>
-<p>为了能支援同时进行数个功能的增加或版本控制，Git 具备了分支的功能。分支是为了将修改记录的整体流程分开储存，让分开的分支不受其他分支的影响，所以在同一个数据库裡可以同时进行多个不同的修改。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_7.png" alt="Snip20180118_7"></p>
-<p>为了让群组的成员不受其他成员的影响，可以在主要分支建立自己专用的分支。完成作业的成员们，将自己分支的修改导入到主要分支，这样大家都可以不受其他成员的影响，导入自己的修改内容。而且每个提交的历史记录都会被储存，当发生问题时，可以更容易找到发生问题的地方。</p>
-<p><img src="http://oxgw3nd2b.bkt.clouddn.com/Snip20180118_8.png" alt="Snip20180118_8"></p>
-
-          
+          <p><img src="http://oxgw3nd2b.bkt.clouddn.com/gswg-git-solid-choice.png" alt="gswg-git-solid-choice"></p>
+<p>git 是用于 Linux 内核开发的版本控制工具。与 CVS、Subversion 一类的集中式版本控制工具不同，它采用了分布式版本库的作法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。git 的速度很快，这对于诸如 Linux 内核这样的大项目来说自然很重要。git 最为出色的是它的合并追踪（merge tracing）能力。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/18/Git-Introduction/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2326,7 +2297,7 @@
     
       <span class="post-meta-item-text">迄今写了多少字&#58;</span>
     
-    <span title="迄今写了多少字">20.9k</span>
+    <span title="迄今写了多少字">21.1k</span>
   
 </div>
 
