@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git Introduction]]></title>
+    <url>%2F2018%2F01%2F18%2FGit-Introduction%2F</url>
+    <content type="text"><![CDATA[Git 入门Repository 是记录档案或目录状态的地方，储存内容的修改历史记录。在 Repository 的管理下除了储存修改历史记录之外，还可以追踪内容的状态和版本。 首先，Git 的数据库分为远端数据库和本地端数据库。 远端数据库：配有专用的伺服器，为了让多人共享而建立的数据库。 本地端数据库：为了方便用户个人使用，在自己的机器上配置的数据库。 可以在本地端数据库上使用像是还原更改、跟踪更改等所有 Git 版本控制功能。不过，如果想要公开在本地端数据库的修改内容，就需要将内容上传到远端数据库了。另外，透过远端数据库还可以取得其他人修改的内容。 建立数据库建立本地数据库的方法有两种：一种是重建新数据库，另一种是复制远端数据库。 记录修改的提交把变更与新增的档案/目录储存到数据库中，需要执行 Commit，执行提交后，数据库会产生上次提交的状态与现在状态的差异记录，也被称为 Revision 工作目录（ Working Tree）是保存您目前正在处理档桉的目录，Git 相关的操作都会在这个目录下完成。 索引 ( Index )位于工作目录和数据库之间，是为了向数据库提交作准备的暂存区域。 工作目录与索引所以在工作目录上做的任何变更并不会直接提交到数据库的。Git 在执行提交的时候，不是直接将工作目录的状态储存到数据库，而是将索引的状态储存到数据库。因此，要提交变更，首先必需要把变更内容加入到索引中。 索引的存在可以排除工作目录里不必要的档案提交，还可以只将档案变更内容的一部分加入索引并提交。 Push (推送) 为了将本地端数据库的修改历史共享到远程数据库，必须上​​传本地端数据库中储存的修改历史。 为此，需要在 Git 执行 Push (推送) 操作。执行 Push 之后，本地端的修改历史会被上传到远端数据库。远端数据库的修改历史就会和本地端数据库的修改历史保持同步。 若是共享的远端数据库由多人同时作业，那么作业完毕后所有人都会把修改历史 push 到远端数据库。所以需要同步其他人 push 的修改内容到自己的本地端数据库。 Pull (拉取)欲同步远端数据库以更新本地端数据库，请使用 Pull(拉取)。 执行 pull 之后，会从远端数据库下载最新的修改历史，将其同步到自己的本地端数据库。 origin/master：代表远端数据库「origin」的「master」分支位置。 origin/HEAD：代表远端数据库「origin」当前提交的位置。通常和「origin/master」的位置相同。 master：代表本地端数据库的「master」分支位置。 上次的 push 到执行下一次的 push 的期间，如果有其他人 push 更新了远端数据库，而你没有更新本地端数据库，那么你的 push 会被拒绝。 为了能支援同时进行数个功能的增加或版本控制，Git 具备了分支的功能。分支是为了将修改记录的整体流程分开储存，让分开的分支不受其他分支的影响，所以在同一个数据库裡可以同时进行多个不同的修改。 为了让群组的成员不受其他成员的影响，可以在主要分支建立自己专用的分支。完成作业的成员们，将自己分支的修改导入到主要分支，这样大家都可以不受其他成员的影响，导入自己的修改内容。而且每个提交的历史记录都会被储存，当发生问题时，可以更容易找到发生问题的地方。]]></content>
+      <categories>
+        <category>Coding</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Simple Shopping Cart using Sessions]]></title>
     <url>%2F2018%2F01%2F05%2FSimple-Shopping-Cart-using-Sessions%2F</url>
     <content type="text"><![CDATA[会话用于维持请求和请求之间的状态。HTTP 请求自身是完全无状态的。从服务器的角度来说，当月户的 Web 浏览器打开第一个连接到服务器的套接字时请求就开始了，直到服务器返回最后一个数据包并关闭连接时，该请求将结束。此时，在用户的浏览器和服务器之间不再有任何联系，当下个连接开始时，无法将新的请求与之前的请求关联起来。]]></content>
@@ -19,8 +31,8 @@
         <category>Coding</category>
       </categories>
       <tags>
-        <tag>JavaWeb</tag>
         <tag>HTTP</tag>
+        <tag>JavaWeb</tag>
       </tags>
   </entry>
   <entry>
@@ -31,8 +43,8 @@
         <category>Coding</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>JavaWeb</tag>
+        <tag>前端</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -44,8 +56,8 @@
         <category>Coding</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>JavaWeb</tag>
+        <tag>前端</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -57,8 +69,8 @@
         <category>Coding</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>JavaWeb</tag>
+        <tag>前端</tag>
         <tag>CSS</tag>
         <tag>HTML</tag>
       </tags>
@@ -66,7 +78,7 @@
   <entry>
     <title><![CDATA[MySQL 必知必会 Part II]]></title>
     <url>%2F2017%2F12%2F07%2FMySQL-Crash-Course-Part-II%2F</url>
-    <content type="text"><![CDATA[1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 · 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL) 由于上述语法高度依赖于表中列的定义次序，因此并不保证下一次表结构变动后各个列保持完全相同的次序，并不安全。更安全但繁琐的方法如下，即给定对应的列名INSERT INTO customers(cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES(&#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL); 给定列名时，如果表的定义允许，可以在 INSERT 语句中省略某些列，如果该列定义允许 NULL 值或该列有默认值；如果不满足以上条件，插入不成功。 提高整体性能 数据库经常被多个客户端访问，对处理什么请求以及用什么次序处理进行管理是 MySQL 的任务，INSERT 操作可能很耗时，而且可能降低等待处理的 SELECT 语句的性能，因此可以在 INSERT 和 INTO 之间插入关键字LOW_PRIORITY · 插入多行使用多条 INSERT 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 INSERT 语句处理多个插入比使用多条语句快。INSERT INTO customers( ) VALUES ( ), ( ), ( ); · 插入检索出来的数据由一条 SELECT 语句和一条 INSERT 语句组成INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew; INSERT SELECT 中 SELECT 语句也可以包含 WHERE 子句以过滤插入的数据 2. 更新和删除数据####· 更新和修改表中的数据，可使用 UPDATE 语句可更新表中特定行或所有行。UPDATE 语句由 要更新的表、列名和它们的新值、确定要更新行的过滤条件 三部分组成。 Ex. 客户 10005 有了新的邮件地址需要更新：UPDATE customers SET cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; WHERE 语句作为结束，告诉 MySQL 更新哪一行 ####· 更新多个列的语法稍有不同UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; 如果用 UPDATE 语句更新多行中一行出现错误，整个 UPDATE 操作会被取消，可以用 IGNORE 关键字来在发生错误时继续更新 · 删除数据从表中删除一行或多行DELETE FROM customers WHERE cust_id = 10006; DELETE 不需要列名或通配符，因为其删除整行而不是整列，删除指定的整列需要使用 UPDATE 语句将该列设为 NULL UPDATE customers SET cust_state = NULL; 如果想从表中删除所有行，不要使用 DELETE 语句而要使用 TRUNCATE TABLE 语句，它完成相同的工作而且更快，实际上是删除原来的表并重建一个同名新表 3. 创建和操纵表####· 用 CREATE TABLE 语句创建新表 必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等 新表无法覆盖原来存在的同名表，必须手动删除它才能创建新表 正如所述，主键值必须唯一。即表中的每个行必须具有唯一的主键值。如果主键使用单个列，则它的值必须唯一。如果使用多个列，则这些列的组合值必须唯一。 ####· 使用 AUTO_INCREMENT每个表只允许一个 AUTO_INCREMENT 列，而且它必须被索引（比如使它成为主键）。SELECT last_insert_id( ) 函数返回最后一个AUTO INCREMENT 值，可以用于后续的 MySQL语句。 ####· 更新表更新表定义可使用 ALTER TABLE 语句，但理想状态下，表中存储数据之后就不应该再被更新。 给表添加一个列：ALTER TABLE vendors ADD vend_phone CHAR(20); 删除刚刚添加的列：ALTER TABLE vendors DROP COLOMN vend_phone; ####· 删除表 DROP TABLE customers; ####· 重命名表 RENAME TABLE customers2 TO customers; 4. 视图视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。 ####· 视图的规则和限制 与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。对于可以创建的视图数目没有限制。为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。ORDER BY 可以用在视图中，但如果从该视图检索数据 SELECT 中也含有 ORDER BY，那么该视图中的 ORDER BY 将被覆盖。视图不能索引，也不能有关联的触发器或默认值。视图可以和表一起使用。例如，编写一条联结表和视图的 SELECT 语句。 ####· 利用视图简化复杂联结 CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num; 从视图中检索订购了 TNT2 的客户： ####· 用视图过滤不想要的数据CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL; End Of Part II]]></content>
+    <content type="text"><![CDATA[1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL) 由于上述语法高度依赖于表中列的定义次序，因此并不保证下一次表结构变动后各个列保持完全相同的次序，并不安全。更安全但繁琐的方法如下，即给定对应的列名INSERT INTO customers(cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES(&#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL); 给定列名时，如果表的定义允许，可以在 INSERT 语句中省略某些列，如果该列定义允许 NULL 值或该列有默认值；如果不满足以上条件，插入不成功。 提高整体性能 数据库经常被多个客户端访问，对处理什么请求以及用什么次序处理进行管理是 MySQL 的任务，INSERT 操作可能很耗时，而且可能降低等待处理的 SELECT 语句的性能，因此可以在 INSERT 和 INTO 之间插入关键字LOW_PRIORITY 插入多行使用多条 INSERT 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 INSERT 语句处理多个插入比使用多条语句快。INSERT INTO customers( ) VALUES ( ), ( ), ( ); 插入检索出来的数据由一条 SELECT 语句和一条 INSERT 语句组成INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew; INSERT SELECT 中 SELECT 语句也可以包含 WHERE 子句以过滤插入的数据 2. 更新和删除数据更新和修改表中的数据，可使用 UPDATE 语句更新表中特定行或所有行。UPDATE 语句由 要更新的表、列名和它们的新值、确定要更新行的过滤条件 三部分组成。 Ex. 客户 10005 有了新的邮件地址需要更新：UPDATE customers SET cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; WHERE 语句作为结束，告诉 MySQL 更新哪一行 更新多个列的语法稍有不同UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005; 如果用 UPDATE 语句更新多行中一行出现错误，整个 UPDATE 操作会被取消，可以用 IGNORE 关键字来在发生错误时继续更新 删除数据从表中删除一行或多行DELETE FROM customers WHERE cust_id = 10006; DELETE 不需要列名或通配符，因为其删除整行而不是整列，删除指定的整列需要使用 UPDATE 语句将该列设为 NULL UPDATE customers SET cust_state = NULL; 如果想从表中删除所有行，不要使用 DELETE 语句而要使用 TRUNCATE TABLE 语句，它完成相同的工作而且更快，实际上是删除原来的表并重建一个同名新表 3. 创建和操纵表用 CREATE TABLE 语句创建新表必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等 新表无法覆盖原来存在的同名表，必须手动删除它才能创建新表 正如所述，主键值必须唯一。即表中的每个行必须具有唯一的主键值。如果主键使用单个列，则它的值必须唯一。如果使用多个列，则这些列的组合值必须唯一。 使用 AUTO_INCREMENT每个表只允许一个 AUTO_INCREMENT 列，而且它必须被索引（比如使它成为主键）。SELECT last_insert_id( ) 函数返回最后一个AUTO INCREMENT 值，可以用于后续的 MySQL语句。 更新表更新表定义可使用 ALTER TABLE 语句，但理想状态下，表中存储数据之后就不应该再被更新。 给表添加一个列：ALTER TABLE vendors ADD vend_phone CHAR(20); 删除刚刚添加的列：ALTER TABLE vendors DROP COLOMN vend_phone; 删除表 DROP TABLE customers;重命名表 RENAME TABLE customers2 TO customers;4. 视图视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。 视图的规则和限制与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。对于可以创建的视图数目没有限制。为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。ORDER BY 可以用在视图中，但如果从该视图检索数据 SELECT 中也含有 ORDER BY，那么该视图中的 ORDER BY 将被覆盖。视图不能索引，也不能有关联的触发器或默认值。视图可以和表一起使用。例如，编写一条联结表和视图的 SELECT 语句。 利用视图简化复杂联结CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num; 从视图中检索订购了 TNT2 的客户： 用视图过滤不想要的数据CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL; End Of Part II]]></content>
       <categories>
         <category>Coding</category>
       </categories>

@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://shuwuai.cc/2018/01/18/Git-Introduction/</loc>
+    <lastmod>2018-01-18T05:47:30.574Z</lastmod>
+    <data>
+        <display>
+        <title>Git Introduction</title>
+        <pubTime>2018-01-18T05:45:55.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+        <tag>版本控制</tag>
+         
+         
+           
+             
+              <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://shuwuai.cc/2017/12/07/MySQL-Crash-Course-Part-II/</loc>
+    <lastmod>2018-01-16T10:45:52.602Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 必知必会 Part II</title>
+        <pubTime>2017-12-06T17:47:34.000Z</pubTime>
+        
+        <tag>J2EE</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>JDBC</tag>
+         
+         
+           
+             
+              <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://shuwuai.cc/2018/01/05/Simple-Shopping-Cart-using-Sessions/</loc>
     <lastmod>2018-01-05T14:58:10.776Z</lastmod>
     <data>
@@ -31,9 +79,9 @@
         <title>HTTP の教科書 Part I</title>
         <pubTime>2017-12-17T12:50:38.000Z</pubTime>
         
-        <tag>JavaWeb</tag>
-         
         <tag>HTTP</tag>
+         
+        <tag>JavaWeb</tag>
          
          
            
@@ -53,9 +101,9 @@
         <title>JavaScript 函数 DOM BOM</title>
         <pubTime>2017-12-14T09:17:09.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaWeb</tag>
+         
+        <tag>前端</tag>
          
         <tag>JavaScript</tag>
          
@@ -77,9 +125,9 @@
         <title>JavaScript 基础</title>
         <pubTime>2017-12-13T14:30:43.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaWeb</tag>
+         
+        <tag>前端</tag>
          
         <tag>JavaScript</tag>
          
@@ -101,9 +149,9 @@
         <title>Head First HTML & CSS</title>
         <pubTime>2017-12-13T07:04:35.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>JavaWeb</tag>
+         
+        <tag>前端</tag>
          
         <tag>CSS</tag>
          
@@ -126,32 +174,6 @@
         <display>
         <title>MySQL 必知必会 Part I</title>
         <pubTime>2017-12-06T10:50:36.000Z</pubTime>
-        
-        <tag>J2EE</tag>
-         
-        <tag>数据库</tag>
-         
-        <tag>MySQL</tag>
-         
-        <tag>JDBC</tag>
-         
-         
-           
-             
-              <breadCrumb title="Coding" url="http://shuwuai.cc/categories/Coding/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://shuwuai.cc/2017/12/07/MySQL-Crash-Course-Part-II/</loc>
-    <lastmod>2017-12-13T14:38:18.782Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL 必知必会 Part II</title>
-        <pubTime>2017-12-06T17:47:34.000Z</pubTime>
         
         <tag>J2EE</tag>
          

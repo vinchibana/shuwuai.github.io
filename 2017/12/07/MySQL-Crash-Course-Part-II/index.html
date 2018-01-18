@@ -75,13 +75,13 @@
 
 
 
-<meta name="description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 · 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;10">
+<meta name="description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;100">
 <meta name="keywords" content="J2EE,数据库,MySQL,JDBC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 必知必会 Part II">
 <meta property="og:url" content="http://shuwuai.cc/2017/12/07/MySQL-Crash-Course-Part-II/index.html">
 <meta property="og:site_name" content="博物志">
-<meta property="og:description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 · 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;10">
+<meta property="og:description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;100">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/mysql-banner.jpg">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_23-32-43.png">
@@ -90,10 +90,10 @@
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-37-31.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-23-23.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-34-31.png">
-<meta property="og:updated_time" content="2017-12-13T14:38:18.782Z">
+<meta property="og:updated_time" content="2018-01-16T10:45:52.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 必知必会 Part II">
-<meta name="twitter:description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 · 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;10">
+<meta name="twitter:description" content="1. 数据插入 INSERT用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。 插入完整的行要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。INSERT INTO customers VALUS (NULL, &amp;#39;Pep E. LaPew&amp;#39;, &amp;#39;100">
 <meta name="twitter:image" content="http://oxgw3nd2b.bkt.clouddn.com/mysql-banner.jpg">
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,464 字
+                  1,463 字
                 </span>
               
 
@@ -427,7 +427,7 @@
       
         <p><img src="http://oxgw3nd2b.bkt.clouddn.com/mysql-banner.jpg" alt="mysql-banne"></p>
 <h3 id="1-数据插入-INSERT"><a href="#1-数据插入-INSERT" class="headerlink" title="1. 数据插入 INSERT"></a>1. 数据插入 <code>INSERT</code></h3><p>用来插入或添加行到数据表，比如插入完整的行，插入行的一部分，插入多行，插入某些查询的结果。</p>
-<h4 id="·-插入完整的行"><a href="#·-插入完整的行" class="headerlink" title="· 插入完整的行"></a>· 插入完整的行</h4><p>要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。<br><code>INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL)</code></p>
+<h4 id="插入完整的行"><a href="#插入完整的行" class="headerlink" title="插入完整的行"></a>插入完整的行</h4><p>要求指定表名和被插入到新行中的值，对每个列必须提供一个值（没有值可以使用 NULL ）且各个列必须以它们在表定义中出现的次序填充。<br><code>INSERT INTO customers VALUS (NULL, &#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL)</code></p>
 <a id="more"></a>
 <p>由于上述语法高度依赖于表中列的定义次序，因此并不保证下一次表结构变动后各个列保持完全相同的次序，并不安全。更安全但繁琐的方法如下，即给定对应的列名<br><code>INSERT INTO customers(cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country, cust_contact, cust_email) VALUES(&#39;Pep E. LaPew&#39;, &#39;100 Main Street&#39;, &#39;Los Angeles&#39;, &#39;CA&#39;, &#39;90046&#39;, &#39;USA&#39;, NULL, NULL);</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-06_23-32-43.png" alt="2017-12-06_23-32-43"></p>
 <blockquote>
@@ -437,42 +437,37 @@
 <blockquote>
 <p>数据库经常被多个客户端访问，对处理什么请求以及用什么次序处理进行管理是 MySQL 的任务，<code>INSERT</code> 操作可能很耗时，而且可能降低等待处理的 <code>SELECT</code> 语句的性能，因此可以在 <code>INSERT</code> 和 <code>INTO</code> 之间插入关键字<code>LOW_PRIORITY</code></p>
 </blockquote>
-<h4 id="·-插入多行"><a href="#·-插入多行" class="headerlink" title="· 插入多行"></a>· 插入多行</h4><p>使用多条 <code>INSERT</code> 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 <code>INSERT</code> 语句处理多个插入比使用多条语句快。<br><code>INSERT INTO customers( ) VALUES ( ), ( ), ( );</code></p>
-<h4 id="·-插入检索出来的数据"><a href="#·-插入检索出来的数据" class="headerlink" title="· 插入检索出来的数据"></a>· 插入检索出来的数据</h4><p>由一条 <code>SELECT</code> 语句和一条 <code>INSERT</code> 语句组成<br><code>INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-27-36.png" alt="2017-12-07_00-27-36"></p>
+<h4 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h4><p>使用多条 <code>INSERT</code> 语句或者当每条语句的列名和次序都相同时，可以使用组合语句，用单条 <code>INSERT</code> 语句处理多个插入比使用多条语句快。<br><code>INSERT INTO customers( ) VALUES ( ), ( ), ( );</code></p>
+<h4 id="插入检索出来的数据"><a href="#插入检索出来的数据" class="headerlink" title="插入检索出来的数据"></a>插入检索出来的数据</h4><p>由一条 <code>SELECT</code> 语句和一条 <code>INSERT</code> 语句组成<br><code>INSERT INTO customers(cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country) SELECT cust_id, cust_contact, cust_email, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_country FROM custnew;</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-27-36.png" alt="2017-12-07_00-27-36"></p>
 <p><code>INSERT SELECT</code> 中 <code>SELECT</code> 语句也可以包含 <code>WHERE</code> 子句以过滤插入的数据</p>
-<h3 id="2-更新和删除数据"><a href="#2-更新和删除数据" class="headerlink" title="2. 更新和删除数据"></a>2. 更新和删除数据</h3><p>####· 更新和修改表中的数据，可使用 <code>UPDATE</code> 语句<br>可更新表中特定行或所有行。<code>UPDATE</code> 语句由 <em>要更新的表</em>、<em>列名和它们的新值</em>、<em>确定要更新行的过滤条件</em> 三部分组成。</p>
+<h3 id="2-更新和删除数据"><a href="#2-更新和删除数据" class="headerlink" title="2. 更新和删除数据"></a>2. 更新和删除数据</h3><h4 id="更新和修改表中的数据，可使用-UPDATE-语句"><a href="#更新和修改表中的数据，可使用-UPDATE-语句" class="headerlink" title="更新和修改表中的数据，可使用 UPDATE 语句"></a>更新和修改表中的数据，可使用 <code>UPDATE</code> 语句</h4><p>更新表中特定行或所有行。<code>UPDATE</code> 语句由 <em>要更新的表</em>、<em>列名和它们的新值</em>、<em>确定要更新行的过滤条件</em> 三部分组成。</p>
 <p>Ex. 客户 10005 有了新的邮件地址需要更新：<br><code>UPDATE customers SET cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005;</code></p>
 <blockquote>
 <p><code>WHERE</code> 语句作为结束，告诉 MySQL 更新哪一行</p>
 </blockquote>
-<p>####· 更新多个列的语法稍有不同<br><code>UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005;</code></p>
+<h4 id="更新多个列的语法稍有不同"><a href="#更新多个列的语法稍有不同" class="headerlink" title="更新多个列的语法稍有不同"></a>更新多个列的语法稍有不同</h4><p><code>UPDATE customers SET cust_name = &#39;The Fudds&#39;, cust_email = &#39;elmer@fudd.com&#39; WHERE cust_id = 10005;</code></p>
 <blockquote>
 <p>如果用 <code>UPDATE</code> 语句更新多行中一行出现错误，整个 UPDATE 操作会被取消，可以用 <code>IGNORE</code> 关键字来在发生错误时继续更新</p>
 </blockquote>
-<h4 id="·-删除数据"><a href="#·-删除数据" class="headerlink" title="· 删除数据"></a>· 删除数据</h4><p>从表中删除一行或多行<br><code>DELETE FROM customers WHERE cust_id = 10006;</code></p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>从表中删除一行或多行<br><code>DELETE FROM customers WHERE cust_id = 10006;</code></p>
 <blockquote>
 <p><code>DELETE</code> 不需要列名或通配符，因为其删除整行而不是整列，删除指定的整列需要使用 <code>UPDATE</code> 语句将该列设为 NULL <code>UPDATE customers SET cust_state = NULL;</code></p>
 </blockquote>
 <p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-00-05.png" alt="2017-12-07_01-00-05"><br>如果想从表中删除所有行，不要使用 <code>DELETE</code> 语句而要使用 <code>TRUNCATE TABLE</code> 语句，它完成相同的工作而且更快，实际上是删除原来的表并重建一个同名新表</p>
-<h3 id="3-创建和操纵表"><a href="#3-创建和操纵表" class="headerlink" title="3. 创建和操纵表"></a>3. 创建和操纵表</h3><p>####· 用 <code>CREATE TABLE</code> 语句创建新表</p>
-<p>必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等</p>
+<h3 id="3-创建和操纵表"><a href="#3-创建和操纵表" class="headerlink" title="3. 创建和操纵表"></a>3. 创建和操纵表</h3><h4 id="用-CREATE-TABLE-语句创建新表"><a href="#用-CREATE-TABLE-语句创建新表" class="headerlink" title="用 CREATE TABLE 语句创建新表"></a>用 <code>CREATE TABLE</code> 语句创建新表</h4><p>必须给出新表的名字，表列的名字和定义，数据类型，主键列，是否使用 NULL 值等</p>
 <blockquote>
 <p>新表无法覆盖原来存在的同名表，必须手动删除它才能创建新表</p>
 </blockquote>
 <p><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_00-37-31.png" alt="2017-12-07_00-37-31"><br>正如所述，主键值必须唯一。即表中的每个行必须具有唯一的主键值。如果主键使用单个列，则它的值必须唯一。如果使用多个列，则这些列的组合值必须唯一。</p>
-<p>####· 使用 <code>AUTO_INCREMENT</code><br>每个表只允许一个 <code>AUTO_INCREMENT</code> 列，而且它必须被索引（比如使它成为主键）。<br><code>SELECT last_insert_id( )</code> 函数返回最后一个<code>AUTO INCREMENT</code> 值，可以用于后续的 MySQL语句。</p>
-<p>####· 更新表<br>更新表定义可使用 <code>ALTER TABLE</code> 语句，但理想状态下，表中存储数据之后就不应该再被更新。</p>
+<h4 id="使用-AUTO-INCREMENT"><a href="#使用-AUTO-INCREMENT" class="headerlink" title="使用 AUTO_INCREMENT"></a>使用 <code>AUTO_INCREMENT</code></h4><p>每个表只允许一个 <code>AUTO_INCREMENT</code> 列，而且它必须被索引（比如使它成为主键）。<br><code>SELECT last_insert_id( )</code> 函数返回最后一个<code>AUTO INCREMENT</code> 值，可以用于后续的 MySQL语句。</p>
+<h4 id="更新表"><a href="#更新表" class="headerlink" title="更新表"></a>更新表</h4><p>更新表定义可使用 <code>ALTER TABLE</code> 语句，但理想状态下，表中存储数据之后就不应该再被更新。</p>
 <p>给表添加一个列：<br><code>ALTER TABLE vendors ADD vend_phone CHAR(20);</code><br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-23-23.png" alt="2017-12-07_01-23-23"></p>
 <p>删除刚刚添加的列：<br><code>ALTER TABLE vendors DROP COLOMN vend_phone;</code></p>
-<p>####· 删除表 <code>DROP TABLE customers;</code></p>
-<p>####· 重命名表 <code>RENAME TABLE customers2 TO customers;</code></p>
-<h3 id="4-视图"><a href="#4-视图" class="headerlink" title="4. 视图"></a>4. 视图</h3><p>视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。</p>
-<p>####· 视图的规则和限制</p>
-<p>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。<br>对于可以创建的视图数目没有限制。<br>为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。<br>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。<br><code>ORDER BY</code> 可以用在视图中，但如果从该视图检索数据 <code>SELECT</code> 中也含有 <code>ORDER BY</code>，那么该视图中的 <code>ORDER BY</code> 将被覆盖。<br>视图不能索引，也不能有关联的触发器或默认值。<br>视图可以和表一起使用。例如，编写一条联结表和视图的 <code>SELECT</code> 语句。</p>
-<p>####· 利用视图简化复杂联结</p>
-<p><code>CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num;</code></p>
+<h4 id="删除表-DROP-TABLE-customers"><a href="#删除表-DROP-TABLE-customers" class="headerlink" title="删除表 DROP TABLE customers;"></a>删除表 <code>DROP TABLE customers;</code></h4><h4 id="重命名表-RENAME-TABLE-customers2-TO-customers"><a href="#重命名表-RENAME-TABLE-customers2-TO-customers" class="headerlink" title="重命名表 RENAME TABLE customers2 TO customers;"></a>重命名表 <code>RENAME TABLE customers2 TO customers;</code></h4><h3 id="4-视图"><a href="#4-视图" class="headerlink" title="4. 视图"></a>4. 视图</h3><p>视图可以重用 SQL 语句；简化复杂的 SQL 操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；使用表的组成部分而不是整个表；保护数据；可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。</p>
+<h4 id="视图的规则和限制"><a href="#视图的规则和限制" class="headerlink" title="视图的规则和限制"></a>视图的规则和限制</h4><p>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）。<br>对于可以创建的视图数目没有限制。<br>为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。<br>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图。<br><code>ORDER BY</code> 可以用在视图中，但如果从该视图检索数据 <code>SELECT</code> 中也含有 <code>ORDER BY</code>，那么该视图中的 <code>ORDER BY</code> 将被覆盖。<br>视图不能索引，也不能有关联的触发器或默认值。<br>视图可以和表一起使用。例如，编写一条联结表和视图的 <code>SELECT</code> 语句。</p>
+<h4 id="利用视图简化复杂联结"><a href="#利用视图简化复杂联结" class="headerlink" title="利用视图简化复杂联结"></a>利用视图简化复杂联结</h4><p><code>CREATE VIEW productcustomers AS SELECT cust_name, cust_contact, prod_id FROM customers, orders, orderitems WHERE customers.cust_id = orders.cust_id AND orderitems.order_num = orders.order_num;</code></p>
 <p>从视图中检索订购了 TNT2 的客户：<br><img src="http://oxgw3nd2b.bkt.clouddn.com/2017-12-07_01-34-31.png" alt="2017-12-07_01-34-31"></p>
-<p>####· 用视图过滤不想要的数据<br><code>CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL;</code></p>
+<h4 id="用视图过滤不想要的数据"><a href="#用视图过滤不想要的数据" class="headerlink" title="用视图过滤不想要的数据"></a>用视图过滤不想要的数据</h4><p><code>CREATE VIEW customermaillist AS SELECT cust_id, cust_name, cust_email FROM customers WHERE cust_mail IS NOT NULL;</code></p>
 <h3 id="End-Of-Part-II"><a href="#End-Of-Part-II" class="headerlink" title="End Of Part II"></a>End Of Part II</h3>
       
     </div>
@@ -651,7 +646,7 @@
     
       <span class="post-meta-item-text">迄今写了多少字&#58;</span>
     
-    <span title="迄今写了多少字">19.9k</span>
+    <span title="迄今写了多少字">20.9k</span>
   
 </div>
 
