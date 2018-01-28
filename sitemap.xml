@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://shuwuai.cc/2017/12/13/JavaScript-Tutorial/</loc>
+    
+    <lastmod>2018-01-28T17:31:07.961Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://shuwuai.cc/2017/12/06/Think-Different/</loc>
     
     <lastmod>2018-01-18T07:30:01.170Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://shuwuai.cc/2017/12/14/JavaScript-Function-DOM-BOM/</loc>
     
     <lastmod>2017-12-14T09:27:14.813Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://shuwuai.cc/2017/12/13/JavaScript-Tutorial/</loc>
-    
-    <lastmod>2017-12-13T14:50:56.684Z</lastmod>
     
   </url>
   
