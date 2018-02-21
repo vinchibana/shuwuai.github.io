@@ -7,10 +7,8 @@
 
 ![2018-02-21_15-31-51](http://oxgw3nd2b.bkt.clouddn.com/2018-02-21_15-31-51.png)
 
-[![CC](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-sa/4.0/)
-
+![CC](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square)
 > 同步微信公众号：无伴奏第三奏鸣曲
 
 ![QRcode](http://oxgw3nd2b.bkt.clouddn.com/qrcode_for_gh_b004321b6297_258.jpg)
-
 
