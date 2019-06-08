@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="前端,JavaWeb,JavaScript," />
+  <meta name="keywords" content="JavaWeb,前端,JavaScript," />
 
 
 
@@ -76,7 +76,7 @@
 
 
 <meta name="description" content="HTML 中的脚本必须位于 &amp;lt;script&amp;gt; 与 &amp;lt;/script&amp;gt; 标签之间。脚本可被放置在 HTML 页面的 &amp;lt;body&amp;gt; 和 &amp;lt;head&amp;gt; 部分中，运行效果完全一致。 通常的做法是把函数放入 &amp;lt;head&amp;gt; 部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容。 也可以把脚本保存到外部文件中。外部文件通常包">
-<meta name="keywords" content="前端,JavaWeb,JavaScript">
+<meta name="keywords" content="JavaWeb,前端,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 基础">
 <meta property="og:url" content="http://shuwuai.cc/2017/12/13/JavaScript-Tutorial/index.html">
@@ -86,7 +86,7 @@
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/facebook.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/c.png">
 <meta property="og:image" content="http://oxgw3nd2b.bkt.clouddn.com/og.jpg">
-<meta property="og:updated_time" content="2018-01-28T17:31:07.961Z">
+<meta property="og:updated_time" content="2018-01-28T17:31:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 基础">
 <meta name="twitter:description" content="HTML 中的脚本必须位于 &amp;lt;script&amp;gt; 与 &amp;lt;/script&amp;gt; 标签之间。脚本可被放置在 HTML 页面的 &amp;lt;body&amp;gt; 和 &amp;lt;head&amp;gt; 部分中，运行效果完全一致。 通常的做法是把函数放入 &amp;lt;head&amp;gt; 部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容。 也可以把脚本保存到外部文件中。外部文件通常包">
@@ -468,7 +468,7 @@
 <p>局部变量在函数执行完毕后销毁。全局变量在页面关闭后销毁。</p>
 </blockquote>
 <h4 id="JavaScript-事件"><a href="#JavaScript-事件" class="headerlink" title="JavaScript 事件"></a>JavaScript 事件</h4><p>当在 HTML 页面中使用 JavaScript 时，JavaScript 可以触发这些事件。HTML 事件可以是浏览器行为，也可以是用户行为，如：HTML 页面完成加载、HTML input 字段改变时、HTML 按钮被点击。<br><img src="http://oxgw3nd2b.bkt.clouddn.com/og.jpg" alt="og-w932"></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=<span class="string">"getElementById('demo').innerHTML=Date()"</span>&gt;现在的时间是?<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></div><div class="line">&lt;button onclick=<span class="string">"this.innerHTML=Date()"</span>&gt;现在的时间是?<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></div><div class="line">&lt;button onclick=<span class="string">"displayDate()"</span>&gt;现在的时间是?<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;button onclick=<span class="string">"getElementById('demo').innerHTML=Date()"</span>&gt;现在的时间是?&lt;/button&gt;</div><div class="line">&lt;button onclick=<span class="string">"this.innerHTML=Date()"</span>&gt;现在的时间是?&lt;/button&gt;</div><div class="line">&lt;button onclick=<span class="string">"displayDate()"</span>&gt;现在的时间是?&lt;/button&gt;</div></pre></td></tr></table></figure>
 <h3 id="3-JavaScript-流程控制"><a href="#3-JavaScript-流程控制" class="headerlink" title="3. JavaScript 流程控制"></a>3. JavaScript 流程控制</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  if-else 语句</span></div><div class="line"><span class="keyword">if</span> (condition1) &#123; </div><div class="line">    当条件 <span class="number">1</span> 为 <span class="literal">true</span> 时执行的代码</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition2) &#123;</div><div class="line">    当条件 <span class="number">2</span> 为 <span class="literal">true</span> 时执行的代码</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  当条件 <span class="number">1</span> 和 条件 <span class="number">2</span> 都不为 <span class="literal">true</span> 时执行的代码</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//  switch 语句</span></div><div class="line"><span class="keyword">switch</span>(n) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>: 执行代码块 <span class="number">1</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>: 执行代码块 <span class="number">2</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>: 与 <span class="keyword">case</span> <span class="number">1</span> 和 <span class="keyword">case</span> <span class="number">2</span> 不同时执行的代码</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//  for 循环</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;cars.length;i++） &#123; </div><div class="line">    <span class="built_in">document</span>.write(cars[i] + <span class="string">"&lt;br&gt;"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//  while 循环</span></div><div class="line"><span class="keyword">while</span> (i&lt;<span class="number">5</span>) &#123;</div><div class="line">    x=x + <span class="string">"The number is "</span> + i + <span class="string">"&lt;br&gt;"</span>;</div><div class="line">    i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="4-JavaScript-表单验证"><a href="#4-JavaScript-表单验证" class="headerlink" title="4. JavaScript 表单验证"></a>4. JavaScript 表单验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateForm</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> x = <span class="built_in">document</span>.forms[<span class="string">"myForm"</span>][<span class="string">"email"</span>].value;</div><div class="line">	<span class="keyword">var</span> atpos = x.indexOf(<span class="string">"@"</span>);</div><div class="line">	<span class="keyword">var</span> dotpos = x.lastIndexOf(<span class="string">"."</span>);</div><div class="line">	<span class="keyword">if</span> (atpos &lt; <span class="number">1</span> || dotpos &lt; atpos + <span class="number">2</span> || dotpos + <span class="number">2</span> &gt;= x.length) &#123;</div><div class="line">		alert(<span class="string">"不是一个有效的 e-mail 地址"</span>);</div><div class="line">  		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="5-JavaScript-JSON"><a href="#5-JavaScript-JSON" class="headerlink" title="5. JavaScript JSON"></a>5. JavaScript JSON</h3><ul>
@@ -579,9 +579,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
-          
             <a href="/tags/JavaWeb/" rel="tag"><i class="fa fa-tag"></i> JavaWeb</a>
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
@@ -653,7 +653,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
